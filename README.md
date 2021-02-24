@@ -7,5 +7,5 @@ Aplicación web de chat aleatorio para comunidad politécnica.
 - Alexis Yépez
 
 ## Reuniones de seguimiento
-Lista de reproducción de los videos de seguimiento: https://www.youtube.com/watch?v=XfL0Y8GiJE4
+* [Lista de reproducción de los videos de seguimiento](https://www.youtube.com/watch?v=XfL0Y8GiJE4)
 
