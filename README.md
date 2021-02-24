@@ -1,7 +1,8 @@
 # BuhoChat
 Aplicación web de chat aleatorio para comunidad politécnica.
 
-# Integrantes
+## Integrantes
 - Juan Bolaños
 - Wendy Palomo
 - Alexis Yépez
+
