@@ -14,7 +14,6 @@ Aplicación web de chat aleatorio para comunidad politécnica.
 
 ### Sprint Reviews
  * 3 de Marzo
-   * fff
  * 10 de Marzo
  * 17 de Marzo
 
