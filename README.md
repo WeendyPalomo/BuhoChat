@@ -6,3 +6,6 @@ Aplicación web de chat aleatorio para comunidad politécnica.
 - Wendy Palomo
 - Alexis Yépez
 
+## Reuniones de seguimiento
+Lista de reproducción de los videos de seguimiento:
+
