@@ -1,0 +1,62 @@
+.site-layout-content {
+    min-height: 280px;
+    padding: 24px 24px 0 24px;
+    background: #fff;
+  }
+  #components-layout-demo-top .logo {
+    float: left;
+    width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 0;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .ant-row-rtl #components-layout-demo-top .logo {
+    float: right;
+    margin: 16px 0 16px 24px;
+  }
+
+.navigation-buttons {
+    display:flex;
+}
+.navigation-buttons BUTTON {
+    width: 100%;
+    margin: 5px;
+}
+.main-content {
+      display: flex;
+}
+.chats-list, .chat-window {
+    
+    border-radius: 25px;
+    height: 442px;
+    margin-top: 15px;
+    margin-bottom: 15px;;
+      
+}
+.chats-list {
+    background-color: #8E8D8D;
+    width: 30%;
+    float: left;
+    margin-right:30px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.chat-window {
+    background-color: #973B42 ;
+    width: 70%;
+    float:right;
+}
+
+#search-chat {
+    border-radius: 100px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 13px 10px 13px 29px;
+    
+    text-align: center;
+}
+
+footer {
+    background-color: #973B42;
+}
