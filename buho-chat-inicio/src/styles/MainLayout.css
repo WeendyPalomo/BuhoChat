@@ -1,0 +1,13 @@
+.header, .footer {
+    color: white;
+    background-color: #F03A47;
+}
+
+.content {
+    background-color: white;
+}
+
+.main-layout{
+    min-height: 100vh;
+}
+
