@@ -18,7 +18,7 @@ const MainLayout = ({children}) => {
                     ó
                     </Col>
                     <Col span={3} align="start">
-                        <Button>REGISTRARSE</Button>
+                        <Button>Registrarse</Button>
                     </Col>
                 </Row>
             </Header>
