@@ -31,6 +31,9 @@ function App() {
             <Route path="/posts">
               <UsersPage />
             </Route>
+            <Route path="/menu">
+              <Menupage />
+            </Route>
             */}
             <Route>
               <NotFoundPage />
