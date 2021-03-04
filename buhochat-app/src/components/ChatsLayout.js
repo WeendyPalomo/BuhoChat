@@ -1,45 +1,64 @@
-import React from 'react'
+import {React, useEffect, useState} from 'react'
 import '../styles/ChatsLayout.css'
-import { Layout, Menu, Breadcrumb, Button, Form, Input } from 'antd';
+import { Layout, Menu, Breadcrumb, Button, Form, Input, Switch, List, message, Avatar, Spin, Tooltip } from 'antd';
+import InfiniteListExample from './InfiniteListExample'
+import { UserOutlined, SendOutlined } from '@ant-design/icons';
+
 
 const { Header, Content, Footer } = Layout;
-
+const { TextArea } = Input;
 
 const ChatsLayout = () => {
+    const[ myMessages, setMyMessages] = useState([]);
+
+    const handleSendMessage = () => {
+        const messageContent =  document.querySelector('#message-content').value;
+        
+        setMyMessages(( prevState ) => [
+            ...prevState, messageContent
+        ])
+    }
+
     return (
-        <Layout className="layout">
-            <Header>
-                <div className="logo" />
-                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                    <Menu.Item key="1">nav 1</Menu.Item>
-                    <Menu.Item key="2">nav 2</Menu.Item>
-                    <Menu.Item key="3">nav 3</Menu.Item>
-                </Menu>
-            </Header>
-            <Content style={{ padding: '0 50px 0 50px' }}>
+        
             
                 <div className="site-layout-content">
                     <div class='navigation-buttons'>
-                        <Button type="primary" shape='round'>Posts</Button>
-                        <Button type="primary" shape='round'>Chats</Button>
+                        <Button type="primary" shape='round' style={{background: '#454C48', color: 'white'}}>Posts</Button>
+                        <Button type="primary" shape='round' style={{background: '#C9CCCB', color: 'white'}}>Chats</Button>
                         
                     </div>
                     <div class='main-content'>
                         <div class='chats-list'>
-                            <Input placeholder="Buscar usuarios, amigos" id='search-chat'  />
-                            <Content>jjjjj</Content>
+                          <Input placeholder="Buscar usuarios, amigos" id='search-chat'  />
+                          <InfiniteListExample />
                         </div>
                         <div class='chat-window'>
-                            <Header>User 2</Header>
-                            <Content></Content>
+                            <div id='chat-header'>
+                              <Avatar size="large" icon={<UserOutlined />} />
+                              User 2
+                            </div>
+                            <div class='chat-messages'>
+                                {
+                                    myMessages.map( (text, index) => (
+                                        <p key={index} >{text}</p>
+                                    ))
+                                }
+                            </div>
+                            <div class='chat-sender'>
+                                <TextArea rows={2} id='message-content'/>
+                                <Tooltip title="send">
+                                    <Button onClick={handleSendMessage} shape="circle" size='large' icon={<SendOutlined />} />
+                                </Tooltip>
+                            </div>
+                                
+                            
                         </div>
                         
                     </div>
                             
                 </div>
-            </Content>
-            <Footer style={{ textAlign: 'center', background:'#F03A47', padding:5 }}>Derechos Reservados EPN©</Footer>
-        </Layout>
+
         
 
     );
