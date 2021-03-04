@@ -1,0 +1,52 @@
+
+/*  Header   */
+header.ant-layout-header{
+    background-color: #F03A47;
+    color: white;
+}
+
+.header p{
+    font-size: 25px;
+}
+/*     Content   */
+.content{
+    background-color: white;
+    text-align: center;
+    color: #47525E;
+    font-size: 26px;
+    padding: 60px;
+}
+
+.content p{
+    margin: 0px 103px;
+}
+
+#button{
+    background-color: #553D3F;
+    color: white; 
+    border-radius: 60px;
+    height: 100%;
+    width: 50%;
+}
+
+.buttonsChatPost{
+    padding: 35px 0px;
+}
+
+#button span{
+    font-size: 50px;
+    margin: 15px;
+}
+
+/*  Footer   */
+footer.ant-layout-footer{
+    background-color: #F03A47;
+    height: 50px;
+    color: white;
+    padding: 0px;
+    }
+
+.footer p{
+    text-align-last: center;
+    padding: 15px 0px;
+}
