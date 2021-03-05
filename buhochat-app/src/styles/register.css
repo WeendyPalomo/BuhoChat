@@ -1,0 +1,58 @@
+/*  Header   */
+header.ant-layout-header{
+    background-color: #F03A47;
+    color: white;
+}
+
+.header p{
+    font-size: 25px;
+}
+
+/*  Content   */
+.content{
+    background-color: #F6F6F6;
+    height: 600px;
+    background: url("../images/buho.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;   
+    font-size: 26px;
+    padding: 60px;
+    
+}
+
+p strong{
+    margin-left: 95px;
+    color: white;
+    font-size: 40px;   
+}
+
+.form{
+    position: relative;
+    padding-right: 75px;
+    margin: 0px 245px;
+    background-color: rgba(84, 87, 84, 0.7);
+    border-radius: 40px;
+    padding-top: 25px;
+}
+
+.ant-btn {
+    background-color: grey;
+    font-size: 25px;
+    right: 15%;
+    border-radius: 5px;
+}
+.ant-btn-primary {
+    background: black;
+}
+/*  Footer   */
+footer.ant-layout-footer{
+    background-color: #F03A47;
+    height: 50px;
+    color: white;
+    padding: 0px;
+    }
+
+.footer p{
+    text-align-last: center;
+    padding: 15px 0px;
+}
