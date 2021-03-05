@@ -7,8 +7,9 @@ import HomePage from "../pages/HomePage";
 import NotFoundPage from "../pages/NotFoundPage"
 import Routes from '../constants/routes'
 import Menu from './Menu'
+import ScreenRegister from './ScreenRegister'
+
 function App() {
-  
 
   return (
     <>
@@ -20,10 +21,10 @@ function App() {
             </Route>
             {/*<Route path="/login">
               <AboutPage />
-            </Route>
-            <Route path="/register">
-              <UsersPage />
-  </Route>*/}
+            </Route>*/}
+            <Route path={Routes.REGISTER}>
+              <ScreenRegister />
+            </Route> 
             <Route path="/chat">
               <ChatsLayout />
             </Route>
