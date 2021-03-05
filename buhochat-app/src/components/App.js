@@ -5,8 +5,8 @@ import ChatsLayout from "./ChatsLayout";
 import MainLayout from "./MainLayout";
 import HomePage from "../pages/HomePage";
 import NotFoundPage from "../pages/NotFoundPage"
-
-
+import Routes from '../constants/routes'
+import Menu from './Menu'
 function App() {
   
 
@@ -31,10 +31,11 @@ function App() {
             <Route path="/posts">
               <UsersPage />
             </Route>
-            <Route path="/menu">
-              <Menupage />
-            </Route>
             */}
+            <Route path={Routes.MENU}>
+              <Menu />
+            </Route>
+            
             <Route>
               <NotFoundPage />
             </Route>

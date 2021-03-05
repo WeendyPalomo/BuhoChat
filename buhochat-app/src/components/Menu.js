@@ -12,10 +12,7 @@ const Menu =()=> {
      
             <>
               <Layout>
-                <Header className="header">
-                  <p>BuhoChat</p>
-                 
-                </Header>
+                
                 <Content className="content">
                   <Row>
                       <Col span={12}>
@@ -44,9 +41,7 @@ const Menu =()=> {
                   </Row>
 
                 </Content>
-                <Footer className="footer">
-                  <p>Derechos Reservados  EPN ©</p>
-                </Footer>
+                
               </Layout>    
             </>
     );
