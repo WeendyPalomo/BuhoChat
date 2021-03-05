@@ -1,2 +1,2 @@
 import firebase from 'firebase';
-const app = firebase.initializeApp({ ... });
+const app = firebase.initializeApp({ });
