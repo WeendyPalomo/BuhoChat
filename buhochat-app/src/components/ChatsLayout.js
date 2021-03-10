@@ -1,11 +1,11 @@
 import {React, useEffect, useState} from 'react'
 import '../styles/ChatsLayout.css'
-import { Layout, Menu, Breadcrumb, Button, Form, Input, Switch, List, message, Avatar, Spin, Tooltip } from 'antd';
+import { Layout,  Button, Input,  Avatar, Tooltip } from 'antd';
 import InfiniteListExample from './InfiniteListExample'
 import { UserOutlined, SendOutlined } from '@ant-design/icons';
 
 
-const { Header, Content, Footer } = Layout;
+//const { Header, Content, Footer } = Layout;
 const { TextArea } = Input;
 
 const ChatsLayout = () => {

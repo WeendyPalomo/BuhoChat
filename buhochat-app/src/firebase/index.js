@@ -1,14 +1,22 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/database'
+import 'firebase/auth'
+
 import "firebase/auth";
 
-const app = firebase.initializeApp({
-    apiKey: "AAAA_f89Rn0:APA91bGCNXc4Atskk-2VgCsCTDjflaTicwqe0J6CpDJKaoCHfbouESs1rQtOXNPP26kO9ac5TdIKmLEO271iK_A9gUIlWyxxQ5kYu__naDrola8mMTl7aJLh-eI5boqx_jpRcT7C-nQM",
-  authDomain: "buhochat-eefbd.appspot.com",
-  projectId: "buhochat-eefbd",
-  storageBucket: "https://buhochat-eefbd.firebaseapp.com/",
-  messagingSenderId: "97721431269",
-  appId: "1:1090908931709:web:8afa183c839eb262015314",
-  
- });
 
+
+ const firebaseConfig = {
+  apiKey: "AIzaSyCcKHxcO3_PkFyYMtuh0B7adPsubMjmbms",
+  authDomain: "buhochat-eefbd.firebaseapp.com",
+  databaseURL: "https://buhochat-eefbd-default-rtdb.firebaseio.com",
+  projectId: "buhochat-eefbd",
+  storageBucket: "buhochat-eefbd.appspot.com",
+  messagingSenderId: "1090908931709",
+  appId: "1:1090908931709:web:8afa183c839eb262015314",
+  measurementId: "G-PET6BYFD5V"
+};
+const app = firebase.initializeApp(firebaseConfig);
+
+export const database = app.database();
 export const auth = app.auth();

@@ -6,7 +6,7 @@ import { Layout } from 'antd';
 import { Button, Radio } from 'antd';
 
 const Menu =()=> {
- const { Header, Footer, Sider, Content } = Layout;
+ const { Content } = Layout;
 
     return(
      

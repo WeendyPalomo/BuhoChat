@@ -1,69 +1,70 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Checkbox, Col, Form, Input, Row } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import "../styles/LoginForm.css";
+import { Link, useHistory } from "react-router-dom";
+import Routes from "../constants/routes";
+import { useAuth } from "../lib/auth";
+
 
 const LoginForm = () => {
+  const { login, user } = useAuth();
+  const history = useHistory();
+  useEffect(() => {
+    if (!!user) {
+      history.replace(Routes.MENU);
+    }
+  }, [user]);
+
+  const onFinish = ({ email, password, remember}) => {
+    login(email, password);
+    console.log(remember)
+    console.log(email)
+    console.log(password)
+  };
+
+  const layout = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 16 },
+  };
+  const tailLayout = {
+    wrapperCol: { offset: 8, span: 16 },
+  };
+  
   return (
-    <Row justify="center">
-      <Col>
-        <Form
-          name="normal_login"
-          className="login-form"
-          initialValues={{ remember: true }}
-          //onFinish={onFinish}
-        >
-          <Form.Item
-            name="username"
-            label="Correo Institucional"
-            rules={[{ required: true, message: "Please input your Username!" }]}
-          />
-          <Form.Item>
-            <Input
-              className="email-input"
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="username01@epn.edu.ec"
-            />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            label="Contraseña"
-            rules={[{ required: true, message: "Please input your Password!" }]}
-          />
-          <Form.Item>
-            <Input
-              className="pass-input"
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="abcdefg12345."
-            />
-          </Form.Item>
-          <Form.Item>
-            <Form.Item name="remember" valuePropName="non-checked" noStyle>
-              <Checkbox>Mantener sesión</Checkbox>
-            </Form.Item>
+    <Form
+      {...layout}
+      name="basic"
+      initialValues={{ remember: true }}
+      onFinish={onFinish}
+      
+    >
+      <Form.Item name='email' label="Email" rules={[{ type: 'email' }]}>
+        <Input />
+      </Form.Item>
 
-            <a className="login-form-forgot" href="">
-              ¿Olvidaste tu contraseña?
-            </a>
-          </Form.Item>
+      <Form.Item
+        label="Password"
+        name="password"
+        rules={[{ required: true, message: 'Please input your password!' }]}
+      >
+        <Input.Password />
+      </Form.Item>
 
-          <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
-              Iniciar sesión
-            </Button>
-          </Form.Item>
-          <Form.Item>
-            ó <a href="">Registrate ahora!</a>
-          </Form.Item>
-        </Form>
-      </Col>
-    </Row>
+      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
+        <Checkbox>Remember me</Checkbox>
+      </Form.Item>
+
+      <Form.Item {...tailLayout}>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
   );
+  if (user === null) {
+    return "Verificando sesión...";
+  }
 };
 
 export default LoginForm;

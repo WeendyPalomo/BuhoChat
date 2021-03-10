@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import "../styles/register.css"
 import 'antd/dist/antd.css';
+import { useAuth } from "../lib/auth";
 import {
   Form,
   Input,
   Tooltip,
-  Cascader,
   Select,
-  Row,
-  Col,
-  Checkbox,
   Button,
-  AutoComplete,
 } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 const { Option } = Select;
@@ -47,11 +43,15 @@ const tailFormItemLayout = {
   },
 };
 
+
+
+
 const RegistrationForm = () => {
   const [form] = Form.useForm();
-
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+  const { register } = useAuth();
+  const onFinish = ({nameAndLastName, email, password, confirm, nickname }) => {
+    console.log('Received values of form: ', email, password);
+    register({email, password});
   };
 
   return (
@@ -163,7 +163,8 @@ const RegistrationForm = () => {
         </Button>
       </Form.Item>
     </Form>
+
   );
 };
 
-export default RegistrationForm;
+export default RegistrationForm
