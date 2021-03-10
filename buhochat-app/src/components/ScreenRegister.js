@@ -22,4 +22,6 @@ const ScreenRegister =()=> {
          
     );
 };
+
+
 export default ScreenRegister;
