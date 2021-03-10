@@ -1,7 +1,7 @@
 import React from 'react'
-import { Layout, Menu, Button, Row, Col} from 'antd';
+import { Layout, Row, Col} from 'antd';
 import '../styles/MainLayout.css'
-
+import MainMenu from './MainMenu';
 
 const { Header, Content, Footer } = Layout;
 
@@ -11,15 +11,7 @@ const MainLayout = ({children}) => {
             <Header className="header" >
                 <Row>
                     <Col span={8}>BúhoChat</Col>
-                    <Col span={3} offset={9} align="end">
-                        <Button>Iniciar sesión</Button>
-                    </Col>
-                    <Col span={1} align="center">
-                    ó
-                    </Col>
-                    <Col span={3} align="start">
-                        <Button>Registro</Button>
-                    </Col>
+                    <MainMenu />
                 </Row>
             </Header>
             <Content style={{ padding: '0 50px 0 50px' }}>
@@ -30,6 +22,7 @@ const MainLayout = ({children}) => {
         </Layout>
     )
 }
+
 
 
 

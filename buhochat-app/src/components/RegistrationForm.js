@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import "../styles/register.css"
 import 'antd/dist/antd.css';
+import { useAuth } from "../lib/auth";
+import { useHistory } from "react-router-dom";
+import Routes from "../constants/routes";
 import {
   Form,
   Input,
   Tooltip,
-  Cascader,
   Select,
-  Row,
-  Col,
-  Checkbox,
   Button,
-  AutoComplete,
 } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 const { Option } = Select;
 
 const formItemLayout = {
+
+  
+
   labelCol: {
     xs: {
       span: 24,
@@ -47,12 +48,24 @@ const tailFormItemLayout = {
   },
 };
 
+
+
+
 const RegistrationForm = () => {
   const [form] = Form.useForm();
-
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+  const { register, user } = useAuth();
+  
+  const history = useHistory();
+  const onFinish = (data) => {
+    console.log('Received values of form: ', data);
+    register(data);
   };
+
+  useEffect(() => {
+    if (!!user) {
+      history.replace(Routes.MENU);
+    }
+  }, [user]);
 
   return (
     <Form
@@ -64,7 +77,7 @@ const RegistrationForm = () => {
     >
 
       <Form.Item
-        name="nameAndLastname"
+        name="name"
         label={
           <span>
             Nombre y Apellido
@@ -163,7 +176,8 @@ const RegistrationForm = () => {
         </Button>
       </Form.Item>
     </Form>
+
   );
 };
 
-export default RegistrationForm;
+export default RegistrationForm

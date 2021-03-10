@@ -1,31 +1,32 @@
 import "../styles/App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Button, Col, Row, Space } from "antd";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
 import ChatsLayout from "./ChatsLayout";
 import MainLayout from "./MainLayout";
 import HomePage from "../pages/HomePage";
 import NotFoundPage from "../pages/NotFoundPage"
 import Routes from '../constants/routes'
 import Menu from './Menu'
+import LoginPage from '../pages/LoginPage'
 import ScreenRegister from './ScreenRegister'
-
+import { AuthProvider } from "../lib/auth";
 function App() {
 
   return (
     <>
-      <Router>
+      <AuthProvider>
         <MainLayout>
           <Switch>
-            <Route path="/" exact={true}>
+            <Route path={Routes.HOME} exact={true}>
               <HomePage />
             </Route>
-            {/*<Route path="/login">
-              <AboutPage />
-            </Route>*/}
+            <Route path={Routes.LOGIN}>
+              <LoginPage />
+            </Route>
             <Route path={Routes.REGISTER}>
               <ScreenRegister />
             </Route> 
-            <Route path="/chat">
+            <Route path={Routes.CHAT}>
               <ChatsLayout />
             </Route>
             {/*
@@ -42,7 +43,7 @@ function App() {
             </Route>
           </Switch>
         </MainLayout>
-      </Router>
+      </AuthProvider>
     
     </>
   );
