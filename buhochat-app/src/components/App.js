@@ -10,6 +10,7 @@ import Menu from './Menu'
 import LoginPage from '../pages/LoginPage'
 import ScreenRegister from './ScreenRegister'
 import { AuthProvider } from "../lib/auth";
+import PostsPage from '../pages/PostsPage'
 function App() {
 
   return (
@@ -29,11 +30,11 @@ function App() {
             <Route path={Routes.CHAT}>
               <ChatsLayout />
             </Route>
-            {/*
-            <Route path="/posts">
-              <UsersPage />
+            
+            <Route path={Routes.POSTS}>
+              <PostsPage />
             </Route>
-            */}
+            
             <Route path={Routes.MENU}>
               <Menu />
             </Route>

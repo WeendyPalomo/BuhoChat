@@ -6,8 +6,13 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.3",
+<<<<<<< HEAD
     "antd": "^4.13.1",
     "firebase": "^8.2.10",
+=======
+    "antd": "^4.12.3",
+    "bootstrap": "^4.6.0",
+>>>>>>> e9e56700c4b72539e51f6105298ab723bd0e8d0c
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-infinite-scroll-component": "^6.0.0",
@@ -15,6 +20,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "reactstrap": "^8.9.0",
     "reqwest": "^2.0.5",
     "web-vitals": "^1.1.0"
   },
