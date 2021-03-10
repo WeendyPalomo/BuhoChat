@@ -10,12 +10,15 @@ import { useAuth } from "../lib/auth";
 const LoginForm = () => {
   const { login, user } = useAuth();
   const history = useHistory();
+
+
   useEffect(() => {
     if (!!user) {
       history.replace(Routes.MENU);
     }
   }, [user]);
 
+  
   const onFinish = ({ email, password, remember}) => {
     login(email, password);
     console.log(remember)

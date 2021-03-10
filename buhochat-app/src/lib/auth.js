@@ -2,7 +2,7 @@
  * Created by chalosalvador on 2/2/21
  */
  import React, { createContext, useContext, useEffect, useState } from "react";
- import { auth } from "../firebase";
+ import { auth, db} from "../firebase";
  import translateMessage from "../utils/translateMessage";
  import { message } from "antd";
  
@@ -22,25 +22,7 @@
  };
 
 
- export const listAllUsers = (nextPageToken) => {
-  // List batch of users, 1000 at a time.
-  
-  
-    auth
-    .listUsers(1000, nextPageToken)
-    .then((listUsersResult) => {
-      listUsersResult.users.forEach((userRecord) => {
-        console.log('user', userRecord.toJSON());
-      });
-      if (listUsersResult.pageToken) {
-        // List next batch of users.
-        listAllUsers(listUsersResult.pageToken);
-      }
-    })
-    .catch((error) => {
-      console.log('Error listing users:', error);
-    });
-};
+
  
  function useAuthProvider() {
    const [user, setUser] = useState(null);
@@ -58,20 +40,40 @@
      }
    };
  
-   async function register({ email, password }) {
-     auth
-       .createUserWithEmailAndPassword(email, password)
-       .then((user) => {
-         // Signed in
-         message.success("Usuario registrado");
-         handleUser(user);
-       })
-       .catch((error) => {
-         console.log("error", error);
-         const errorCode = error.code;
-         message.error(translateMessage(errorCode));
-         handleUser(false);
-       });
+   async function register(data) {
+    console.log("data", data);
+    try {
+      const userData = await auth.createUserWithEmailAndPassword(
+        data.email,
+        data.password
+      );
+      console.log("userData", userData)
+      handleUser(userData);
+      console.log("USER", user);
+      const { uid } = userData.user;
+
+      let photoURL =
+        "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=";
+
+
+      const { name, email, nickname} = data;
+      await db.ref(`users/${userData.user.uid}`).set({
+        name,
+        email,
+        nickname
+      });
+
+      message.success("Usuario registrado");
+      
+      // return true;
+    } catch (error) {
+      console.log("error", error);
+      const errorCode = error.code;
+      // message.error(translateMessage(errorCode));
+      handleUser(false);
+      throw error;
+    }
+    
    }
  
    async function login(email, password) {

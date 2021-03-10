@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import "../styles/register.css"
 import 'antd/dist/antd.css';
 import { useAuth } from "../lib/auth";
+import { useHistory } from "react-router-dom";
+import Routes from "../constants/routes";
 import {
   Form,
   Input,
@@ -13,6 +15,9 @@ import { QuestionCircleOutlined } from '@ant-design/icons';
 const { Option } = Select;
 
 const formItemLayout = {
+
+  
+
   labelCol: {
     xs: {
       span: 24,
@@ -48,11 +53,19 @@ const tailFormItemLayout = {
 
 const RegistrationForm = () => {
   const [form] = Form.useForm();
-  const { register } = useAuth();
-  const onFinish = ({nameAndLastName, email, password, confirm, nickname }) => {
-    console.log('Received values of form: ', email, password);
-    register({email, password});
+  const { register, user } = useAuth();
+  
+  const history = useHistory();
+  const onFinish = (data) => {
+    console.log('Received values of form: ', data);
+    register(data);
   };
+
+  useEffect(() => {
+    if (!!user) {
+      history.replace(Routes.MENU);
+    }
+  }, [user]);
 
   return (
     <Form
@@ -64,7 +77,7 @@ const RegistrationForm = () => {
     >
 
       <Form.Item
-        name="nameAndLastname"
+        name="name"
         label={
           <span>
             Nombre y Apellido

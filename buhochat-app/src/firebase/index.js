@@ -18,5 +18,5 @@ import "firebase/auth";
 };
 const app = firebase.initializeApp(firebaseConfig);
 
-export const database = app.database();
+export const db = app.database();
 export const auth = app.auth();

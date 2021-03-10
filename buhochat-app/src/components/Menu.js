@@ -4,6 +4,8 @@ import "../styles/menu.css"
 import { Row, Col } from 'antd';
 import { Layout } from 'antd';
 import { Button, Radio } from 'antd';
+import { Link } from "react-router-dom";
+import Routes from '../constants/routes'
 
 const Menu =()=> {
  const { Content } = Layout;
@@ -30,7 +32,7 @@ const Menu =()=> {
                   <Row className="buttonsChatPost">
                     <Col span={12}>
                       <Button id="button" shape="round">
-                        CHAT
+                        <Link to={Routes.CHAT}>CHAT</Link>
                       </Button>
                     </Col>
                     <Col span={12}>
