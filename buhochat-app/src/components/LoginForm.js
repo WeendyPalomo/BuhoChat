@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
-import { Button, Checkbox, Col, Form, Input, Row } from "antd";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Checkbox, Form, Input } from "antd";
+
 import "../styles/LoginForm.css";
 import { Link, useHistory } from "react-router-dom";
 import Routes from "../constants/routes";
 import { useAuth } from "../lib/auth";
 
-
 const LoginForm = () => {
   const { login, user } = useAuth();
   const history = useHistory();
-
 
   useEffect(() => {
     if (!!user) {
@@ -18,12 +16,11 @@ const LoginForm = () => {
     }
   }, [user]);
 
-  
-  const onFinish = ({ email, password, remember}) => {
+  const onFinish = ({ email, password, remember }) => {
     login(email, password);
-    console.log(remember)
-    console.log(email)
-    console.log(password)
+    console.log(remember);
+    console.log(email);
+    console.log(password);
   };
 
   const layout = {
@@ -33,23 +30,22 @@ const LoginForm = () => {
   const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
   };
-  
+
   return (
     <Form
       {...layout}
       name="basic"
       initialValues={{ remember: true }}
       onFinish={onFinish}
-      
     >
-      <Form.Item name='email' label="Email" rules={[{ type: 'email' }]}>
+      <Form.Item name="email" label="Email" rules={[{ type: "email" }]}>
         <Input />
       </Form.Item>
 
       <Form.Item
         label="Password"
         name="password"
-        rules={[{ required: true, message: 'Please input your password!' }]}
+        rules={[{ required: true, message: "Please input your password!" }]}
       >
         <Input.Password />
       </Form.Item>
@@ -66,7 +62,7 @@ const LoginForm = () => {
     </Form>
   );
   if (user === null) {
-    return "Verificando sesión...";
+    return "Verificando sesiónes...";
   }
 };
 

@@ -1,18 +1,18 @@
 import "../styles/App.css";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import ChatsLayout from "./ChatsLayout";
 import MainLayout from "./MainLayout";
 import HomePage from "../pages/HomePage";
-import NotFoundPage from "../pages/NotFoundPage"
-import Routes from '../constants/routes'
-import Menu from './Menu'
-import LoginPage from '../pages/LoginPage'
-import ScreenRegister from './ScreenRegister'
+import NotFoundPage from "../pages/NotFoundPage";
+import Routes from "../constants/routes";
+import Menu from "./Menu";
+import LoginPage from "../pages/LoginPage";
+import ScreenRegister from "./ScreenRegister";
 import { AuthProvider } from "../lib/auth";
-import PostsPage from '../pages/PostsPage'
-function App() {
+import PostsPage from "../pages/PostsPage";
 
+function App() {
   return (
     <>
       <AuthProvider>
@@ -26,26 +26,25 @@ function App() {
             </Route>
             <Route path={Routes.REGISTER}>
               <ScreenRegister />
-            </Route> 
+            </Route>
             <Route path={Routes.CHAT}>
               <ChatsLayout />
             </Route>
-            
+
             <Route path={Routes.POSTS}>
               <PostsPage />
             </Route>
-            
+
             <Route path={Routes.MENU}>
               <Menu />
             </Route>
-            
+
             <Route>
               <NotFoundPage />
             </Route>
           </Switch>
         </MainLayout>
       </AuthProvider>
-    
     </>
   );
 }

@@ -1,11 +1,12 @@
-import { List, message, Avatar, Spin } from 'antd';
-import reqwest from 'reqwest';
+import { List, message, Avatar, Spin } from "antd";
+import reqwest from "reqwest";
 
-import React from 'react'
-import InfiniteScroll from 'react-infinite-scroller';
-import { UserOutlined } from '@ant-design/icons';
+import React from "react";
+import InfiniteScroll from "react-infinite-scroller";
+import { UserOutlined } from "@ant-design/icons";
 
-const fakeDataUrl = 'https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo';
+const fakeDataUrl =
+  "https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo";
 
 class InfiniteListExample extends React.Component {
   state = {
@@ -15,20 +16,20 @@ class InfiniteListExample extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchData(res => {
+    this.fetchData((res) => {
       this.setState({
         data: res.results,
       });
     });
   }
 
-  fetchData = callback => {
+  fetchData = (callback) => {
     reqwest({
       url: fakeDataUrl,
-      type: 'json',
-      method: 'get',
-      contentType: 'application/json',
-      success: res => {
+      type: "json",
+      method: "get",
+      contentType: "application/json",
+      success: (res) => {
         callback(res);
       },
     });
@@ -40,14 +41,14 @@ class InfiniteListExample extends React.Component {
       loading: true,
     });
     if (data.length > 14) {
-      message.warning('Infinite List loaded all');
+      message.warning("Infinite List loaded all");
       this.setState({
         hasMore: false,
         loading: false,
       });
       return;
     }
-    this.fetchData(res => {
+    this.fetchData((res) => {
       data = data.concat(res.results);
       this.setState({
         data,
@@ -68,12 +69,10 @@ class InfiniteListExample extends React.Component {
         >
           <List
             dataSource={this.state.data}
-            renderItem={item => (
+            renderItem={(item) => (
               <List.Item key={item.id}>
                 <List.Item.Meta
-                  avatar={
-                    <Avatar size="large" icon={<UserOutlined />} />
-                  }
+                  avatar={<Avatar size="large" icon={<UserOutlined />} />}
                   title={<a href="https://ant.design">{item.name.last}</a>}
                   description={item.email}
                 />
@@ -93,6 +92,4 @@ class InfiniteListExample extends React.Component {
   }
 }
 
-
-
-export default InfiniteListExample
+export default InfiniteListExample;
