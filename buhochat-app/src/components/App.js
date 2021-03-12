@@ -1,18 +1,18 @@
 import "../styles/App.css";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import ChatsLayout from "./ChatsLayout";
+import ChatsPage from "../pages/ChatsPage";
 import MainLayout from "./MainLayout";
 import HomePage from "../pages/HomePage";
-import NotFoundPage from "../pages/NotFoundPage"
-import Routes from '../constants/routes'
-import Menu from './Menu'
-import LoginPage from '../pages/LoginPage'
-import ScreenRegister from './ScreenRegister'
+import NotFoundPage from "../pages/NotFoundPage";
+import Routes from "../constants/routes";
+import MenuPage from "../pages/MenuPage";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
 import { AuthProvider } from "../lib/auth";
-import PostsPage from '../pages/PostsPage'
-function App() {
+import PostsPage from "../pages/PostsPage";
 
+function App() {
   return (
     <>
       <AuthProvider>
@@ -25,27 +25,26 @@ function App() {
               <LoginPage />
             </Route>
             <Route path={Routes.REGISTER}>
-              <ScreenRegister />
-            </Route> 
-            <Route path={Routes.CHAT}>
-              <ChatsLayout />
+              <RegisterPage />
             </Route>
-            
+            <Route path={Routes.CHAT}>
+              <ChatsPage />
+            </Route>
+
             <Route path={Routes.POSTS}>
               <PostsPage />
             </Route>
-            
+
             <Route path={Routes.MENU}>
-              <Menu />
+              <MenuPage />
             </Route>
-            
+
             <Route>
               <NotFoundPage />
             </Route>
           </Switch>
         </MainLayout>
       </AuthProvider>
-    
     </>
   );
 }

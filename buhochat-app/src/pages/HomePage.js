@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Row, Typography } from "antd";
 import "../styles/HomePage.css";
 import group from "../images/remote-team.svg";
+import withoutAuth from "../hocs/withoutAuth";
 
 const { Title } = Typography;
 
@@ -22,6 +23,4 @@ const HomePage = () => {
   );
 };
 
-
-export default HomePage;
-
+export default withoutAuth(HomePage);

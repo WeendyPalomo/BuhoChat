@@ -1,23 +1,15 @@
-import React, { useEffect } from 'react';
-import "../styles/register.css"
-import 'antd/dist/antd.css';
+import React, { useEffect, useState } from "react";
+import "../styles/register.css";
+import "antd/dist/antd.css";
 import { useAuth } from "../lib/auth";
 import { useHistory } from "react-router-dom";
 import Routes from "../constants/routes";
-import {
-  Form,
-  Input,
-  Tooltip,
-  Select,
-  Button,
-} from 'antd';
-import { QuestionCircleOutlined } from '@ant-design/icons';
+import { Form, Input, Tooltip, Select, Button, message } from "antd";
+import translateMessage from "../utils/translateMessage";
+import { QuestionCircleOutlined } from "@ant-design/icons";
 const { Option } = Select;
 
 const formItemLayout = {
-
-  
-
   labelCol: {
     xs: {
       span: 24,
@@ -48,17 +40,22 @@ const tailFormItemLayout = {
   },
 };
 
-
-
-
 const RegistrationForm = () => {
   const [form] = Form.useForm();
   const { register, user } = useAuth();
-  
+  const [loading, setLoading] = useState(false);
+
   const history = useHistory();
-  const onFinish = (data) => {
-    console.log('Received values of form: ', data);
-    register(data);
+  const onFinish = async (data) => {
+    console.log("Received values of form: ", data);
+    setLoading(true);
+    try {
+      await register(data);
+    } catch (error) {
+      const errorCode = error.code;
+      message.error(translateMessage(errorCode));
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -75,18 +72,13 @@ const RegistrationForm = () => {
       onFinish={onFinish}
       scrollToFirstError
     >
-
       <Form.Item
         name="name"
-        label={
-          <span>
-            Nombre y Apellido
-          </span>
-        }
+        label={<span>Nombre y Apellido</span>}
         rules={[
           {
             required: true,
-            message: 'Porfavor ingresa tu nombre y apellido!',
+            message: "Porfavor ingresa tu nombre y apellido!",
             whitespace: true,
           },
         ]}
@@ -99,12 +91,12 @@ const RegistrationForm = () => {
         label="Correo institucional"
         rules={[
           {
-            type: 'email',
-            message: 'Correo electrónico invalido!',
+            type: "email",
+            message: "Correo electrónico invalido!",
           },
           {
             required: true,
-            message: 'Porfavor ingresa tu correo electrónico!',
+            message: "Porfavor ingresa tu correo electrónico!",
           },
         ]}
       >
@@ -117,7 +109,7 @@ const RegistrationForm = () => {
         rules={[
           {
             required: true,
-            message: 'Porfavor ingresa una contraseña.',
+            message: "Porfavor ingresa una contraseña.",
           },
         ]}
         hasFeedback
@@ -128,20 +120,22 @@ const RegistrationForm = () => {
       <Form.Item
         name="confirm"
         label="Confirmar Contraseña"
-        dependencies={['password']}
+        dependencies={["password"]}
         hasFeedback
         rules={[
           {
             required: true,
-            message: 'Porfavor confirme su contraseña.',
+            message: "Porfavor confirme su contraseña.",
           },
           ({ getFieldValue }) => ({
             validator(_, value) {
-              if (!value || getFieldValue('password') === value) {
+              if (!value || getFieldValue("password") === value) {
                 return Promise.resolve();
               }
 
-              return Promise.reject(new Error('La contraseña que ingresó no coincide.'));
+              return Promise.reject(
+                new Error("La contraseña que ingresó no coincide.")
+              );
             },
           }),
         ]}
@@ -162,7 +156,7 @@ const RegistrationForm = () => {
         rules={[
           {
             required: true,
-            message: 'Ingresa tu nickname.',
+            message: "Ingresa tu nickname.",
             whitespace: true,
           },
         ]}
@@ -176,8 +170,7 @@ const RegistrationForm = () => {
         </Button>
       </Form.Item>
     </Form>
-
   );
 };
 
-export default RegistrationForm
+export default RegistrationForm;

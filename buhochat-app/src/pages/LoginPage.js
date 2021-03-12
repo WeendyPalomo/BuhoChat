@@ -1,18 +1,13 @@
 import React from "react";
-
-import { Col, Row, Typography, } from "antd";
+import withoutAuth from "../hocs/withoutAuth";
+import { Col, Row, Typography } from "antd";
 import LoginForm from "../components/LoginForm";
 import "../styles/App.css";
 import "../styles/LoginPage.css";
 
-
-
-
-
 const { Title } = Typography;
 
 const LoginPage = () => {
-  
   return (
     <Row>
       <Col span={12} align="center">
@@ -36,4 +31,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default withoutAuth(LoginPage);

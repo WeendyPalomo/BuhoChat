@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
-import { Button, Checkbox, Col, Form, Input, Row } from "antd";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
+import { Button, Checkbox, Form, Input, message } from "antd";
+import translateMessage from "../utils/translateMessage";
 import "../styles/LoginForm.css";
 import { Link, useHistory } from "react-router-dom";
 import Routes from "../constants/routes";
 import { useAuth } from "../lib/auth";
 
-
 const LoginForm = () => {
+  const [loading, setLoading] = useState(false);
+
   const { login, user } = useAuth();
   const history = useHistory();
-
 
   useEffect(() => {
     if (!!user) {
@@ -18,12 +18,20 @@ const LoginForm = () => {
     }
   }, [user]);
 
-  
-  const onFinish = ({ email, password, remember}) => {
-    login(email, password);
-    console.log(remember)
-    console.log(email)
-    console.log(password)
+  const onFinish = async ({ email, password, remember }) => {
+    setLoading(true);
+    try {
+      await login(email, password);
+      //setLoading(false);
+    } catch (error) {
+      const errorCode = error.code;
+      message.error(translateMessage(errorCode));
+      setLoading(false);
+    }
+
+    console.log(remember);
+    console.log(email);
+    console.log(password);
   };
 
   const layout = {
@@ -33,23 +41,25 @@ const LoginForm = () => {
   const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
   };
-  
+
+  if (user === null) {
+    return "Verificando sesiónes...";
+  }
   return (
     <Form
       {...layout}
       name="basic"
       initialValues={{ remember: true }}
       onFinish={onFinish}
-      
     >
-      <Form.Item name='email' label="Email" rules={[{ type: 'email' }]}>
+      <Form.Item name="email" label="Email" rules={[{ type: "email" }]}>
         <Input />
       </Form.Item>
 
       <Form.Item
         label="Password"
         name="password"
-        rules={[{ required: true, message: 'Please input your password!' }]}
+        rules={[{ required: true, message: "Please input your password!" }]}
       >
         <Input.Password />
       </Form.Item>
@@ -59,15 +69,12 @@ const LoginForm = () => {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" loading={loading}>
           Submit
         </Button>
       </Form.Item>
     </Form>
   );
-  if (user === null) {
-    return "Verificando sesión...";
-  }
 };
 
 export default LoginForm;
