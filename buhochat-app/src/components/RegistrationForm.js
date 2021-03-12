@@ -74,11 +74,24 @@ const RegistrationForm = () => {
     >
       <Form.Item
         name="name"
-        label={<span>Nombre y Apellido</span>}
+        label={<span>Nombre </span>}
         rules={[
           {
             required: true,
-            message: "Porfavor ingresa tu nombre y apellido!",
+            message: "Porfavor ingresa tu nombre!",
+            whitespace: true,
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        name="lastname"
+        label={<span>Apellido</span>}
+        rules={[
+          {
+            required: true,
+            message: "Porfavor ingresa tu apellido!",
             whitespace: true,
           },
         ]}

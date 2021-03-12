@@ -1,8 +1,14 @@
 import { React, useEffect, useState } from "react";
-import "../styles/ChatsLayout.css";
+import "../styles/ChatsPage.css";
 import { Layout, Button, Input, Avatar, Tooltip } from "antd";
 import InfiniteListExample from "../components/InfiniteListExample";
-import { UserOutlined, SendOutlined } from "@ant-design/icons";
+import ChatList from "../components/ChatList";
+import {
+  UserOutlined,
+  SendOutlined,
+  SearchOutlined,
+  PlusOutlined,
+} from "@ant-design/icons";
 import withAuth from "../hocs/withAuth";
 //const { Header, Content, Footer } = Layout;
 const { TextArea } = Input;
@@ -18,7 +24,7 @@ const ChatsPage = () => {
 
   return (
     <div className="site-layout-content">
-      <div class="navigation-buttons">
+      <div className="navigation-buttons">
         <Button
           type="primary"
           shape="round"
@@ -34,22 +40,24 @@ const ChatsPage = () => {
           Chats
         </Button>
       </div>
-      <div class="main-content">
-        <div class="chats-list">
+      <div className="main-content">
+        <div className="chats-list">
           <Input placeholder="Buscar usuarios, amigos" id="search-chat" />
-          <InfiniteListExample />
+          <div className="demo-infinite-container">
+            <ChatList />
+          </div>
         </div>
         <div class="chat-window">
           <div id="chat-header">
             <Avatar size="large" icon={<UserOutlined />} />
             User 2
           </div>
-          <div class="chat-messages">
+          <div className="chat-messages">
             {myMessages.map((text, index) => (
               <p key={index}>{text}</p>
             ))}
           </div>
-          <div class="chat-sender">
+          <div className="chat-sender">
             <TextArea rows={2} id="message-content" />
             <Tooltip title="send">
               <Button
@@ -61,6 +69,15 @@ const ChatsPage = () => {
             </Tooltip>
           </div>
         </div>
+        <Tooltip title="Siguiente Usuario">
+          <Button
+            type="primary"
+            shape="circle"
+            icon={<PlusOutlined />}
+            id="next-user"
+            danger
+          />
+        </Tooltip>
       </div>
     </div>
   );

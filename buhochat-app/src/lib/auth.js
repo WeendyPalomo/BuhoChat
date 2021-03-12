@@ -52,9 +52,10 @@ function useAuthProvider() {
       let photoURL =
         "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=";
 
-      const { name, email, nickname } = data;
+      const { name, lastname, email, nickname } = data;
       await db.ref(`users/${userData.user.uid}`).set({
         name,
+        lastname,
         email,
         nickname,
       });
