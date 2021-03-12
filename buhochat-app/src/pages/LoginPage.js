@@ -1,5 +1,5 @@
 import React from "react";
-
+import withoutAuth from "../hocs/withoutAuth";
 import { Col, Row, Typography } from "antd";
 import LoginForm from "../components/LoginForm";
 import "../styles/App.css";
@@ -31,4 +31,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default withoutAuth(LoginPage);

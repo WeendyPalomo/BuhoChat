@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/register.css";
 import "antd/dist/antd.css";
 import { useAuth } from "../lib/auth";
 import { useHistory } from "react-router-dom";
 import Routes from "../constants/routes";
-import { Form, Input, Tooltip, Select, Button } from "antd";
+import { Form, Input, Tooltip, Select, Button, message } from "antd";
+import translateMessage from "../utils/translateMessage";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 const { Option } = Select;
 
@@ -42,11 +43,19 @@ const tailFormItemLayout = {
 const RegistrationForm = () => {
   const [form] = Form.useForm();
   const { register, user } = useAuth();
+  const [loading, setLoading] = useState(false);
 
   const history = useHistory();
-  const onFinish = (data) => {
+  const onFinish = async (data) => {
     console.log("Received values of form: ", data);
-    register(data);
+    setLoading(true);
+    try {
+      await register(data);
+    } catch (error) {
+      const errorCode = error.code;
+      message.error(translateMessage(errorCode));
+      setLoading(false);
+    }
   };
 
   useEffect(() => {

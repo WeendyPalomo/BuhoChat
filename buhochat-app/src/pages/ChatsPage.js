@@ -1,13 +1,13 @@
 import { React, useEffect, useState } from "react";
 import "../styles/ChatsLayout.css";
 import { Layout, Button, Input, Avatar, Tooltip } from "antd";
-import InfiniteListExample from "./InfiniteListExample";
+import InfiniteListExample from "../components/InfiniteListExample";
 import { UserOutlined, SendOutlined } from "@ant-design/icons";
-
+import withAuth from "../hocs/withAuth";
 //const { Header, Content, Footer } = Layout;
 const { TextArea } = Input;
 
-const ChatsLayout = () => {
+const ChatsPage = () => {
   const [myMessages, setMyMessages] = useState([]);
 
   const handleSendMessage = () => {
@@ -66,4 +66,4 @@ const ChatsLayout = () => {
   );
 };
 
-export default ChatsLayout;
+export default withAuth(ChatsPage);

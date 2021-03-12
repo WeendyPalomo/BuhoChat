@@ -1,14 +1,14 @@
 import "../styles/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import ChatsLayout from "./ChatsLayout";
+import ChatsPage from "../pages/ChatsPage";
 import MainLayout from "./MainLayout";
 import HomePage from "../pages/HomePage";
 import NotFoundPage from "../pages/NotFoundPage";
 import Routes from "../constants/routes";
-import Menu from "./Menu";
+import MenuPage from "../pages/MenuPage";
 import LoginPage from "../pages/LoginPage";
-import ScreenRegister from "./ScreenRegister";
+import RegisterPage from "../pages/RegisterPage";
 import { AuthProvider } from "../lib/auth";
 import PostsPage from "../pages/PostsPage";
 
@@ -25,10 +25,10 @@ function App() {
               <LoginPage />
             </Route>
             <Route path={Routes.REGISTER}>
-              <ScreenRegister />
+              <RegisterPage />
             </Route>
             <Route path={Routes.CHAT}>
-              <ChatsLayout />
+              <ChatsPage />
             </Route>
 
             <Route path={Routes.POSTS}>
@@ -36,7 +36,7 @@ function App() {
             </Route>
 
             <Route path={Routes.MENU}>
-              <Menu />
+              <MenuPage />
             </Route>
 
             <Route>

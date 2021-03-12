@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Button, Input, Switch, Modal } from "antd";
 import { HeartOutlined, PlusOutlined } from "@ant-design/icons";
 import "bootstrap/dist/css/bootstrap.min.css";
+import withoutAuth from "../hocs/withoutAuth";
 import {
   Dropdown,
   DropdownItem,
@@ -144,4 +145,4 @@ const PostPage = () => {
   );
 };
 
-export default PostPage;
+export default withoutAuth(PostPage);

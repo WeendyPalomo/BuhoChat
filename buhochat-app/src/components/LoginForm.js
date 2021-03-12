@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
-import { Button, Checkbox, Form, Input } from "antd";
-
+import React, { useEffect, useState } from "react";
+import { Button, Checkbox, Form, Input, message } from "antd";
+import translateMessage from "../utils/translateMessage";
 import "../styles/LoginForm.css";
 import { Link, useHistory } from "react-router-dom";
 import Routes from "../constants/routes";
 import { useAuth } from "../lib/auth";
 
 const LoginForm = () => {
+  const [loading, setLoading] = useState(false);
+
   const { login, user } = useAuth();
   const history = useHistory();
 
@@ -16,8 +18,17 @@ const LoginForm = () => {
     }
   }, [user]);
 
-  const onFinish = ({ email, password, remember }) => {
-    login(email, password);
+  const onFinish = async ({ email, password, remember }) => {
+    setLoading(true);
+    try {
+      await login(email, password);
+      //setLoading(false);
+    } catch (error) {
+      const errorCode = error.code;
+      message.error(translateMessage(errorCode));
+      setLoading(false);
+    }
+
     console.log(remember);
     console.log(email);
     console.log(password);
@@ -31,6 +42,9 @@ const LoginForm = () => {
     wrapperCol: { offset: 8, span: 16 },
   };
 
+  if (user === null) {
+    return "Verificando sesiónes...";
+  }
   return (
     <Form
       {...layout}
@@ -55,15 +69,12 @@ const LoginForm = () => {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" loading={loading}>
           Submit
         </Button>
       </Form.Item>
     </Form>
   );
-  if (user === null) {
-    return "Verificando sesiónes...";
-  }
 };
 
 export default LoginForm;
