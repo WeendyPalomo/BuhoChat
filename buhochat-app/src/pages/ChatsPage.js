@@ -69,7 +69,7 @@ const ChatsPage = () => {
             </Tooltip>
           </div>
         </div>
-        <Tooltip title="Siguiente Usuario">
+        {/* <Tooltip title="Siguiente Usuario">
           <Button
             type="primary"
             shape="circle"
@@ -77,7 +77,7 @@ const ChatsPage = () => {
             id="next-user"
             danger
           />
-        </Tooltip>
+        </Tooltip> */}
       </div>
     </div>
   );
