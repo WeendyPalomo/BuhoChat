@@ -4,14 +4,8 @@ import { Row, Col } from 'antd';
 import  { useState } from 'react';
 import {  Button, Input, Switch,  Modal } from 'antd';
 import { HeartOutlined,PlusOutlined } from '@ant-design/icons';
-//import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 import {Dropdown,DropdownItem,DropdownMenu,DropdownToggle} from "reactstrap"
-
-
-
-
-
-
 
 
 const PostPage = () => {
