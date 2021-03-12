@@ -5,10 +5,11 @@ import { db } from "../firebase/index";
 const data = [];
 const ChatList = () => {
   useEffect(() => {
-    const usersList = async () => {
-      await db.ref("/users");
-    };
-    console.log("users", usersList);
+    const usersRef = db.ref("users/");
+    usersRef.on("value", (snapshot) => {
+      const users = snapshot.val();
+      console.log("users", users);
+    });
   }, []);
   return (
     <List

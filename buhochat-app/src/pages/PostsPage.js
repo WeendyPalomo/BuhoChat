@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import '../styles/PostsPage.css'
-import { Row, Col } from 'antd';
-import  { useState } from 'react';
-import {  Button, Input, Switch,  Modal } from 'antd';
-import { HeartOutlined,PlusOutlined } from '@ant-design/icons';
-import "bootstrap/dist/css/bootstrap.min.css"
-import {Dropdown,DropdownItem,DropdownMenu,DropdownToggle} from "reactstrap"
-
-=======
 import React from "react";
 import "../styles/PostsPage.css";
 import { Row, Col } from "antd";
@@ -23,7 +12,6 @@ import {
   DropdownMenu,
   DropdownToggle,
 } from "reactstrap";
->>>>>>> 2f4b014bd635f2c824bda1bcf2cbb815ec3279a3
 
 const PostPage = () => {
   const [dropdown, setDropdown] = useState(false);
