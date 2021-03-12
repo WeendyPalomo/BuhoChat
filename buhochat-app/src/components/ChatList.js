@@ -15,8 +15,9 @@ const ChatList = () => {
   }, []);
 
 const [users, setUsers]=useState([]);
+
 const addUserChat=()=>{
-    
+  
 }
 
   return (
@@ -25,9 +26,10 @@ const addUserChat=()=>{
           <Button
             type="primary"
             shape="circle"
+            onClick={addUserChat}
             icon={<PlusOutlined />}
             danger
-          />
+          ></Button>
         </Tooltip>
     <List
       itemLayout="horizontal"
