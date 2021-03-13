@@ -14,7 +14,7 @@ const MainLayout = ({ children }) => {
           <MainMenu />
         </Row>
       </Header>
-      <Content style={{ padding: "0 50px 0 50px" }}>
+      <Content>
         <div className="site-layout-content">{children}</div>
       </Content>
       <Footer

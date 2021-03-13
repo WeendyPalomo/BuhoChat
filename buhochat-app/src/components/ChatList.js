@@ -38,7 +38,7 @@ const ChatList = () => {
       .limitToFirst(num)
       .once("value")
       .then((users) => {
-        Object.keys(users)[num];
+        // Object.keys(users)[num];
         console.log(users);
       });
   };
