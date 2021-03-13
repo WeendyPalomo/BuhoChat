@@ -176,7 +176,7 @@ const RegistrationForm = () => {
         <Input />
       </Form.Item>
 
-      <Form.Item {...tailFormItemLayout}>
+      <Form.Item {...tailFormItemLayout} className="register-buttom" >
         <Button type="primary" htmlType="submit">
           Registrarse
         </Button>

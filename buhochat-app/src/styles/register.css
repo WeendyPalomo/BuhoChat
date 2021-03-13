@@ -1,12 +1,11 @@
 .register-content{
     background-color: #F6F6F6;
-    height: 600px;
+    height: 100vh;
     background: url("../images/buho.jpeg") no-repeat center center fixed;
     background-size: cover;
     text-align: center;   
     font-size: 26px;
     padding: 60px;
-    
 }
 
 .register-form{
@@ -23,16 +22,17 @@
     color: white;
     font-size: 40px;   
 }
-/*
-.ant-btn {
+
+.register-buttom button{
     background-color: grey;
-    font-size: 25px;
     right: 15%;
-    border-radius: 5px;
-}
-.ant-btn-primary {
+    height: 55px;
+    margin-bottom: 25px;
+    border-radius: 15px;
     background: black;
+    border-color: black;
 }
 
-
-*/
+.register-buttom span{
+    font-size: 25px;
+}

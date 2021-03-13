@@ -23,7 +23,7 @@ const ChatsPage = () => {
   };
 
   return (
-    <div className="site-layout-content">
+    <div id="chat-content" className="site-layout-content">
       <div className="navigation-buttons">
         <Button
           type="primary"

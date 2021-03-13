@@ -1,4 +1,3 @@
-
 import { Layout } from 'antd';
 import "../styles/register.css";
 import RegistrationForm from "./RegistrationForm.js";
@@ -7,7 +6,6 @@ const ScreenRegister =()=> {
  const {Content } = Layout;
 
     return(
-
             <>
               <Layout>
                 <Content className="register-content">
@@ -17,8 +15,7 @@ const ScreenRegister =()=> {
                     </div>                                              
                 </Content>
               </Layout>    
-            </>
-         
+            </>         
     );
 };
 
