@@ -1,7 +1,6 @@
-import "../styles/register.css"
 
 import { Layout } from 'antd';
-
+import "../styles/register.css";
 import RegistrationForm from "./RegistrationForm.js";
 
 const ScreenRegister =()=> {
@@ -11,11 +10,11 @@ const ScreenRegister =()=> {
 
             <>
               <Layout>
-                <Content className="content">
-                  <div className="form">
-                  <p><strong>Registrate y ¡COMIENZA!</strong> </p>
-                    <RegistrationForm/>
-                  </div>                  
+                <Content className="register-content">
+                    <div className="register-form">
+                    <p><strong className="register-title">Registrate y ¡COMIENZA!</strong> </p>
+                      <RegistrationForm/>
+                    </div>                                              
                 </Content>
               </Layout>    
             </>

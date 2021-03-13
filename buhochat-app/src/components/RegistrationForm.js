@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../styles/register.css";
 import "antd/dist/antd.css";
 import { useAuth } from "../lib/auth";
 import { useHistory } from "react-router-dom";

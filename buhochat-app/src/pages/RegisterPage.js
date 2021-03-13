@@ -10,10 +10,10 @@ const RegisterPage = () => {
   return (
     <>
       <Layout>
-        <Content className="content">
-          <div className="form">
+        <Content className="register-content">
+          <div className="register-form">
             <p>
-              <strong>Registrate y ¡COMIENZA!</strong>{" "}
+              <strong className="register-title">Registrate y ¡COMIENZA!</strong>{" "}
             </p>
             <RegistrationForm />
           </div>
