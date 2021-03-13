@@ -22,7 +22,7 @@ const HomePage = () => {
         </p>
       </Col>
       <Col span={12}>
-        <img src={group} alt="" />
+        <img id="img-home-page" src={group} alt=""/>
       </Col>
     </Row>
   );

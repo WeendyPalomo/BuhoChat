@@ -35,7 +35,7 @@ const ChatsPage = () => {
         <Button
           type="primary"
           shape="round"
-          style={{ background: "#C9CCCB", color: "white" }}
+          style={{ background: "#C9CCCB", color: "white" ,}}
         >
           Chats
         </Button>

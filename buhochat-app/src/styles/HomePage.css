@@ -1,10 +1,10 @@
 .home-page {
     display: flex;
     align-items: center;
-    min-height: 100vh;
     font-family: 'Courier Prime', monospace;
     background: cover; 
     background-color: white;
+  
 }
 
 .title-home{
@@ -16,4 +16,8 @@
     font-size: 25px;
     padding: 30px;
     opacity: 0.6;
+}
+
+#img-home-page{
+    max-height: 85vh;
 }
