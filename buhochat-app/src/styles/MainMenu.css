@@ -10,7 +10,14 @@
 
   .buttom-login span{
     font-size: 20px;
-    /* color: white; */
+  }
+
+  .drop-main-menu{
+    background-color: white;
+    border-radius: 40px;
+    height: 60%;
+    margin: 15px 0px 0px 550px;
+    padding: 5px 25px 5px 25px;
   }
 
   .buttom-login{

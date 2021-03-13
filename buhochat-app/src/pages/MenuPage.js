@@ -17,25 +17,25 @@ const MenuPage = () => {
         <Content className="content">
           <Row>
             <Col span={12}>
-              <img src={imgGroup} />
-              <p>
+              <img src={imgGroup} className="img-menu-page" />
+              <p className="p-menu-page">
                 Ingresa a chats aleatorios con personas de la comunidad
                 politécnica{" "}
               </p>
             </Col>
             <Col span={12}>
-              <img src={imgPosts} />
-              <p>Publica, comenta y encuentra publicaciones de tu interés.</p>
+              <img src={imgPosts} className="img-menu-page" />
+              <p className="p-menu-page">Publica, comenta y encuentra publicaciones de tu interés.</p>
             </Col>
           </Row>
           <Row className="buttonsChatPost">
             <Col span={12}>
-              <Button id="button" shape="round">
+              <Button id="buttonChat" shape="round">
                 <Link to={Routes.CHAT}>CHAT</Link>
               </Button>
-            </Col>
+            </Col> 
             <Col span={12}>
-              <Button id="button" shape="round">
+              <Button id="buttonPost" shape="round">
                 POST
               </Button>
             </Col>

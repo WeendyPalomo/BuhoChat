@@ -11,7 +11,7 @@ const MainMenu = () => {
   return (
     <>
       {user ? (
-        <Dropdown
+        <Dropdown className="drop-main-menu"
           overlay={
             <Menu>
               <Menu.Item>

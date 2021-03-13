@@ -7,22 +7,32 @@ header.ant-layout-header{
 /*     Content   */
 .content{
     background-color: white;
+    font-family: 'Courier Prime', monospace;
     text-align: center;
     color: #47525E;
-    font-size: 26px;
-    padding: 60px;
+    padding: 0px 60px;
 }
 
 .content p{
     margin: 0px 103px;
 }
 
-#button{
+#buttonChat , #buttonPost{
     background-color: #553D3F;
     color: white; 
     border-radius: 60px;
-    height: 100%;
-    width: 50%;
+    height: 120%;
+    width: 45%;
+    font-size: 30px;
+}
+
+.p-menu-page{
+    font-size: 23px;
+}
+
+.img-menu-page{
+    height: 50vh;
+    padding: 20px;
 }
 
 .buttonsChatPost{
