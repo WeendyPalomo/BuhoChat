@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
 import "../styles/ChatsPage.css";
 import { Layout, Button, Input, Avatar, Tooltip } from "antd";
-import InfiniteListExample from "../components/InfiniteListExample";
 import ChatList from "../components/ChatList";
 import {
   UserOutlined,
@@ -10,7 +9,7 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 import withAuth from "../hocs/withAuth";
-//const { Header, Content, Footer } = Layout;
+
 const { TextArea } = Input;
 
 const ChatsPage = () => {
@@ -26,6 +25,7 @@ const ChatsPage = () => {
     <div id="chat-content" className="site-layout-content">
       <div className="navigation-buttons">
         <Button
+        id="post-button-navg"
           type="primary"
           shape="round"
           style={{ background: "#454C48", color: "white" }}
@@ -33,6 +33,7 @@ const ChatsPage = () => {
           Posts
         </Button>
         <Button
+        id="chat-button-navg"
           type="primary"
           shape="round"
           style={{ background: "#C9CCCB", color: "white" ,}}
@@ -52,11 +53,13 @@ const ChatsPage = () => {
             <Avatar size="large" icon={<UserOutlined />} />
             User 2
           </div>
+
           <div className="chat-messages">
             {myMessages.map((text, index) => (
               <p key={index}>{text}</p>
             ))}
           </div>
+
           <div className="chat-sender">
             <TextArea rows={2} id="message-content" />
             <Tooltip title="send">

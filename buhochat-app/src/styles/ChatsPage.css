@@ -3,6 +3,15 @@
   padding: 0 24px;
   background: #fff;
 }
+
+#post-button-navg{
+  border-color: #454C48;
+}
+
+#chat-button-navg{
+  border-color:#C9CCCB
+}
+
 #components-layout-demo-top .logo {
   float: left;
   width: 120px;
@@ -28,7 +37,7 @@
 .chats-list,
 .chat-window {
   border-radius: 25px;
-  height: 442px;
+  height: 70vh;
   margin-top: 15px;
   margin-bottom: 15px;
 }
@@ -82,17 +91,36 @@ footer {
   height: 50px;
 }
 
+#chat-header span{
+margin: 5px;
+}
+
 .chat-messages {
   height: inherit;
-  max-height: 300px;
+  max-height: 50vh;
   overflow: auto;
+}
+
+.chat-messages p{
+  background-color: white;
+    padding: 3px;
+    border-radius: 30px;
+    margin: 5px;
 }
 
 .chat-sender {
   display: flex;
 }
 
+.chat-sender textarea{
+  margin-right: 8px;
+}
+
 #next-user {
   position: relative;
   top: 221px;
+}
+
+.chat-sender svg{
+  vertical-align: top;
 }
