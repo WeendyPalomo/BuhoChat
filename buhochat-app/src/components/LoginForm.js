@@ -64,13 +64,15 @@ const LoginForm = () => {
         <Input.Password />
       </Form.Item>
 
-      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-        <Checkbox>Remember me</Checkbox>
+      <Form.Item {...tailLayout} name="remember" className="checkbox-login-form" valuePropName="checked">
+        <Checkbox >Remember me</Checkbox>
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit" loading={loading}>
-          Submit
+        <Button className="buttom-login-form" type="primary" htmlType="submit" loading={loading}>
+          <strong>
+          Inicia Sesion
+          </strong>         
         </Button>
       </Form.Item>
     </Form>

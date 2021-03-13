@@ -16,6 +16,7 @@
   .buttom-login{
     border-radius: 40px;
     border-color: white;
+    color: #F03A47;
     opacity: 0.6;
     height: 60%;
   }
@@ -24,10 +25,8 @@
     font-size: 20px;
     border-radius: 40px;
     border-color: white;
+    color: #F03A47;
     opacity: 0.6;
     height: 60%;
   }
 
-  span{
-    color: #F03A47;
-  }

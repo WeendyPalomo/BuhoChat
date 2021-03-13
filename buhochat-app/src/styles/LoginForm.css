@@ -1,3 +1,23 @@
 .email-input, .pass-input {
     border-radius: 75px;
 }
+
+.buttom-login-form{
+    background-color: grey;
+    right: 25%;
+    height: 40px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    background: black;
+    border-color: black;
+}
+
+.buttom-login-form span{
+font-size: 15px;
+ }
+
+.checkbox-login-form{
+    text-align-last: left;
+    padding: 0px;
+    margin: 0px;
+}
