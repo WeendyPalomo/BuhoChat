@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Row, Col } from "antd";
+import { Layout, Row, Col, Button } from "antd";
 import "../styles/MainLayout.css";
 import MainMenu from "./MainMenu";
 
@@ -10,7 +10,9 @@ const MainLayout = ({ children }) => {
     <Layout className="layout">
       <Header className="header">
         <Row>
-          <Col span={8}>BúhoChat</Col>
+          <Col span={8} className="title-header">
+            BúhoChat
+            </Col>
           <MainMenu />
         </Row>
       </Header>

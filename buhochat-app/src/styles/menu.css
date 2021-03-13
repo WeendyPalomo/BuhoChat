@@ -4,10 +4,6 @@ header.ant-layout-header{
     background-color: #F03A47;
     color: white;
 }
-
-.header p{
-    font-size: 25px;
-}
 /*     Content   */
 .content{
     background-color: white;
@@ -41,12 +37,11 @@ header.ant-layout-header{
 /*  Footer   */
 footer.ant-layout-footer{
     background-color: #F03A47;
-    height: 50px;
+    height: 35px;
     color: white;
-    padding: 0px;
+   
     }
 
 .footer p{
     text-align-last: center;
-    padding: 15px 0px;
 }

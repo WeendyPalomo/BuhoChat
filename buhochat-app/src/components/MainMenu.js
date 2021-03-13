@@ -50,15 +50,17 @@ const MainMenu = () => {
         </Dropdown>
       ) : (
         <>
+           
           <Col span={3} offset={9} align="end">
-            <Button href={Routes.LOGIN}>Iniciar sesión</Button>
+            <Button className="buttom-login" href={Routes.LOGIN}>Iniciar sesión</Button>
           </Col>
           <Col span={1} align="center">
             ó
           </Col>
           <Col span={3} align="start">
-            <Button href={Routes.REGISTER}>Registro</Button>
+            <Button className="buttom-register" href={Routes.REGISTER}>Registro</Button>
           </Col>
+        
         </>
       )}
     </>

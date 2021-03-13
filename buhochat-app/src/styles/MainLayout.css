@@ -1,4 +1,21 @@
 .header, .footer {
     color: white;
     background-color: #F03A47;
+    font-size: 25px;
 }
+
+.layout{
+    min-height: 100vh;
+}
+
+/* .title-header button{
+    font-size: 25px;
+    background: none;
+    border: none;
+    font-style: none;
+    color: white;
+}
+
+::selection{
+    background: none;
+} */

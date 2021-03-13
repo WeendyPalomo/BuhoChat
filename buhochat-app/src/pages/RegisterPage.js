@@ -1,5 +1,4 @@
 import "../styles/register.css";
-
 import { Layout } from "antd";
 import withoutAuth from "../hocs/withoutAuth";
 import RegistrationForm from "../components/RegistrationForm.js";

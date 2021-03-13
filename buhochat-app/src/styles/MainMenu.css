@@ -7,3 +7,27 @@
     margin-bottom: 8px;
     margin-left: 8px;
   }
+
+  .buttom-login span{
+    font-size: 20px;
+    /* color: white; */
+  }
+
+  .buttom-login{
+    border-radius: 40px;
+    border-color: white;
+    opacity: 0.6;
+    height: 60%;
+  }
+
+  .buttom-register{
+    font-size: 20px;
+    border-radius: 40px;
+    border-color: white;
+    opacity: 0.6;
+    height: 60%;
+  }
+
+  span{
+    color: #F03A47;
+  }

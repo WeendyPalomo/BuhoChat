@@ -1,4 +1,19 @@
 .home-page {
     display: flex;
     align-items: center;
+    min-height: 100vh;
+    font-family: 'Courier Prime', monospace;
+    background: cover; 
+    background-color: white;
+}
+
+.title-home{
+    font-size: 90px;
+    padding: 5px;
+}
+
+.title-description{
+    font-size: 25px;
+    padding: 30px;
+    opacity: 0.6;
 }
