@@ -5,7 +5,11 @@ import { Button, Tooltip } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
 const data = [];
+
 const ChatList = () => {
+  const [users, setUsers] = useState([]);
+  const [num, setNum] = useState();
+
   useEffect(() => {
     const usersRef = db.ref("users/");
     usersRef.on("value", (snapshot) => {
@@ -15,32 +19,30 @@ const ChatList = () => {
     });
   }, []);
 
-  const [users, setUsers] = useState([]);
-  const [num, setNum] = useState();
+  useEffect(() => {
+    console.log("fuera", num);
+    /*
+    db.ref("/users")
+      .orderByKey()
+      .limitToFirst(3)
+      .once("value")
+      .then((users) => console.log(Object.keys(users)));*/
+  }, [num]);
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
+
   const hadleAddUserChat = () => {
-    console.log("fuera", num);
     const random = db
       .ref("/users")
       .once("value")
-      .then((snapshot) => Math.floor(Math.random() * snapshot.numChildren()));
+      .then((snapshot) => getRandomInt(1, snapshot.numChildren()));
+
     random.then((num) => {
       setNum(num);
       console.log("dentro", num);
     });
-
-    const newUser = db
-      .ref("/users")
-      .orderByKey()
-      .limitToFirst(num)
-      .once("value")
-      .then((users) => {
-        // Object.keys(users)[num];
-        console.log(users);
-      });
   };
 
   return (

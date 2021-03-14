@@ -23,6 +23,7 @@ export const useAuth = () => {
 
 function useAuthProvider() {
   const [user, setUser] = useState(null);
+  const [numUsers, setNumUsers] = useState(0);
 
   const handleUser = (user) => {
     if (user) {
@@ -58,6 +59,14 @@ function useAuthProvider() {
         lastname,
         email,
         nickname,
+      });
+
+      const usersRef = db.ref("users/");
+      usersRef.on("value", (snapshot) => {
+        const users = snapshot.val();
+        console.log("users", users);
+        console.log("usersCount", snapshot.numChildren());
+        setNumUsers(snapshot.numChildren());
       });
 
       message.success("Usuario registrado");
@@ -114,6 +123,22 @@ function useAuthProvider() {
   // };
 
   // }
+  useEffect(() => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const newUid = user.uid;
+      db.ref(`userschats/${numUsers}`).set({
+        userid: newUid,
+      });
+      console.log("newuid", newUid);
+
+      // history.replace(Routes.HOME);
+    } else {
+      // User is signed out
+      console.log("SIN SESIÓN Todavia", user);
+    }
+  }, [numUsers]);
 
   useEffect(() => {
     // try {
