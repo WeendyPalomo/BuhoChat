@@ -35,8 +35,13 @@ const MenuPage = () => {
               </Button>
             </Col> 
             <Col span={12}>
+<<<<<<< HEAD
               <Button id="buttonPost" shape="round">
+                <Link to={Routes.POSTS}>POST</Link>
+=======
+              <Button id="buttonPost" shape="round" to={Routes.POSTS}>
                 POST
+>>>>>>> 56967d746f7c5517750148bb333c11e162049eef
               </Button>
             </Col>
           </Row>

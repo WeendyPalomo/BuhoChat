@@ -1,4 +1,4 @@
-/*
+/*comentado*/
 .navigation-buttons Button {
   width: 100%;
   margin: 5px;
@@ -12,7 +12,7 @@
   border-radius: 32px;
   size: 25px;
 }
-*/
+/*hasta aqui*/
 .contenedor-barra {
   align-items: center;
   display: flex;
@@ -34,7 +34,7 @@
 .Input {
   width: 228px;
 }
-/*
+/*comentado*/
 .ant-input:hover {
   font-weight: bold;
   border-color: #40a9ff;
@@ -65,12 +65,12 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-*/
+/*hasta aqui*/
 #anonimo {
   padding-left: 53em;
   padding-top: 8px;
 }
-/*
+/*comentado*/
 .ant-switch-checked {
   background-color: #e6e7e9;
 }
@@ -80,18 +80,18 @@
   height: 26px;
   line-height: 26px;
 }
-*/
+/*hasta aqui*/
 .post {
   background-color: rgb(122, 114, 104);
 }
-/*
+/*comentado*/
 .ant-card {
   background-color: #d7cccd;
   color: rgb(122, 114, 104);
   width: auto;
   overflow-y: scroll;
   overflow-x: hidden;
-  direction: rtl;
+  /*direction: rtl;*/
   height: 21em;
   scrollbar-color: rgba(0, 0, 0, 0.5);
 }
@@ -116,7 +116,7 @@
   box-shadow: 2px 2px 5px #999;
   border-radius: 10px;
 }
-*/
+/*hasta aqui*/
 
 #title {
   font-size: 30px;
