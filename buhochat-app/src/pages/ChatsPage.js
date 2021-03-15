@@ -32,7 +32,7 @@ const ChatsPage = () => {
     messageRef.on("value", (snapshot) => {
         const message = snapshot.val();
         console.log("myMessages", message);
-        // console.log("messagesCount", snapshot.numChildren());
+        console.log("messagesCount", snapshot.numChildren());
         setNumMessages(snapshot.numChildren());
       });
 
