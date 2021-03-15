@@ -29,7 +29,6 @@ function useAuthProvider() {
     if (user) {
       // si tengo sesión activa
       setUser(user);
-
       return user;
     } else {
       // no tengo sesión activa
@@ -38,6 +37,9 @@ function useAuthProvider() {
     }
   };
 
+
+
+  
   async function register(data) {
     console.log("data", data);
 
@@ -82,6 +84,9 @@ function useAuthProvider() {
       throw error;
     }
   }
+
+
+
 
   async function login(email, password) {
     auth

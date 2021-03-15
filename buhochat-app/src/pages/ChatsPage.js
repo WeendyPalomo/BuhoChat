@@ -1,7 +1,12 @@
 import { React, useEffect, useState } from "react";
 import "../styles/ChatsPage.css";
-import { Layout, Button, Input, Avatar, Tooltip } from "antd";
+import { Layout, Button, Input, Avatar, Tooltip, message } from "antd";
 import ChatList from "../components/ChatList";
+import { db } from "../firebase/index";
+import firebase from "firebase"
+import { useAuth } from "../lib/auth";
+
+
 import {
   UserOutlined,
   SendOutlined,
@@ -14,12 +19,39 @@ const { TextArea } = Input;
 
 const ChatsPage = () => {
   const [myMessages, setMyMessages] = useState([]);
+  const [numMessages, setNumMessages] = useState(0);
+  const { user } = useAuth();
+
 
   const handleSendMessage = () => {
+   
     const messageContent = document.querySelector("#message-content").value;
-
     setMyMessages((prevState) => [...prevState, messageContent]);
-  };
+
+    const messageRef = db.ref("messages/");
+    messageRef.on("value", (snapshot) => {
+        const message = snapshot.val();
+        console.log("myMessages", message);
+        // console.log("messagesCount", snapshot.numChildren());
+        setNumMessages(snapshot.numChildren());
+      });
+
+  }
+   
+  useEffect(()=>{
+    if(myMessages){
+      const messageContent = document.querySelector("#message-content").value;
+      const timestamp = Date.now();
+      const timestampAll = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp)
+      firebase.database().ref(`messages/${numMessages}`).set({
+          name: user.email,
+          timestamp: timestampAll,
+          message: messageContent
+      });
+    }else{
+      console.log("no cambia")
+    }
+  },[myMessages])
 
   return (
     <div id="chat-content" className="site-layout-content">
@@ -61,7 +93,7 @@ const ChatsPage = () => {
           </div>
 
           <div className="chat-sender">
-            <TextArea rows={2} id="message-content" />
+            <TextArea rows={2} id="message-content"/>
             <Tooltip title="send">
               <Button
                 onClick={handleSendMessage}
@@ -72,18 +104,9 @@ const ChatsPage = () => {
             </Tooltip>
           </div>
         </div>
-        {/* <Tooltip title="Siguiente Usuario">
-          <Button
-            type="primary"
-            shape="circle"
-            icon={<PlusOutlined />}
-            id="next-user"
-            danger
-          />
-        </Tooltip> */}
       </div>
     </div>
   );
-};
+}
 
 export default withAuth(ChatsPage);
