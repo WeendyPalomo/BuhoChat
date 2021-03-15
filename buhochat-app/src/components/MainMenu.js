@@ -5,6 +5,7 @@ import { Menu, Dropdown, Button, Avatar, Col } from "antd";
 import "../styles/MainMenu.css";
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import ModalEditeProfile from "./ModalEditeProfile";
+import ModalPrivacity from "./ModalPrivacity";
 
 const MainMenu = () => {
   const { user, logout } = useAuth();
@@ -28,9 +29,9 @@ const MainMenu = () => {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://www.aliyun.com"
+                 
                 >
-                  Privacidad
+                  <ModalPrivacity />
                 </a>
               </Menu.Item>
               <Menu.Item>
