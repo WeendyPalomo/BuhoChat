@@ -16,7 +16,7 @@ const CommentList = ({ comments }) => (
 const Editor = ({ onChange, onSubmit, submitting, value }) => (
   <>
     <Item>
-      <TextArea rows={4} onChange={onChange} value={value} />
+      <TextArea rows={1} onChange={onChange} value={value} />
     </Item>
     <Item>
       <Button
@@ -24,8 +24,9 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
         loading={submitting}
         onClick={onSubmit}
         type="primary"
+        size="small"
       >
-        Add Comment
+        Añadir comentario
       </Button>
     </Item>
   </>
