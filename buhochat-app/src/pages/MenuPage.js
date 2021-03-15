@@ -35,7 +35,7 @@ const MenuPage = () => {
               </Button>
             </Col> 
             <Col span={12}>
-              <Button id="buttonPost" shape="round">
+              <Button id="buttonPost" shape="round" to={Routes.POSTS}>
                 POST
               </Button>
             </Col>

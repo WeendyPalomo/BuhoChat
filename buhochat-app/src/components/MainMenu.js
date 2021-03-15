@@ -4,6 +4,7 @@ import Routes from "../constants/routes";
 import { Menu, Dropdown, Button, Avatar, Col } from "antd";
 import "../styles/MainMenu.css";
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
+import ModalEditeProfile from "./ModalEditeProfile";
 
 const MainMenu = () => {
   const { user, logout } = useAuth();
@@ -18,9 +19,9 @@ const MainMenu = () => {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://www.antgroup.com"
+                  
                 >
-                  Perfil
+                  <ModalEditeProfile />
                 </a>
               </Menu.Item>
               <Menu.Item>
