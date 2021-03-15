@@ -23,7 +23,7 @@ export const useAuth = () => {
 
 function useAuthProvider() {
   const [user, setUser] = useState(null);
-  const [numUsers, setNumUsers] = useState(0);
+  const [userCounter, setUserCounter] = useState(0);
 
   const handleUser = (user) => {
     if (user) {
@@ -42,6 +42,7 @@ function useAuthProvider() {
   
   async function register(data) {
     console.log("data", data);
+
     try {
       const userData = await auth.createUserWithEmailAndPassword(
         data.email,
@@ -63,13 +64,14 @@ function useAuthProvider() {
         nickname,
       });
 
-      const usersRef = db.ref("users/");
-      usersRef.on("value", (snapshot) => {
+      db.ref("users/").on("value", (snapshot) => {
         const users = snapshot.val();
         console.log("users", users);
         console.log("usersCount", snapshot.numChildren());
-        setNumUsers(snapshot.numChildren());
+
+        setUserCounter(snapshot.numChildren());
       });
+      console.log("newuid", userData.user.uid);
 
       message.success("Usuario registrado");
 
@@ -128,22 +130,17 @@ function useAuthProvider() {
   // };
 
   // }
+
   useEffect(() => {
     if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const newUid = user.uid;
-      db.ref(`userschats/${numUsers}`).set({
-        userid: newUid,
+      db.ref(`userschats/${userCounter}`).set({
+        userid: user.uid,
       });
-      console.log("newuid", newUid);
-
-      // history.replace(Routes.HOME);
+      console.log("user.uid", user.uid);
     } else {
-      // User is signed out
-      console.log("SIN SESIÓN Todavia", user);
+      console.log("aun no");
     }
-  }, [numUsers]);
+  }, [userCounter]);
 
   useEffect(() => {
     // try {
