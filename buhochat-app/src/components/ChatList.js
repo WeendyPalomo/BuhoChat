@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { List, Avatar } from "antd";
-import { db } from "../firebase/index";
+import { db, auth } from "../firebase/index";
 import { Button, Tooltip } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
@@ -9,25 +9,49 @@ const data = [];
 const ChatList = () => {
   const [users, setUsers] = useState([]);
   const [num, setNum] = useState();
+  const [newUid, setNewUid] = useState();
 
   useEffect(() => {
-    const usersRef = db.ref("users/");
-    usersRef.on("value", (snapshot) => {
-      const users = snapshot.val();
-      console.log("users", users);
-      console.log("usersCount", snapshot.numChildren());
-    });
-  }, []);
+    if (num) {
+      const currentUser = auth.currentUser;
 
-  useEffect(() => {
-    console.log("fuera", num);
-    /*
-    db.ref("/users")
-      .orderByKey()
-      .limitToFirst(3)
-      .once("value")
-      .then((users) => console.log(Object.keys(users)));*/
+      const name = currentUser.displayName;
+      const uid = currentUser.uid;
+
+      db.ref(`userschats/${num}`).once("value", (snapshot) => {
+        if (snapshot.exists()) {
+          setNewUid(snapshot.val().userid);
+          console.log("newUid", snapshot.val().userid);
+        } else {
+          console.log("No data available");
+        }
+      });
+
+      console.log("uid", uid);
+    }
   }, [num]);
+
+  useEffect(() => {
+    if (newUid) {
+      db.ref(`users/${newUid}`).once("value", (snapshot) => {
+        const newUser = {
+          email: snapshot.val().email,
+          lastname: snapshot.val().lastname,
+          name: snapshot.val().name,
+          nickname: snapshot.val().nickname,
+        };
+        setUsers((prevState) => {
+          return [...prevState, newUser];
+        });
+      });
+    }
+  }, [newUid]);
+
+  /*function getAnotherUser() {
+    
+    
+    return newUid;
+  }*/
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -43,6 +67,8 @@ const ChatList = () => {
       setNum(num);
       console.log("dentro", num);
     });
+    //var newUid = getAnotherUser();
+    /* console.log("definitiveuid", newUid); */
   };
 
   return (
@@ -65,7 +91,7 @@ const ChatList = () => {
               avatar={
                 <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
               }
-              title={<a href="https://ant.design">{item.title}</a>}
+              title={<a href="https://ant.design">{item.nickname}</a>}
               description="Ant Design, a design language for background applications, is refined by Ant UED Team"
             />
           </List.Item>

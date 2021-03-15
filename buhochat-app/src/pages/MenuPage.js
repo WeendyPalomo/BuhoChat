@@ -25,7 +25,9 @@ const MenuPage = () => {
             </Col>
             <Col span={12}>
               <img src={imgPosts} className="img-menu-page" />
-              <p className="p-menu-page">Publica, comenta y encuentra publicaciones de tu interés.</p>
+              <p className="p-menu-page">
+                Publica, comenta y encuentra publicaciones de tu interés.
+              </p>
             </Col>
           </Row>
           <Row className="buttonsChatPost">
@@ -33,10 +35,15 @@ const MenuPage = () => {
               <Button id="buttonChat" shape="round">
                 <Link to={Routes.CHAT}>CHAT</Link>
               </Button>
-            </Col> 
+            </Col>
             <Col span={12}>
+<<<<<<< HEAD
               <Button id="buttonPost" shape="round" to={Routes.POSTS}>
                 POST
+=======
+              <Button id="buttonPost" shape="round">
+                <Link to={Routes.POSTS}>POST</Link>
+>>>>>>> c94b51c96abf4ab7cc0a4c9a03b2eb5b8e11c725
               </Button>
             </Col>
           </Row>
