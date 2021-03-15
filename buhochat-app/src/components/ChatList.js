@@ -9,68 +9,66 @@ const data = [];
 const ChatList = () => {
   const [users, setUsers] = useState([]);
   const [num, setNum] = useState();
+  const [newUid, setNewUid] = useState();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (num) {
+      const currentUser = auth.currentUser;
 
-  async function getAnotherUser() {
-    const randomValue = 0;
-    const newUid = 0;
-    const currentUser = auth.currentUser;
-    const name = 0,
-      uid = 0;
-    if (currentUser != null) {
-      name = currentUser.displayName;
-      uid = currentUser.uid;
-    } else {
-      console.log("No hay usuario");
+      const name = currentUser.displayName;
+      const uid = currentUser.uid;
+
+      db.ref(`userschats/${num}`).once("value", (snapshot) => {
+        if (snapshot.exists()) {
+          setNewUid(snapshot.val().userid);
+          console.log("newUid", snapshot.val().userid);
+        } else {
+          console.log("No data available");
+        }
+      });
+
+      console.log("uid", uid);
     }
+  }, [num]);
 
-    const random = await db
-      .ref("/users")
-      .once("value")
-      .then((snapshot) => getRandomInt(1, snapshot.numChildren()));
+  useEffect(() => {
+    if (newUid) {
+      db.ref(`users/${newUid}`).once("value", (snapshot) => {
+        const newUser = {
+          email: snapshot.val().email,
+          lastname: snapshot.val().lastname,
+          name: snapshot.val().name,
+          nickname: snapshot.val().nickname,
+        };
+        setUsers((prevState) => {
+          return [...prevState, newUser];
+        });
+      });
+    }
+  }, [newUid]);
 
-    random.then((num) => {
-      //setNum(num);
-      randomValue = num;
-      console.log("dentro", num);
-    });
-
-    //console.log("randomvalue", randomValue);
-
-    await db.ref(`userschats/${randomValue}`).once("value", (snapshot) => {
-      if (snapshot.exists()) {
-        console.log("snapvalid", snapshot.val().userid);
-        newUid = snapshot.val().userid;
-      } else {
-        console.log("No data available");
-      }
-    });
-    console.log("newnewuid", newUid);
-    console.log("uid", uid);
-
-    console.log("return uid", newUid);
+  /*function getAnotherUser() {
+    
+    
     return newUid;
-  }
+  }*/
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
   const hadleAddUserChat = () => {
-    const newUid = getAnotherUser();
-    console.log("definitiveuid", newUid);
-    db.ref(`users/${newUid}`).once("value", (snapshot) => {
-      const newUser = {
-        email: snapshot.val().email,
-        lastname: snapshot.val().lastname,
-        name: snapshot.val().name,
-        nickname: snapshot.val().nickname,
-      };
-      setUsers((prevState) => {
-        return [...prevState, newUser];
-      });
+    const random = db
+      .ref("/users")
+      .once("value")
+      .then((snapshot) => getRandomInt(1, snapshot.numChildren()));
+
+    random.then((num) => {
+      setNum(num);
+      console.log("dentro", num);
     });
+    //var newUid = getAnotherUser();
+    /* console.log("definitiveuid", newUid); */
   };
 
   return (
