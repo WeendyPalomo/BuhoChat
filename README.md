@@ -7,7 +7,7 @@ Aplicación web de chat aleatorio para comunidad politécnica.
 - Alexis Yepez
 
 ## Planificacion de Sprints
-- 3 de marzo
+- 3 de marzo("https://youtu.be/ZM9SO7rjk_0")
 - 10 marzo
 - 17 de marzo
 
