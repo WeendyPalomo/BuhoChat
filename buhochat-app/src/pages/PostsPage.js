@@ -71,34 +71,24 @@ const PostPage = () => {
   };
   const [name, setName] = useState("");
   //const postListRef = db.ref("posts");
-  useEffect(() => {
-    // console.log("INPUT TITLE", inputTitle);
-    // console.log("TEXTAREA", inputTextArea);
-    // console.log("USER ID", user.uid);
-    // console.log("POST ON", poston);
-    // console.log("POST ID", newPostID);
-    // console.log("IMAGE", imageToUp);
-    const poston = moment();
-    const newPostID = db.ref().push().key;
-    console.log("new post", newPostID);
-    db.ref(`posts/${newPostID}`).set({
-      title: inputTitle,
-      content: inputTextArea,
-      userid: user.uid,
-      poston: poston.format("LLLL"),
-      postid: newPostID,
-      image: imageToUp,
-      nickname: name,
-    });
-  }, [name]);
 
   const handleWriteData = async () => {
-    db.ref(`users/${user.uid}`).once("value", (snapshot) => {
-      //setName();
-      console.log("SNAPSHOT NAME", snapshot.val().nickname);
-      setName(snapshot.val().nickname);
-    });
-
+    if (name) {
+      const poston = moment();
+      const newPostID = db.ref().push().key;
+      console.log("new posu", newPostID);
+      await db.ref(`posts/${newPostID}`).set({
+        title: inputTitle,
+        content: inputTextArea,
+        userid: user.uid,
+        poston: poston.format("LLLL"),
+        postid: newPostID,
+        image: imageToUp,
+        nickname: name,
+      });
+    } else {
+      console.log("no hay name");
+    }
     console.log("USER", user);
     // console.log("INPUT TITLE", inputTitle);
     // console.log("TEXTAREA", inputTextArea);
@@ -107,7 +97,6 @@ const PostPage = () => {
     // console.log("POST ID", newPostID);
     // console.log("IMAGE", imageToUp);
   };
-
   useEffect(() => {
     db.ref("posts").on("value", (snapshot) => {
       const postsArray = [];
@@ -119,15 +108,23 @@ const PostPage = () => {
     });
   }, []);
 
+  useEffect(() => {
+    db.ref(`users/${user.uid}`).once("value", (snapshot) => {
+      console.log("SNAPSHOT NAME", snapshot.val().nickname);
+      setName(snapshot.val().nickname);
+    });
+  }, []);
+
   const handleOkPostModal = () => {
     handleWriteData();
+
     setModalText("Publicando actualizaciones");
     setConfirmLoading(true);
     setTimeout(() => {
       setVisible(false);
       setConfirmLoading(false);
     }, 1000);
-    //setInputTitle("");
+    setInputTitle("");
     //setInputTextArea("");
   };
 
