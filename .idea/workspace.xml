@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7386b61d-8369-44a6-a9a0-bd2dea086e41" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buhochat-app/src/components/ListOfPosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/buhochat-app/src/components/ListOfPosts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buhochat-app/src/pages/ChatsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/buhochat-app/src/pages/ChatsPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buhochat-app/src/pages/PostsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/buhochat-app/src/pages/PostsPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,5 +98,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1615755006411" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
