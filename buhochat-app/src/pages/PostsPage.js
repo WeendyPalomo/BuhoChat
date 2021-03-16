@@ -71,11 +71,17 @@ const PostPage = () => {
   };
   const [name, setName] = useState("");
   //const postListRef = db.ref("posts");
-  useEffect(async () => {
+  useEffect(() => {
+    // console.log("INPUT TITLE", inputTitle);
+    // console.log("TEXTAREA", inputTextArea);
+    // console.log("USER ID", user.uid);
+    // console.log("POST ON", poston);
+    // console.log("POST ID", newPostID);
+    // console.log("IMAGE", imageToUp);
     const poston = moment();
     const newPostID = db.ref().push().key;
-    console.log("new posu", newPostID);
-    await db.ref(`posts/${newPostID}`).set({
+    console.log("new post", newPostID);
+    db.ref(`posts/${newPostID}`).set({
       title: inputTitle,
       content: inputTextArea,
       userid: user.uid,
@@ -84,7 +90,7 @@ const PostPage = () => {
       image: imageToUp,
       nickname: name,
     });
-  }, []);
+  }, [name]);
 
   const handleWriteData = async () => {
     db.ref(`users/${user.uid}`).once("value", (snapshot) => {
@@ -121,8 +127,8 @@ const PostPage = () => {
       setVisible(false);
       setConfirmLoading(false);
     }, 1000);
-    setInputTitle("");
-    setInputTextArea("");
+    //setInputTitle("");
+    //setInputTextArea("");
   };
 
   const handleCancelPostModal = () => {

@@ -37,13 +37,11 @@ const MenuPage = () => {
               </Button>
             </Col>
             <Col span={12}>
-<<<<<<< HEAD
               <Button id="buttonPost" shape="round" to={Routes.POSTS}>
                 POST
-=======
+              </Button>
               <Button id="buttonPost" shape="round">
                 <Link to={Routes.POSTS}>POST</Link>
->>>>>>> c94b51c96abf4ab7cc0a4c9a03b2eb5b8e11c725
               </Button>
             </Col>
           </Row>
