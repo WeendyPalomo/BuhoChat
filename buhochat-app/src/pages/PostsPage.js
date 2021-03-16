@@ -265,15 +265,13 @@ const PostPage = () => {
                                           </Col>
                                         </Row>
                                         
-
-
                                       </div>
                                     </Col>
    
                                  </Row>
                               
                             </div>
-                            <Row justify="center">
+                            <Row justify="start">
                               <Col span={18}>
                                 <div className="ant-card-body">
                                   {/*<Row>*/}
