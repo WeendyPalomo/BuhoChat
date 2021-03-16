@@ -4,6 +4,7 @@ import "../styles/PostsPage.css";
 import { Row, Col, Avatar, Upload, Space, message } from "antd";
 import { useState, useEffect } from "react";
 import { Button, Input, Switch, Modal, Form, List, Comment } from "antd";
+import {Link} from "react-router-dom";
 import {
   HeartOutlined,
   PlusOutlined,
@@ -24,6 +25,7 @@ import withAuth from "../hocs/withAuth";
 import CommentForm from "../components/CommentForm";
 import ListOfPosts from "../components/ListOfPosts";
 import UploadImagePost from "../components/UploadImagePost";
+import Routes from "../constants/routes";
 const { TextArea } = Input;
 const { Item } = Form;
 
@@ -161,14 +163,14 @@ const PostPage = () => {
             shape="round"
             style={{ background: "#C9CCCB", color: "white" }}
           >
-            Posts
+            <Link to={Routes.POSTS}>Posts</Link>
           </Button>
           <Button
             type="primary"
             shape="round"
             style={{ background: "#454C48", color: "white" }}
           >
-            Chats
+           <Link to={Routes.CHAT}>CHAT</Link>
           </Button>
         </div>
         <div class="contenedor-barra">

@@ -5,7 +5,11 @@ import ChatList from "../components/ChatList";
 
 import withAuth from "../hocs/withAuth";
 import ChatWindow from "../components/ChatWindow";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
+=======
+import {Link} from "react-router-dom";
+>>>>>>> e1e6063fe221f03a4bb058c9310345f6588a41af
 import Routes from "../constants/routes";
 
 const { TextArea } = Input;
@@ -28,7 +32,7 @@ const ChatsPage = () => {
           shape="round"
           style={{ background: "#C9CCCB", color: "white" }}
         >
-          Chats
+          <Link to={Routes.CHAT}>Chats</Link>
         </Button>
       </div>
       <div className="main-content">
