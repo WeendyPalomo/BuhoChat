@@ -69,10 +69,9 @@ const PostPage = () => {
       </>
     );
   };
-
+  const [name, setName] = useState("");
   //const postListRef = db.ref("posts");
-
-  const handleWriteData = async () => {
+  useEffect(async () => {
     const poston = moment();
     const newPostID = db.ref().push().key;
     console.log("new posu", newPostID);
@@ -83,7 +82,18 @@ const PostPage = () => {
       poston: poston.format("LLLL"),
       postid: newPostID,
       image: imageToUp,
+      nickname: name,
     });
+  }, []);
+
+  const handleWriteData = async () => {
+    db.ref(`users/${user.uid}`).once("value", (snapshot) => {
+      //setName();
+      console.log("SNAPSHOT NAME", snapshot.val().nickname);
+      setName(snapshot.val().nickname);
+    });
+
+    console.log("USER", user);
     // console.log("INPUT TITLE", inputTitle);
     // console.log("TEXTAREA", inputTextArea);
     // console.log("USER ID", user.uid);

@@ -20,11 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7386b61d-8369-44a6-a9a0-bd2dea086e41" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/buhochat-app/src/components/ListOfPosts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buhochat-app/src/components/UploadImagePost.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buhochat-app/src/components/CommentForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/buhochat-app/src/components/CommentForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buhochat-app/src/pages/MenuPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/buhochat-app/src/pages/MenuPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buhochat-app/src/components/ListOfPosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/buhochat-app/src/components/ListOfPosts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buhochat-app/src/pages/PostsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/buhochat-app/src/pages/PostsPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +70,7 @@
       <updated>1615752012861</updated>
       <workItem from="1615752018016" duration="25933000" />
       <workItem from="1615792482831" duration="13192000" />
-      <workItem from="1615811394865" duration="17949000" />
+      <workItem from="1615811394865" duration="21028000" />
     </task>
     <servers />
   </component>

@@ -87,7 +87,7 @@ const ListOfPosts = ({ posts }) => {
             avatar={<Avatar src={item.avatar} />}
             title={
               <Row>
-                <Col span={10}>{item.userid}</Col>
+                <Col span={10}>{item.nickname}</Col>
                 <Col span={4} offset={8}>
                   <Row justify="center">
                     <Col span={8}>
