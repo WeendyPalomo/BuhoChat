@@ -13,7 +13,7 @@ Aplicación web de chat aleatorio para comunidad politécnica.
 
 ## Capturas de Pantalla
 -Mockups en MARVEL
-.
+  -.
 ![image](https://user-images.githubusercontent.com/58180852/111351284-063bfe00-8651-11eb-9471-c671083b2e60.png)
 
 
