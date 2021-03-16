@@ -102,8 +102,10 @@
 }
 
 .botones {
-  width: 12em;
-  padding-top: 1em;
+  
+  padding-top: 2em;
+  height: 100%;
+  width: 100%;
 }
 .btn-secondary {
   height: 2em;
