@@ -3,9 +3,8 @@ import "../styles/ChatsPage.css";
 import { Layout, Button, Input, Avatar, Tooltip, message } from "antd";
 import ChatList from "../components/ChatList";
 import { db } from "../firebase/index";
-import firebase from "firebase"
+import firebase from "firebase";
 import { useAuth } from "../lib/auth";
-
 
 import {
   UserOutlined,
@@ -22,42 +21,46 @@ const ChatsPage = () => {
   const [numMessages, setNumMessages] = useState(0);
   const { user } = useAuth();
 
-
   const handleSendMessage = () => {
-   
     const messageContent = document.querySelector("#message-content").value;
     setMyMessages((prevState) => [...prevState, messageContent]);
 
-    const messageRef = db.ref("messages/");
+    const messageRef = db.ref("messages/chatidexample");
     messageRef.on("value", (snapshot) => {
-        const message = snapshot.val();
-        console.log("myMessages", message);
-        console.log("messagesCount", snapshot.numChildren());
-        setNumMessages(snapshot.numChildren());
-      });
+      const message = snapshot.val();
+      console.log("myMessages", message);
+      console.log("messagesCount", snapshot.numChildren());
+      setNumMessages(snapshot.numChildren());
+    });
+  };
 
-  }
-   
-  useEffect(()=>{
-    if(myMessages){
+  useEffect(() => {
+    if (myMessages) {
       const messageContent = document.querySelector("#message-content").value;
       const timestamp = Date.now();
-      const timestampAll = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp)
-      firebase.database().ref(`messages/${numMessages}`).set({
-          name: user.email,
-          timestamp: timestampAll,
-          message: messageContent
+      const timestampAll = new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      }).format(timestamp);
+      firebase.database().ref(`messages/chatidexample/${numMessages}`).set({
+        name: user.email,
+        timestamp: timestampAll,
+        message: messageContent,
       });
-    }else{
-      console.log("no cambia")
+    } else {
+      console.log("no cambia");
     }
-  },[myMessages])
+  }, [myMessages]);
 
   return (
     <div id="chat-content" className="site-layout-content">
       <div className="navigation-buttons">
         <Button
-        id="post-button-navg"
+          id="post-button-navg"
           type="primary"
           shape="round"
           style={{ background: "#454C48", color: "white" }}
@@ -65,10 +68,10 @@ const ChatsPage = () => {
           Posts
         </Button>
         <Button
-        id="chat-button-navg"
+          id="chat-button-navg"
           type="primary"
           shape="round"
-          style={{ background: "#C9CCCB", color: "white" ,}}
+          style={{ background: "#C9CCCB", color: "white" }}
         >
           Chats
         </Button>
@@ -93,7 +96,7 @@ const ChatsPage = () => {
           </div>
 
           <div className="chat-sender">
-            <TextArea rows={2} id="message-content"/>
+            <TextArea rows={2} id="message-content" />
             <Tooltip title="send">
               <Button
                 onClick={handleSendMessage}
@@ -107,6 +110,6 @@ const ChatsPage = () => {
       </div>
     </div>
   );
-}
+};
 
 export default withAuth(ChatsPage);
