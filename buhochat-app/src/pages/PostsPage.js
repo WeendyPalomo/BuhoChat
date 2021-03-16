@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import "../styles/PostsPage.css";
-import { Row, Col, Avatar, Upload } from "antd";
+import { Row, Col, Avatar, Upload, Space, message } from "antd";
 import { useState, useEffect } from "react";
 import { Button, Input, Switch, Modal, Form, List, Comment } from "antd";
 import {
@@ -22,6 +22,8 @@ import {
 import { useAuth } from "../lib/auth";
 import withAuth from "../hocs/withAuth";
 import CommentForm from "../components/CommentForm";
+import ListOfPosts from "../components/ListOfPosts";
+import UploadImagePost from "../components/UploadImagePost";
 const { TextArea } = Input;
 const { Item } = Form;
 
@@ -33,21 +35,22 @@ const PostPage = () => {
   const [inputTitle, setInputTitle] = useState("");
   const [inputTextArea, setInputTextArea] = useState("");
   const [posts, setPosts] = useState([]);
+  const [imageToUp, setImageToUp] = useState("");
 
-  const props = {
-    action: "//jsonplaceholder.typicode.com/posts/",
-    listType: "picture",
-    previewFile(file) {
-      console.log("Your upload file:", file);
-      // Your process logic. Here we just mock to the same file
-      return fetch("https://next.json-generator.com/api/json/get/4ytyBoLK8", {
-        method: "POST",
-        body: file,
-      })
-        .then((res) => res.json())
-        .then(({ thumbnail }) => thumbnail);
-    },
-  };
+  // const props = {
+  //   action: "//jsonplaceholder.typicode.com/posts/",
+  //   listType: "picture",
+  //   previewFile(file) {
+  //     console.log("Your upload file:", file);
+  //     // Your process logic. Here we just mock to the same file
+  //     return fetch("https://next.json-generator.com/api/json/get/4ytyBoLK8", {
+  //       method: "POST",
+  //       body: file,
+  //     })
+  //       .then((res) => res.json())
+  //       .then(({ thumbnail }) => thumbnail);
+  //   },
+  // };
 
   const showPostModal = () => {
     setVisible(true);
@@ -57,33 +60,43 @@ const PostPage = () => {
           defaultValue={setInputTextArea}
           placeholder="Escribe un texto interesante ..."
           allowClear="true"
-          rows={4}
+          rows={5}
           onChange={(e) => {
             setInputTextArea(e.target.value);
           }}
         />
-        <Upload {...props}>
-          <Button icon={<UploadOutlined />}>Añadir imagen</Button>
-        </Upload>
+        <UploadImagePost />
       </>
     );
   };
-
+  const [name, setName] = useState("");
   //const postListRef = db.ref("posts");
 
   const handleWriteData = async () => {
-    const poston = moment();
-    const newPostID = db.ref().push().key;
-    console.log("new posu", newPostID);
-    await db.ref(`posts/${newPostID}`).set({
-      title: inputTitle,
-      content: inputTextArea,
-      userid: user.uid,
-      poston: poston.format("LLLL"),
-      postid: newPostID,
-    });
+    if (name) {
+      const poston = moment();
+      const newPostID = db.ref().push().key;
+      console.log("new posu", newPostID);
+      await db.ref(`posts/${newPostID}`).set({
+        title: inputTitle,
+        content: inputTextArea,
+        userid: user.uid,
+        poston: poston.format("LLLL"),
+        postid: newPostID,
+        image: imageToUp,
+        nickname: name,
+      });
+    } else {
+      console.log("no hay name");
+    }
+    console.log("USER", user);
+    // console.log("INPUT TITLE", inputTitle);
+    // console.log("TEXTAREA", inputTextArea);
+    // console.log("USER ID", user.uid);
+    // console.log("POST ON", poston);
+    // console.log("POST ID", newPostID);
+    // console.log("IMAGE", imageToUp);
   };
-
   useEffect(() => {
     db.ref("posts").on("value", (snapshot) => {
       const postsArray = [];
@@ -95,8 +108,16 @@ const PostPage = () => {
     });
   }, []);
 
+  useEffect(() => {
+    db.ref(`users/${user.uid}`).once("value", (snapshot) => {
+      console.log("SNAPSHOT NAME", snapshot.val().nickname);
+      setName(snapshot.val().nickname);
+    });
+  }, []);
+
   const handleOkPostModal = () => {
     handleWriteData();
+
     setModalText("Publicando actualizaciones");
     setConfirmLoading(true);
     setTimeout(() => {
@@ -179,6 +200,7 @@ const PostPage = () => {
           </div>
         </div>
 
+<<<<<<< HEAD
         {posts
           ? posts.map((post) => {
               return (
@@ -289,6 +311,123 @@ const PostPage = () => {
               );
             })
           : "No hay posts para mostrar"}
+=======
+        {posts ? (
+          <Row justify="center">
+            <Col span={22}>
+              <ListOfPosts posts={posts} />
+            </Col>
+          </Row>
+        ) : (
+          //   <Row justify="center">
+          //     <Col span={18}>
+          //       <div className="post">
+          //         <div className="site-layout-content">
+          //           <div className="site-card-border-less-wrapper">
+          //             <div className="ant-card">
+          //               <div className="ant-card-head">
+          //                 <div className="ant-card-head-wrapper">
+          //                   <Row>
+          //                     <Col span={8}>
+          //                       <div className="botones">
+          //                         <Row>
+          //                           <Col span={8}>
+          //                             {/*<Dropdown*/}
+          //                             {/*  isOpen={dropdown}*/}
+          //                             {/*  toggle={abrircerrarDropdown}*/}
+          //                             {/*  shape="square"*/}
+          //                             {/*>*/}
+          //                             {/*  <DropdownToggle>...</DropdownToggle>*/}
+          //                             {/*  <DropdownMenu>*/}
+          //                             {/*    <DropdownItem onClick={showModal}>*/}
+          //                             {/*      reportar*/}
+          //                             {/*    </DropdownItem>*/}
+          //                             {/*    /!*<Modal*!/*/}
+          //                             {/*    /!*  title="Reportar"*!/*/}
+          //                             {/*    /!*  visible={isModalVisible}*!/*/}
+          //                             {/*    /!*  onOk={handleOk}*!/*/}
+          //                             {/*    /!*  onCancel={handleCancel}*!/*/}
+          //                             {/*    /!*>*!/*/}
+          //                             {/*    /!*  <p>Some contents...</p>*!/*/}
+          //                             {/*    /!*  <p>Some contents...</p>*!/*/}
+          //                             {/*    /!*  <p>Some contents...</p>*!/*/}
+          //                             {/*    /!*</Modal>*!/*/}
+          //                             {/*    <DropdownItem>guardar</DropdownItem>*/}
+          //                             {/*  </DropdownMenu>*/}
+          //                             {/*</Dropdown>*/}
+          //                             <Button type="primary" shape="square">
+          //                               < />
+          //                             </Button>
+          //                           </Col>
+          //                           <Col span={8}>
+          //                             <Button type="primary" shape="square">
+          //                               <SaveOutlined />
+          //                             </Button>
+          //                           </Col>
+          //                           <Col span={8}>
+          //                             <Button type="primary" shape="square">
+          //                               <HeartOutlined />
+          //                             </Button>
+          //                           </Col>
+          //                         </Row>
+          //                       </div>
+          //                     </Col>
+          //                     <Col span={8} offset={8}>
+          //                       <div className="ant-card-head-title">
+          //                         <h1 id="title">{post.title}</h1>
+          //                       </div>
+          //                     </Col>
+          //                   </Row>
+          //                 </div>
+          //               </div>
+          //               <Row justify="center">
+          //                 <Col span={18}>
+          //                   <div className="ant-card-body">
+          //                     {/*<Row>*/}
+          //                     {/*  <Col>*/}
+          //                     {/*    <Row>{post.content}</Row>*/}
+          //                     {/*    <Row>*/}
+          //                     {/*      <Col span={10} offset={10}>*/}
+          //                     {/*        {post.userid}*/}
+          //                     {/*      </Col>*/}
+          //                     {/*    </Row>*/}
+          //                     {/*    <Row>{post.poston}</Row>*/}
+          //                     {/*  </Col>*/}
+          //                     {/*</Row>*/}
+          //                     <Row>
+          //                       <div>
+          //                         {/*<p>{post.content}</p>*/}
+          //                         <ListOfPosts />
+          //                       </div>
+          //                     </Row>
+          //
+          //                     <Row>
+          //                       <div className="usuario">
+          //                         <div className="users">
+          //                           <p id="user">{post.userid}</p>
+          //                         </div>
+          //                       </div>
+          //                     </Row>
+          //                     <Row>
+          //                       <div>
+          //                         <p>{post.poston}</p>
+          //                       </div>
+          //                     </Row>
+          //                     <CommentForm />
+          //                   </div>
+          //                 </Col>
+          //               </Row>
+          //             </div>
+          //             ,
+          //           </div>
+          //         </div>
+          //       </div>
+          //     </Col>
+          //   </Row>
+          //
+          "No hay posts para mostrar"
+        )}
+>>>>>>> 1e780406bd1922878072d43e0c8df3abe0760770
       </div>
     </Row>
   );
