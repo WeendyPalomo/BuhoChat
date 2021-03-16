@@ -22,8 +22,6 @@
     <list default="true" id="7386b61d-8369-44a6-a9a0-bd2dea086e41" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buhochat-app/src/pages/ChatsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/buhochat-app/src/pages/ChatsPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buhochat-app/src/pages/MenuPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/buhochat-app/src/pages/MenuPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buhochat-app/src/pages/PostsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/buhochat-app/src/pages/PostsPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +70,7 @@
       <workItem from="1615752018016" duration="25933000" />
       <workItem from="1615792482831" duration="13192000" />
       <workItem from="1615811394865" duration="24530000" />
+      <workItem from="1615898095975" duration="1205000" />
     </task>
     <servers />
   </component>
