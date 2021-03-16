@@ -1,4 +1,4 @@
-import { Layout } from 'antd';
+import {Layout} from 'antd';
 import "../styles/register.css";
 import RegistrationForm from "./RegistrationForm.js";
 

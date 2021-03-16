@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "antd/dist/antd.css";
-import { useAuth } from "../lib/auth";
-import { useHistory } from "react-router-dom";
+import {useAuth} from "../lib/auth";
+import {useHistory} from "react-router-dom";
 import Routes from "../constants/routes";
-import { Form, Input, Tooltip, Select, Button, message } from "antd";
+import {Button, Form, Input, message, Select, Tooltip} from "antd";
 import translateMessage from "../utils/translateMessage";
-import { QuestionCircleOutlined } from "@ant-design/icons";
+import {QuestionCircleOutlined} from "@ant-design/icons";
+
 const { Option } = Select;
 
 const formItemLayout = {

@@ -37,9 +37,6 @@ function useAuthProvider() {
     }
   };
 
-
-
-  
   async function register(data) {
     console.log("data", data);
 
@@ -84,9 +81,6 @@ function useAuthProvider() {
       throw error;
     }
   }
-
-
-
 
   async function login(email, password) {
     auth
@@ -145,12 +139,15 @@ function useAuthProvider() {
   useEffect(() => {
     // try {
     const init = () => {
-      auth.onAuthStateChanged((user) => {
+      auth.onAuthStateChanged(async (user) => {
         if (user) {
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/firebase.User
           console.log("SESIÓN ACTIVA", user);
-          handleUser(user);
+          const userSnap = await db.ref(`users/${user.uid}`).once("value");
+          const userData = userSnap.val();
+
+          handleUser({ ...user, ...userData });
 
           // history.replace(Routes.HOME);
         } else {

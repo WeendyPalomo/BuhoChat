@@ -1,9 +1,9 @@
-import { List, message, Avatar, Spin } from "antd";
+import {Avatar, List, message, Spin} from "antd";
 import reqwest from "reqwest";
 
 import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
-import { UserOutlined } from "@ant-design/icons";
+import {UserOutlined} from "@ant-design/icons";
 
 const fakeDataUrl =
   "https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo";
