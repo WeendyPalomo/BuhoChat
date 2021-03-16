@@ -280,7 +280,7 @@ const PostPage = () => {
                               </Col>
                             </Row>
                           </div>
-                          ,
+                          
                         </div>
                       </div>
                     </div>
