@@ -200,121 +200,123 @@ const PostPage = () => {
           </div>
         </div>
 
-        {posts ? (
-          <Row justify="center">
-            <Col span={22}>
-              <ListOfPosts posts={posts} />
-            </Col>
-          </Row>
-        ) : (
-          //   <Row justify="center">
-          //     <Col span={18}>
-          //       <div className="post">
-          //         <div className="site-layout-content">
-          //           <div className="site-card-border-less-wrapper">
-          //             <div className="ant-card">
-          //               <div className="ant-card-head">
-          //                 <div className="ant-card-head-wrapper">
-          //                   <Row>
-          //                     <Col span={8}>
-          //                       <div className="botones">
-          //                         <Row>
-          //                           <Col span={8}>
-          //                             {/*<Dropdown*/}
-          //                             {/*  isOpen={dropdown}*/}
-          //                             {/*  toggle={abrircerrarDropdown}*/}
-          //                             {/*  shape="square"*/}
-          //                             {/*>*/}
-          //                             {/*  <DropdownToggle>...</DropdownToggle>*/}
-          //                             {/*  <DropdownMenu>*/}
-          //                             {/*    <DropdownItem onClick={showModal}>*/}
-          //                             {/*      reportar*/}
-          //                             {/*    </DropdownItem>*/}
-          //                             {/*    /!*<Modal*!/*/}
-          //                             {/*    /!*  title="Reportar"*!/*/}
-          //                             {/*    /!*  visible={isModalVisible}*!/*/}
-          //                             {/*    /!*  onOk={handleOk}*!/*/}
-          //                             {/*    /!*  onCancel={handleCancel}*!/*/}
-          //                             {/*    /!*>*!/*/}
-          //                             {/*    /!*  <p>Some contents...</p>*!/*/}
-          //                             {/*    /!*  <p>Some contents...</p>*!/*/}
-          //                             {/*    /!*  <p>Some contents...</p>*!/*/}
-          //                             {/*    /!*</Modal>*!/*/}
-          //                             {/*    <DropdownItem>guardar</DropdownItem>*/}
-          //                             {/*  </DropdownMenu>*/}
-          //                             {/*</Dropdown>*/}
-          //                             <Button type="primary" shape="square">
-          //                               < />
-          //                             </Button>
-          //                           </Col>
-          //                           <Col span={8}>
-          //                             <Button type="primary" shape="square">
-          //                               <SaveOutlined />
-          //                             </Button>
-          //                           </Col>
-          //                           <Col span={8}>
-          //                             <Button type="primary" shape="square">
-          //                               <HeartOutlined />
-          //                             </Button>
-          //                           </Col>
-          //                         </Row>
-          //                       </div>
-          //                     </Col>
-          //                     <Col span={8} offset={8}>
-          //                       <div className="ant-card-head-title">
-          //                         <h1 id="title">{post.title}</h1>
-          //                       </div>
-          //                     </Col>
-          //                   </Row>
-          //                 </div>
-          //               </div>
-          //               <Row justify="center">
-          //                 <Col span={18}>
-          //                   <div className="ant-card-body">
-          //                     {/*<Row>*/}
-          //                     {/*  <Col>*/}
-          //                     {/*    <Row>{post.content}</Row>*/}
-          //                     {/*    <Row>*/}
-          //                     {/*      <Col span={10} offset={10}>*/}
-          //                     {/*        {post.userid}*/}
-          //                     {/*      </Col>*/}
-          //                     {/*    </Row>*/}
-          //                     {/*    <Row>{post.poston}</Row>*/}
-          //                     {/*  </Col>*/}
-          //                     {/*</Row>*/}
-          //                     <Row>
-          //                       <div>
-          //                         {/*<p>{post.content}</p>*/}
-          //                         <ListOfPosts />
-          //                       </div>
-          //                     </Row>
-          //
-          //                     <Row>
-          //                       <div className="usuario">
-          //                         <div className="users">
-          //                           <p id="user">{post.userid}</p>
-          //                         </div>
-          //                       </div>
-          //                     </Row>
-          //                     <Row>
-          //                       <div>
-          //                         <p>{post.poston}</p>
-          //                       </div>
-          //                     </Row>
-          //                     <CommentForm />
-          //                   </div>
-          //                 </Col>
-          //               </Row>
-          //             </div>
-          //             ,
-          //           </div>
-          //         </div>
-          //       </div>
-          //     </Col>
-          //   </Row>
-          //
-          "No hay posts para mostrar"
-        )}
+        {posts
+          ? posts.map((post) => {
+              return (
+                <Row justify="center">
+                  <Col span={18}>
+                    <div className="post">
+                      <div className="site-layout-content">
+                        <div className="site-card-border-less-wrapper">
+                          <div className="ant-card">
+                            <div className="ant-card-head">
+                              
+                                <Row>
+                                    <Col span={12}>
+                                      <div className="ant-card-head-title">
+                                          <h1 id="title">{post.title}</h1>
+                                      </div>
+                                    </Col>
+                                    <Col span={12} >
+                                      <div className="botones">
+                                        <Row>
+                                          <Col span={12}></Col>
+                                          <Col span={12}>
+                                            <Row justify="end">
+                                              <Col span={8}>
+                                                {/*<Dropdown*/}
+                                                {/*  isOpen={dropdown}*/}
+                                                {/*  toggle={abrircerrarDropdown}*/}
+                                                {/*  shape="square"*/}
+                                                {/*>*/}
+                                                {/*  <DropdownToggle>...</DropdownToggle>*/}
+                                                {/*  <DropdownMenu>*/}
+                                                {/*    <DropdownItem onClick={showModal}>*/}
+                                                {/*      reportar*/}
+                                                {/*    </DropdownItem>*/}
+                                                {/*    /!*<Modal*!/*/}
+                                                {/*    /!*  title="Reportar"*!/*/}
+                                                {/*    /!*  visible={isModalVisible}*!/*/}
+                                                {/*    /!*  onOk={handleOk}*!/*/}
+                                                {/*    /!*  onCancel={handleCancel}*!/*/}
+                                                {/*    /!*>*!/*/}
+                                                {/*    /!*  <p>Some contents...</p>*!/*/}
+                                                {/*    /!*  <p>Some contents...</p>*!/*/}
+                                                {/*    /!*  <p>Some contents...</p>*!/*/}
+                                                {/*    /!*</Modal>*!/*/}
+                                                {/*    <DropdownItem>guardar</DropdownItem>*/}
+                                                {/*  </DropdownMenu>*/}
+                                                {/*</Dropdown>*/}
+                                                <Button type="primary"  shape="square">
+                                                  <WarningOutlined />
+                                                </Button>
+                                              </Col>
+                                              <Col span={8}>
+                                                <Button type="primary" shape="square">
+                                                  <SaveOutlined />
+                                                </Button>
+                                              </Col>
+                                              <Col span={8}>
+                                                <Button type="primary" shape="square">
+                                                  <HeartOutlined />
+                                                </Button>
+                                              </Col>
+                                            </Row>
+                                          </Col>
+                                        </Row>
+                                        
+                                      </div>
+                                    </Col>
+   
+                                 </Row>
+                              
+                            </div>
+                            <Row justify="start">
+                              <Col span={18}>
+                                <div className="ant-card-body">
+                                  {/*<Row>*/}
+                                  {/*  <Col>*/}
+                                  {/*    <Row>{post.content}</Row>*/}
+                                  {/*    <Row>*/}
+                                  {/*      <Col span={10} offset={10}>*/}
+                                  {/*        {post.userid}*/}
+                                  {/*      </Col>*/}
+                                  {/*    </Row>*/}
+                                  {/*    <Row>{post.poston}</Row>*/}
+                                  {/*  </Col>*/}
+                                  {/*</Row>*/}
+                                  <Row>
+                                    <div>
+                                      <p>{post.content}</p>
+                                    </div>
+                                  </Row>
+
+                                  <Row>
+                                    <div className="usuario">
+                                      <div className="users">
+                                        <p id="user">{post.userid}</p>
+                                      </div>
+                                    </div>
+                                  </Row>
+                                  <Row>
+                                    <div>
+                                      <p>{post.poston}</p>
+                                    </div>
+                                  </Row>
+                                  <CommentForm />
+                                </div>
+                              </Col>
+                            </Row>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              );
+            })
+          : "No hay posts para mostrar"}
       </div>
     </Row>
   );
