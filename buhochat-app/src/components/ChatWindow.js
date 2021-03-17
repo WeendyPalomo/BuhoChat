@@ -4,7 +4,7 @@ import {Avatar, Button, Input, Tooltip} from "antd";
 import {useAuth} from "../lib/auth";
 import {db} from "../firebase/index";
 import firebase from "firebase";
-import {SendOutlined, UserOutlined,} from "@ant-design/icons";
+import {SendOutlined, UserOutlined,PictureOutlined} from "@ant-design/icons";
 
 const { TextArea } = Input;
 
@@ -77,6 +77,10 @@ const ChatWindow = (props) => {
 
       <div className="chat-sender">
         <TextArea rows={2} id="message-content" />
+        <Tooltip>
+          <Button
+          icon={<PictureOutlined />} />
+        </Tooltip>
         <Tooltip title="send">
           <Button
             onClick={handleSendMessage}
