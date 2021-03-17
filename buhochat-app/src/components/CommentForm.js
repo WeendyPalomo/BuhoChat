@@ -38,7 +38,7 @@ const CommentForm = ({ postIDs, index, numPage }) => {
   //useEffect(() => {
   //console.log("POST ID DE CADA COMMENTFORM", postIDs);
   //}, [ID]);
-  if (numPage % 2 === 0) {
+  if (numPage > 1 && numPage % 2 === 0) {
     index += 3;
   }
 
