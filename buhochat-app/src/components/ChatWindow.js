@@ -17,7 +17,7 @@ const ChatWindow = (props) => {
     const props = {
       beforeUpload: file => {
         if (file.type !== 'image/png') {
-          message.error(`${file.name} is not a png file`);
+          message.error(`${file.name} no es un archivo PNG`);
         }
         return file.type === 'image/png' ? true : Upload.LIST_IGNORE;
       },
