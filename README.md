@@ -23,7 +23,6 @@ Conectate con otros estudiantes y comparte temas de tu interes.
     - Producto casi finalizado.
     - Rectificar algunos detalles sobre botones.
     - Verificar funcionalidad.
-    - 
 ## Capturas de Pantalla
 ### Mockups en MARVEL
   
