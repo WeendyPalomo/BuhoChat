@@ -41,7 +41,7 @@ Conectate con otros estudiantes y comparte temas de tu interes.
 
 
 ## Entregables
-- Video del Manual de Uusario
-- Video del Manual Tecnico
-- Videos con reuniones de seguimiento 
+- Video del Manual de Usario
+- [Video del Manual Tecnico](https://youtu.be/DdDbMhTjXYc)
+- Lista de reproducción de los videos con reuniones de seguimiento 
 - [Carpeta Proyecto Final](https://epnecuador-my.sharepoint.com/:f:/g/personal/alexis_yepez01_epn_edu_ec/EiLRrpGZHn1FiETBMqxTud8BkMB1DsfRaAAA_7nCQnSUPg?e=RGLWaA)
