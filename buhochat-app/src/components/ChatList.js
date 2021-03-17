@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { List, Avatar, message } from "antd";
-import { db, auth } from "../firebase/index";
-import { Button, Tooltip } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import React, {useEffect, useState} from "react";
+import {Avatar, Button, List, message, Tooltip} from "antd";
+import {auth, db} from "../firebase/index";
+import {PlusOutlined} from "@ant-design/icons";
 import "../styles/ChatList.css";
 
 const data = [];

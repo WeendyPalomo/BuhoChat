@@ -2,8 +2,6 @@ import firebase from "firebase/app";
 import "firebase/database";
 import "firebase/auth";
 
-import "firebase/auth";
-
 const firebaseConfig = {
   apiKey: "AIzaSyCcKHxcO3_PkFyYMtuh0B7adPsubMjmbms",
   authDomain: "buhochat-eefbd.firebaseapp.com",

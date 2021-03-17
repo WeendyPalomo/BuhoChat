@@ -6,6 +6,10 @@ import ChatList from "../components/ChatList";
 import withAuth from "../hocs/withAuth";
 import ChatWindow from "../components/ChatWindow";
 
+import { Link } from "react-router-dom";
+
+import Routes from "../constants/routes";
+
 const { TextArea } = Input;
 
 const ChatsPage = () => {
@@ -18,7 +22,7 @@ const ChatsPage = () => {
           shape="round"
           style={{ background: "#454C48", color: "white" }}
         >
-          Posts
+          <Link to={Routes.POSTS}>Posts</Link>
         </Button>
         <Button
           id="chat-button-navg"
@@ -26,7 +30,7 @@ const ChatsPage = () => {
           shape="round"
           style={{ background: "#C9CCCB", color: "white" }}
         >
-          Chats
+          <Link to={Routes.CHAT}>Chats</Link>
         </Button>
       </div>
       <div className="main-content">
