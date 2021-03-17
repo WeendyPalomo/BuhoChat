@@ -23,6 +23,7 @@ Conectate con otros estudiantes y comparte temas de tu interes.
     - Producto casi finalizado.
     - Rectificar algunos detalles sobre botones.
     - Verificar funcionalidad.
+    - 
 ## Capturas de Pantalla
 ### Mockups en MARVEL
   
@@ -32,6 +33,12 @@ Conectate con otros estudiantes y comparte temas de tu interes.
 ![image](https://user-images.githubusercontent.com/58180852/111351702-73e82a00-8651-11eb-959a-3afc01c400c6.png)
 
 ### Sitio Web: BuhoChat
+![image](https://user-images.githubusercontent.com/58180852/111399040-8cc4ff80-8692-11eb-9a54-edd3b001c753.png)
+![image](https://user-images.githubusercontent.com/58180852/111399087-a49c8380-8692-11eb-9b59-81e0301be901.png)
+![image](https://user-images.githubusercontent.com/58180852/111399120-b1b97280-8692-11eb-954b-ce0804d1cd83.png)
+![image](https://user-images.githubusercontent.com/58180852/111399151-c3027f00-8692-11eb-8ad6-85bf19119507.png)
+![image](https://user-images.githubusercontent.com/58180852/111399172-ceee4100-8692-11eb-97fa-c1736ba66ebc.png)
+![image](https://user-images.githubusercontent.com/58180852/111399195-dca3c680-8692-11eb-8a2a-c15891328078.png)
 
 
 ## Entregables
