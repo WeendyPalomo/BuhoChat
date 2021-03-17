@@ -39,9 +39,11 @@ Conectate con otros estudiantes y comparte temas de tu interes.
 ![image](https://user-images.githubusercontent.com/58180852/111399172-ceee4100-8692-11eb-97fa-c1736ba66ebc.png)
 ![image](https://user-images.githubusercontent.com/58180852/111399195-dca3c680-8692-11eb-8a2a-c15891328078.png)
 
+## Archivos de Analisis
+- [Analisis de requerimientos]()
 
 ## Entregables
 - Video del Manual de Usario
 - [Video del Manual Tecnico](https://youtu.be/DdDbMhTjXYc)
-- Lista de reproducción de los videos con reuniones de seguimiento 
+- [Lista de reproducción de los videos con reuniones de seguimiento](https://www.youtube.com/playlist?list=PLaDBQivSCCIixwb3vJ6Pq9jEY9wzFjw69)
 - [Carpeta Proyecto Final](https://epnecuador-my.sharepoint.com/:f:/g/personal/alexis_yepez01_epn_edu_ec/EiLRrpGZHn1FiETBMqxTud8BkMB1DsfRaAAA_7nCQnSUPg?e=RGLWaA)
