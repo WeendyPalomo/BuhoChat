@@ -21,7 +21,8 @@ margin: 5px;
     border-radius: 5px;
     margin: 5px;
     width: max-content;
-    
+    float: right;
+    clear: right;
 }
 
 .chat-sender {

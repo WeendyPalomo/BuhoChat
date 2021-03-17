@@ -2,12 +2,9 @@ import React from "react";
 import "../styles/ChatsPage.css";
 import { Button, Input } from "antd";
 import ChatList from "../components/ChatList";
-
 import withAuth from "../hocs/withAuth";
 import ChatWindow from "../components/ChatWindow";
-
 import { Link } from "react-router-dom";
-
 import Routes from "../constants/routes";
 
 const { TextArea } = Input;
