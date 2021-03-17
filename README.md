@@ -8,7 +8,7 @@ Conectate con otros estudiantes y comparte temas de tu interes.
 - Alexis Yepez
 
 ## Planificacion de Sprints
-- 3 de marzo:
+- [3 de marzo:](https://youtu.be/IHwo6QxQIeo)
     - Definir los requerimientos funcionales y no funcionales del Sitio Web. 
     - Determinar las paginas de nuestro sitio.
     - Enlistar cada tarea en nuestro tablero en ZenHub.
@@ -19,11 +19,10 @@ Conectate con otros estudiantes y comparte temas de tu interes.
     - Paginas definidas listas.
     - Reorganizar las tareas en nuestra plataforma de gestion de proyectos.
     - Repartir cada tarea puntual, es decir, comenzar con las funcionalidades de cada pagina.
-- 17 de marzo:
+- [17 de marzo:](https://www.youtube.com/watch?v=J32FfhL7iKo)
     - Producto casi finalizado.
     - Rectificar algunos detalles sobre botones.
     - Verificar funcionalidad.
-    - 
 ## Capturas de Pantalla
 ### Mockups en MARVEL
   
