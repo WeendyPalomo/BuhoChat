@@ -40,7 +40,8 @@ Conectate con otros estudiantes y comparte temas de tu interes.
 ![image](https://user-images.githubusercontent.com/58180852/111399195-dca3c680-8692-11eb-8a2a-c15891328078.png)
 
 ## Archivos de Analisis
-- [Analisis de requerimientos]()
+- [Analisis de requerimientos](https://epnecuador-my.sharepoint.com/:w:/g/personal/wendy_palomo_epn_edu_ec/EeHdyPse64BJrmPUIPyiVRUBkZHm_RIwb3pA1vW1qgsPdQ?e=gKwDqM)
+- [Casos de Uso](https://epnecuador-my.sharepoint.com/:w:/g/personal/wendy_palomo_epn_edu_ec/EeHdyPse64BJrmPUIPyiVRUBkZHm_RIwb3pA1vW1qgsPdQ?e=gKwDqM)
 
 ## Entregables
 - Video del Manual de Usario
