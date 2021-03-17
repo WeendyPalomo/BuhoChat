@@ -1,5 +1,6 @@
 # BuhoChat
-Aplicación web de chat aleatorio para comunidad politécnica. Conectate con otros estudiantes y comparte temas de tu interes.
+Aplicación web de chat aleatorio para comunidad politécnica. 
+Conectate con otros estudiantes y comparte temas de tu interes.
 
 ## Integrantes
 - Juan Bolaños
@@ -24,13 +25,13 @@ Aplicación web de chat aleatorio para comunidad politécnica. Conectate con otr
     - Verificar funcionalidad.
 ## Capturas de Pantalla
 ### Mockups en MARVEL
-  -Pagina principal.
-    -![image](https://user-images.githubusercontent.com/58180852/111351284-063bfe00-8651-11eb-9471-c671083b2e60.png)
-  -Pagina inicio de sesion.
-    -![image](https://user-images.githubusercontent.com/58180852/111351636-5e730000-8651-11eb-9904-c4a7d2fbacd1.png)
-  -Pagina registrarse.
-    -![image](https://user-images.githubusercontent.com/58180852/111351668-692d9500-8651-11eb-9ec6-901eaba3831e.png)
-  -Pagina 
+  
+    ![image](https://user-images.githubusercontent.com/58180852/111351284-063bfe00-8651-11eb-9471-c671083b2e60.png)
+  
+    ![image](https://user-images.githubusercontent.com/58180852/111351636-5e730000-8651-11eb-9904-c4a7d2fbacd1.png)
+  
+    ![image](https://user-images.githubusercontent.com/58180852/111351668-692d9500-8651-11eb-9ec6-901eaba3831e.png)
+  
 
 ![image](https://user-images.githubusercontent.com/58180852/111351702-73e82a00-8651-11eb-959a-3afc01c400c6.png)
 
