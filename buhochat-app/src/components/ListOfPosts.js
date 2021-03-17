@@ -9,6 +9,7 @@ import {
   HeartOutlined,
 } from "@ant-design/icons";
 import CommentForm from "./CommentForm";
+import { onLog } from "firebase";
 
 const IconText = ({ icon, text }) => (
   <Space>
@@ -17,7 +18,10 @@ const IconText = ({ icon, text }) => (
   </Space>
 );
 
-const ListOfPosts = ({ posts }) => {
+let oneByOne = "";
+const ListOfPosts = ({ posts, postIDs }) => {
+  const [postIdsArray, setPostIdsArray] = useState([postIDs]);
+  const [numPage, setNumberPage] = useState(1);
   const listData = [];
   posts.forEach((post) => {
     listData.push({
@@ -28,7 +32,18 @@ const ListOfPosts = ({ posts }) => {
       avatar:
         "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
     });
+    //console.log("CADA ID DE pOST", post);
+    // setPostIdsArray((prevState) => {
+    //   return [...prevState, post.postid];
+    // });
   });
+
+  const postIdArrays = posts.map((post) => {
+    return post.postid;
+  });
+
+  //const postIdArrays = posts.postid;
+  //console.log("array de id poist", postIdArrays);
 
   return (
     <List
@@ -37,6 +52,7 @@ const ListOfPosts = ({ posts }) => {
       pagination={{
         onChange: (page) => {
           console.log(page);
+          setNumberPage(page);
         },
         pageSize: 3,
       }}
@@ -46,7 +62,7 @@ const ListOfPosts = ({ posts }) => {
       //     <b>ant design</b> footer part
       //   </div>
       // }
-      renderItem={(item) => (
+      renderItem={(item, index) => (
         <List.Item
           key={item.title}
           actions={[]}
@@ -115,7 +131,16 @@ const ListOfPosts = ({ posts }) => {
           {item.poston}
           <Row justify="center">
             <Col span={16}>
-              <CommentForm />
+              {/*{setNumber(postIdArrays[])}*/}
+              <CommentForm
+                postIDs={postIdArrays}
+                index={index}
+                numPage={numPage}
+              />
+              {/*{console.log(*/}
+              {/*  "DEBERIA SER EL ULTIMO",*/}
+              {/*  postIdArrays[postIdArrays.length - 1]*/}
+              {/*)}*/}
             </Col>
           </Row>
         </List.Item>
