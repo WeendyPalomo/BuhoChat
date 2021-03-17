@@ -8,7 +8,7 @@ Conectate con otros estudiantes y comparte temas de tu interes.
 - Alexis Yepez
 
 ## Planificacion de Sprints
-- 3 de marzo:
+- [3 de marzo:](https://youtu.be/IHwo6QxQIeo)
     - Definir los requerimientos funcionales y no funcionales del Sitio Web. 
     - Determinar las paginas de nuestro sitio.
     - Enlistar cada tarea en nuestro tablero en ZenHub.
