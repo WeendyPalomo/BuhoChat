@@ -26,9 +26,6 @@ const ChatList = () => {
         if (snapshot.exists()) {
           setNewUid(snapshot.val().userid);
           console.log("newUid", snapshot.val().userid);
-          db.ref(`users/${snapshot.val().userid}`).once("value", (snapshot) => {
-            setAuxUser(snapshot.val());
-          });
         } else {
           console.log("No data available");
         }
@@ -37,22 +34,34 @@ const ChatList = () => {
       console.log("uid", uid);
     }
   }, [num]);
-  function contains(Array, element) {
-    Array.forEach((user) => {
-      if (JSON.stringify(user) === JSON.stringify(element)) {
-        return true;
-      }
-    });
-    return false;
-  }
   useEffect(() => {
     if (newUid) {
+      db.ref(`users/${newUid}`).once("value", (snapshot) => {
+        setAuxUser(snapshot.val());
+      });
+    }
+  }, [newUid]);
+  function contains(Array, element) {
+    var contain = false;
+    Array.forEach((user) => {
+      console.log("userEmail", user.email);
+      console.log("elementEmail", element.email);
+      if (user.email === element.email) {
+        contain = true;
+        console.log("contain dentro", contain);
+      }
+    });
+
+    return contain;
+  }
+  useEffect(() => {
+    if (auxUser) {
       console.log("USER", users);
       console.log("AUXUSER", auxUser);
-      console.log("includes", !users.includes(auxUser));
-      console.log("contains", !contains(users, auxUser));
 
-      if (!users.includes(auxUser)) {
+      console.log("contains", contains(users, auxUser));
+
+      if (!contains(users, auxUser)) {
         db.ref(`users/${newUid}`).once("value", (snapshot) => {
           const newUser = {
             email: snapshot.val().email,
@@ -68,7 +77,7 @@ const ChatList = () => {
         handleAddUserChat();
       }
     }
-  }, [newUid]);
+  }, [auxUser]);
 
   useEffect(() => {
     const random = db.ref("/users").once("value", (snapshot) => {
