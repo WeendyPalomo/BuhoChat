@@ -66,17 +66,17 @@ const ListOfPosts = ({ posts, postIDs }) => {
         <List.Item
           key={item.title}
           actions={[]}
-          extra={
-            <>
-              <Row justify="center">
-                <img
-                  width={250}
-                  alt="logo"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-                />
-              </Row>
-            </>
-          }
+          // extra={
+          //   <>
+          //     <Row justify="center">
+          //       <img
+          //         width={250}
+          //         alt="logo"
+          //         src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+          //       />
+          //     </Row>
+          //   </>
+          // }
         >
           <Divider>{item.title}</Divider>
           <List.Item.Meta
@@ -84,46 +84,46 @@ const ListOfPosts = ({ posts, postIDs }) => {
             title={
               <Row>
                 <Col span={10}>{item.nickname}</Col>
-                <Col span={4} offset={8}>
-                  <Row justify="center">
-                    <Col span={8}>
-                      <Button
-                        size="small"
-                        type="primary"
-                        shape="circle"
-                        icon={
-                          <Row justify="center">
-                            <HeartOutlined />
-                          </Row>
-                        }
-                      ></Button>
-                    </Col>
-                    <Col span={8}>
-                      <Button
-                        size="small"
-                        type="primary"
-                        shape="circle"
-                        icon={
-                          <Row justify="center">
-                            <SaveOutlined />
-                          </Row>
-                        }
-                      ></Button>
-                    </Col>
-                    <Col span={8}>
-                      <Button
-                        size="small"
-                        type="primary"
-                        shape="circle"
-                        icon={
-                          <Row justify="center">
-                            <WarningOutlined />
-                          </Row>
-                        }
-                      ></Button>
-                    </Col>
-                  </Row>
-                </Col>
+                {/*<Col span={4} offset={8}>*/}
+                {/*  <Row justify="center">*/}
+                {/*    <Col span={8}>*/}
+                {/*      <Button*/}
+                {/*        size="small"*/}
+                {/*        type="primary"*/}
+                {/*        shape="circle"*/}
+                {/*        icon={*/}
+                {/*          <Row justify="center">*/}
+                {/*            <HeartOutlined />*/}
+                {/*          </Row>*/}
+                {/*        }*/}
+                {/*      ></Button>*/}
+                {/*    </Col>*/}
+                {/*    <Col span={8}>*/}
+                {/*      <Button*/}
+                {/*        size="small"*/}
+                {/*        type="primary"*/}
+                {/*        shape="circle"*/}
+                {/*        icon={*/}
+                {/*          <Row justify="center">*/}
+                {/*            <SaveOutlined />*/}
+                {/*          </Row>*/}
+                {/*        }*/}
+                {/*      ></Button>*/}
+                {/*    </Col>*/}
+                {/*    <Col span={8}>*/}
+                {/*      <Button*/}
+                {/*        size="small"*/}
+                {/*        type="primary"*/}
+                {/*        shape="circle"*/}
+                {/*        icon={*/}
+                {/*          <Row justify="center">*/}
+                {/*            <WarningOutlined />*/}
+                {/*          </Row>*/}
+                {/*        }*/}
+                {/*      ></Button>*/}
+                {/*    </Col>*/}
+                {/*  </Row>*/}
+                {/*</Col>*/}
               </Row>
             }
             description={item.content}

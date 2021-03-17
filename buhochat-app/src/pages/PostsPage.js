@@ -37,7 +37,7 @@ const PostPage = () => {
             setInputTextArea(e.target.value);
           }}
         />
-        <UploadImagePost />
+        {/*<UploadImagePost />*/}
       </>
     );
   };
@@ -57,7 +57,7 @@ const PostPage = () => {
       userid: user.uid,
       poston: poston.format("LLLL"),
       postid: newPostID,
-      image: imageToUp,
+      // image: imageToUp,
       nickname: user.nickname,
     });
     //setPostIDs(postIdArray);
@@ -146,13 +146,13 @@ const PostPage = () => {
               >
                 <p>{modalText}</p>
               </Modal>
-              <Switch checkedChildren="Anonimo" unCheckedChildren="" />
-              <div id="anonimo"></div>
+              {/*<Switch checkedChildren="Anonimo" unCheckedChildren="" />*/}
+              {/*<div id="anonimo"></div>*/}
             </div>
           </div>
         </div>
         {posts ? (
-          <Row justify="center">
+            <Row justify="center">
             <Col span={22}>
               <ListOfPosts posts={posts} postIDs={postIDs} />
             </Col>
