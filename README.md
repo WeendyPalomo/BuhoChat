@@ -42,7 +42,7 @@ Conectate con otros estudiantes y comparte temas de tu interes.
 ## Archivos de Analisis
 - [Analisis de requerimientos](https://epnecuador-my.sharepoint.com/:w:/g/personal/wendy_palomo_epn_edu_ec/EeHdyPse64BJrmPUIPyiVRUBkZHm_RIwb3pA1vW1qgsPdQ?e=gKwDqM)
 - [Casos de Uso](https://epnecuador-my.sharepoint.com/:w:/g/personal/wendy_palomo_epn_edu_ec/EeHdyPse64BJrmPUIPyiVRUBkZHm_RIwb3pA1vW1qgsPdQ?e=gKwDqM)
-
+- [Documentacion: Sprint](https://epnecuador-my.sharepoint.com/:w:/g/personal/wendy_palomo_epn_edu_ec/ET4r4TIgAg1PvSj-FAaUFRMBhjhy5KOycFDPNH9t_K-3ag?e=iHYtKD)
 ## Entregables
 - [Video del Manual de Usario](https://youtu.be/4uKra8r77-g)
 - [Video del Manual Tecnico](https://youtu.be/DdDbMhTjXYc)
