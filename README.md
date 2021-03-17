@@ -31,7 +31,7 @@ Conectate con otros estudiantes y comparte temas de tu interes.
 ![image](https://user-images.githubusercontent.com/58180852/111351668-692d9500-8651-11eb-9ec6-901eaba3831e.png)  
 ![image](https://user-images.githubusercontent.com/58180852/111351702-73e82a00-8651-11eb-959a-3afc01c400c6.png)
 
-### Implementacion: Sitio Web 
+### Sitio Web: BuhoChat
 
 
 ## Entregables
