@@ -1,10 +1,8 @@
 import imgGroup from "../images/chat_group.jpeg";
 import imgPosts from "../images/posts.jpeg";
 import "../styles/menu.css";
-import { Row, Col } from "antd";
-import { Layout } from "antd";
-import { Button, Radio } from "antd";
-import { Link } from "react-router-dom";
+import {Button, Col, Layout, Row} from "antd";
+import {Link} from "react-router-dom";
 import Routes from "../constants/routes";
 import withAuth from "../hocs/withAuth";
 

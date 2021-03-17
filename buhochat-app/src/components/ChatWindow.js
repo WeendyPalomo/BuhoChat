@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import "../styles/ChatWindow.css";
-import { Avatar, Button, Input, Tooltip } from "antd";
-import { useAuth } from "../lib/auth";
-import { db } from "../firebase/index";
+import {Avatar, Button, Input, Tooltip} from "antd";
+import {useAuth} from "../lib/auth";
+import {db} from "../firebase/index";
 import firebase from "firebase";
-import {
-  UserOutlined,
-  SendOutlined,
-  SearchOutlined,
-  PlusOutlined,
-} from "@ant-design/icons";
+import {SendOutlined, UserOutlined,} from "@ant-design/icons";
+
 const { TextArea } = Input;
 
 const ChatWindow = (props) => {

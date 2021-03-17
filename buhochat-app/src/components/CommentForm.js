@@ -3,7 +3,6 @@ import { Avatar, Button, Comment, List, Form, Input } from "antd";
 import moment from "moment";
 const { Item } = Form;
 const { TextArea } = Input;
-
 const CommentList = ({ comments }) => (
   <List
     dataSource={comments}
@@ -12,7 +11,6 @@ const CommentList = ({ comments }) => (
     renderItem={(props) => <Comment {...props} />}
   />
 );
-
 const Editor = ({ onChange, onSubmit, submitting, value }) => (
   <>
     <Item>
@@ -31,27 +29,22 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
     </Item>
   </>
 );
-
 const CommentForm = () => {
   const firstState = {
     comments: [],
     submitting: false,
     value: "",
   };
-
   const [state, setState] = useState(firstState);
-
   const handleSubmit = () => {
     if (!state.value) {
       return;
     }
-
     setState((prevState) => {
       const changeSubmitting = { ...prevState };
       changeSubmitting.submitting = true;
       return changeSubmitting;
     });
-
     setTimeout(() => {
       setState((prevState) => {
         const changeAll = { ...prevState };
@@ -73,7 +66,6 @@ const CommentForm = () => {
       });
     }, 1000);
   };
-
   const handleChange = (event) => {
     setState((prevState) => {
       const changeValue = { ...prevState };
@@ -81,7 +73,6 @@ const CommentForm = () => {
       return changeValue;
     });
   };
-
   const { comments, submitting, value } = state;
   return (
     <>
@@ -105,5 +96,4 @@ const CommentForm = () => {
     </>
   );
 };
-
 export default CommentForm;

@@ -1,9 +1,7 @@
-import React, {  useState } from 'react';
-import { Modal,  Collapse } from 'antd';
+import React, {useState} from 'react';
+import {Collapse, Modal} from 'antd';
 import "../styles/ModalEditeProfile.css"
 import 'antd/dist/antd.css';
-
-
 
 
 const ModalPrivacity = () =>{

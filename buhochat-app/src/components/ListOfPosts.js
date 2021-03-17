@@ -10,20 +10,6 @@ import {
 } from "@ant-design/icons";
 import CommentForm from "./CommentForm";
 
-//const listData = [];
-
-// for (let i = 0; i < 23; i++) {
-//   listData.push({
-//     href: "https://ant.design",
-//     title: `ant design part ${i}`,
-//     avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-//     description:
-//       "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-//     content:
-//       "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
-//   });
-// }
-
 const IconText = ({ icon, text }) => (
   <Space>
     {React.createElement(icon)}
@@ -32,23 +18,17 @@ const IconText = ({ icon, text }) => (
 );
 
 const ListOfPosts = ({ posts }) => {
-  const [listData, setListData] = useState([]);
-  const showPosts = (posts) => {
-    const auxList = [];
-    posts.forEach((post, index) => {
-      auxList.push({
-        href: "https://ant.design",
-        title: `ant design part ${index}`,
-        avatar:
-          "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-        description: post.title,
-        content: post.content,
-      });
+  const listData = [];
+  posts.forEach((post) => {
+    listData.push({
+      title: post.title,
+      nickname: post.nickname,
+      content: post.content,
+      poston: post.poston,
+      avatar:
+        "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
     });
-
-    setListData(auxList);
-  };
-  //showPosts(posts);
+  });
 
   return (
     <List
@@ -58,9 +38,9 @@ const ListOfPosts = ({ posts }) => {
         onChange: (page) => {
           console.log(page);
         },
-        pageSize: 4,
+        pageSize: 3,
       }}
-      dataSource={posts}
+      dataSource={listData}
       // footer={
       //   <div>
       //     <b>ant design</b> footer part

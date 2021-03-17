@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Button, Checkbox, Form, Input, message } from "antd";
+import React, {useEffect, useState} from "react";
+import {Button, Checkbox, Form, Input, message} from "antd";
 import translateMessage from "../utils/translateMessage";
 import "../styles/LoginForm.css";
-import { Link, useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import Routes from "../constants/routes";
-import { useAuth } from "../lib/auth";
+import {useAuth} from "../lib/auth";
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);

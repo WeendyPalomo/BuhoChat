@@ -1,21 +1,14 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import Routes from "../constants/routes";
-import { Modal} from 'antd';
+import {Form, Input, Modal, Tooltip} from 'antd';
 import "../styles/register.css";
 import "../styles/ModalEditeProfile.css"
 import 'antd/dist/antd.css';
-import { useAuth } from "../lib/auth";
-import { useHistory } from "react-router-dom";
-import {
-    Form,
-    Input,
-    Tooltip,
-    Select,
-    
-  } from 'antd';
-  import { QuestionCircleOutlined } from '@ant-design/icons';
+import {useAuth} from "../lib/auth";
+import {useHistory} from "react-router-dom";
+import {QuestionCircleOutlined} from '@ant-design/icons';
 
-  const formItemLayout = {
+const formItemLayout = {
 
   
 

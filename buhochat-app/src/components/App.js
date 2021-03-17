@@ -1,5 +1,5 @@
 import "../styles/App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 
 import ChatsPage from "../pages/ChatsPage";
 import MainLayout from "./MainLayout";
@@ -9,7 +9,7 @@ import Routes from "../constants/routes";
 import MenuPage from "../pages/MenuPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
-import { AuthProvider } from "../lib/auth";
+import {AuthProvider} from "../lib/auth";
 import PostsPage from "../pages/PostsPage";
 
 function App() {
