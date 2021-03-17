@@ -5,13 +5,9 @@ import ChatList from "../components/ChatList";
 
 import withAuth from "../hocs/withAuth";
 import ChatWindow from "../components/ChatWindow";
-<<<<<<< HEAD
-import {Link} from "react-router-dom";
-=======
 
 import { Link } from "react-router-dom";
 
->>>>>>> 472821f8d497a015e78accb216968e5306b60618
 import Routes from "../constants/routes";
 
 const { TextArea } = Input;
