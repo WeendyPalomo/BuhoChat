@@ -40,7 +40,7 @@ const MainMenu = () => {
         >
           <Button>
             <Avatar size="small" icon={<UserOutlined />} />
-            {user.email}
+            {user.nickname}
             <DownOutlined />
           </Button>
         </Dropdown>

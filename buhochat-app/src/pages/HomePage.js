@@ -4,6 +4,7 @@ import "../styles/HomePage.css";
 import group from "../images/remote-team.svg";
 import withoutAuth from "../hocs/withoutAuth";
 
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
 </style>

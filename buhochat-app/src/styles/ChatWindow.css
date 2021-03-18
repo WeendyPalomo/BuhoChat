@@ -15,15 +15,27 @@ margin: 5px;
   overflow: auto;
 }
 
-.chat-messages p{
+ .chat-messages p{
   background-color: white;
     padding: 3px;
     border-radius: 5px;
     margin: 5px;
     width: max-content;
-    float: right;
-    clear: right;
-}
+    
+} 
+/*  #message-content{
+  background-color: white;
+    padding: 3px;
+    border-radius: 5px;
+    margin: 5px;
+    width: max-content;
+    float:right;
+    text-align: end;
+    
+} */
+/* #message {
+  width: 100%;
+}  */
 
 .chat-sender {
   display: flex;

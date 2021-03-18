@@ -42,6 +42,7 @@ const PostPage = () => {
     );
   };
 
+  
   const handleWriteData = async () => {
     let postIdArray = [];
     const poston = moment();

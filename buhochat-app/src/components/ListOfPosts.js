@@ -18,8 +18,8 @@ import {
   SaveOutlined,
   HeartOutlined,
 } from "@ant-design/icons";
-import { db } from "../firebase";
 import CommentForm from "./CommentForm";
+import { db } from "../firebase";
 import { onLog } from "firebase";
 import { useAuth } from "../lib/auth";
 
@@ -46,8 +46,9 @@ const ListOfPosts = ({ posts, postIDs }) => {
       nickname: post.nickname,
       content: post.content,
       poston: post.poston,
+      postid:post.postid,
       avatar:
-        "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png",
     });
     //console.log("CADA ID DE pOST", post);
     // setPostIdsArray((prevState) => {
@@ -83,6 +84,10 @@ const ListOfPosts = ({ posts, postIDs }) => {
       db.ref("savedposts").off();
     };
   }, [savedPosts]);
+
+  
+
+  
 
   return (
     <List

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "../styles/ChatWindow.css";
-import {Avatar, Button, Input, Tooltip, Upload, message} from "antd";
+import {Avatar, Button, Input, Tooltip, Upload, message, List} from "antd";
 import {useAuth} from "../lib/auth";
 import {db} from "../firebase/index";
 import firebase from "firebase";
@@ -8,7 +8,7 @@ import {SendOutlined, UserOutlined,PictureOutlined, UploadOutlined} from "@ant-d
 
 const { TextArea } = Input;
 
-const ChatWindow = (props) => {
+const ChatWindow = ({chat}) => {
   const [myMessages, setMyMessages] = useState([]);
   const [numMessages, setNumMessages] = useState(0);
   const { user } = useAuth();
@@ -17,7 +17,7 @@ const ChatWindow = (props) => {
     const props = {
       beforeUpload: file => {
         if (file.type !== 'image/png') {
-          message.error(`${file.name} no es un archivo PNG`);
+          message.error(`${file.name} is not a png file`);
         }
         return file.type === 'image/png' ? true : Upload.LIST_IGNORE;
       },
@@ -45,52 +45,59 @@ const ChatWindow = (props) => {
         hour: "2-digit",
         minute: "2-digit",
       }).format(timestamp);
-      firebase.database().ref(`messages/chatidexample/${numMessages}`).set({
+      
+      const newMessageKey = db.ref('messages/chatidexmaple2').push().key
+               db.ref('messages/chatidexmaple2/' + newMessageKey).set({
         name: user.email,
         timestamp: timestampAll,
         message: messageContent,
-      });
+      })
+
+
     } else {
       console.log("no cambia");
     }
     const chatHistory = document.getElementById("chat-messages");
     console.log(chatHistory);
+    
+    
+    
   };
-  useEffect(() => {
-    const messageRef = db.ref("messages/chatidexample");
-    messageRef.on("value", (snapshot) => {
-      const message = snapshot.val();
-      console.log("myMessages", message);
-      console.log("messagesCount", snapshot.numChildren());
-      if (numMessages != snapshot.numChildren()) {
-        setNumMessages(snapshot.numChildren());
-      }
-    });
-  });
 
+  
   useEffect(() => {
-    db.ref("messages/chatidexample").once("value", (snapshot) => {
-      const messagesArray = [];
-      snapshot.forEach((message) => {
-        messagesArray.push(message.val().message);
-      });
-      setMyMessages(messagesArray);
+    db.ref("messages/chatidexmaple2").on("child_added", (snapshot) => {
+      
+      
+        console.log(snapshot.val());
+        setMyMessages((prevState) => {
+          return [...prevState, snapshot.val()]
+        })
+      
+      
     });
-  }, [numMessages]);
+    //db.ref("messages/chatidexmaple2").off()
+    console.log("chat", chat);
+  },[]);
 
-  useEffect(() => {}, [myMessages]);
+
+  
 
   return (
     <>
       <div id="chat-header">
         <Avatar size="large" icon={<UserOutlined />} />
-        User 2
+        wendy9899
       </div>
 
       <div className="chat-messages">
-        {myMessages.map((text, index) => (
-          <p key={index}>{text}</p>
-        ))}
+        <List
+        size="small"
+        actions
+        bordered
+        dataSource={myMessages}
+        renderItem={item => <List.Item>{item.message}</List.Item>}
+        />
       </div>
 
       <div className="chat-sender">
