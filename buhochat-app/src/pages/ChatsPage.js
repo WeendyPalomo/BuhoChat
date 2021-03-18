@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/ChatsPage.css";
 import { Button, Input } from "antd";
 import ChatList from "../components/ChatList";
@@ -13,6 +13,7 @@ import Routes from "../constants/routes";
 const { TextArea } = Input;
 
 const ChatsPage = () => {
+  const [chatToShow, setChatToShow] = useState();
   return (
     <div id="chat-content" className="site-layout-content">
       <div className="navigation-buttons">
@@ -37,11 +38,11 @@ const ChatsPage = () => {
         <div className="chats-list">
           <Input placeholder="Buscar usuarios, amigos" id="search-chat" />
           <div className="demo-infinite-container">
-            <ChatList />
+            <ChatList  onChange={setChatToShow} />
           </div>
         </div>
         <div class="chat-window">
-          <ChatWindow name="chatid" />
+          <ChatWindow chat={chatToShow} />
         </div>
       </div>
     </div>

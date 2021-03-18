@@ -6,6 +6,7 @@ import RegistrationForm from "../components/RegistrationForm.js";
 const RegisterPage = () => {
   const { Content } = Layout;
 
+  
   return (
     <>
       <Layout>

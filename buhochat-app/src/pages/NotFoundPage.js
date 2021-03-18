@@ -3,6 +3,7 @@ import {Button, Result} from "antd";
 import Routes from "../constants/routes";
 import {Link} from "react-router-dom";
 
+
 const NotFoundPage = () => {
   return (
     <Result

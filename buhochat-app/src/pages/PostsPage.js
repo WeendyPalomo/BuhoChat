@@ -40,6 +40,7 @@ const PostPage = () => {
     );
   };
 
+  
   const handleWriteData = async () => {
     const poston = moment();
     const newPostID = db.ref().push().key;
