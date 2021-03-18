@@ -1,17 +1,18 @@
 import React, {useEffect, useState} from "react";
 import {Avatar, Button, List, message, Tooltip} from "antd";
 import {auth, db} from "../firebase/index";
-import {PlusOutlined} from "@ant-design/icons";
+import {PlusOutlined,UnorderedListOutlined,RightOutlined} from "@ant-design/icons";
 import "../styles/ChatList.css";
 
 const data = [];
 
-const ChatList = () => {
+const ChatList = ({onChange}) => {
   const [users, setUsers] = useState([]);
   const [num, setNum] = useState();
   const [newUid, setNewUid] = useState();
   const [auxUser, setAuxUser] = useState();
   const [maxUsers, setMaxUsers] = useState();
+  const [chats, setChats] = useState([]);
 
   useEffect(() => {
     console.log("num", num);
@@ -60,7 +61,7 @@ const ChatList = () => {
 
       console.log("contains", contains(users, auxUser));
 
-      if (!contains(users, auxUser)) {
+      if (!contains(users, auxUser) && newUid != auth.currentUser.uid) {
         db.ref(`users/${newUid}`).once("value", (snapshot) => {
           const newUser = {
             email: snapshot.val().email,
@@ -72,6 +73,31 @@ const ChatList = () => {
             return [newUser, ...prevState];
           });
         });
+        const chatData = {
+          lastMessage: " ",
+          userid1: auth.currentUser.uid,
+          userid2: newUid
+        };
+        const updateuserData = {
+          uidContact: newUid
+
+        };
+        const updateCurrentUserData = {
+          uidContact: auth.currentUser.uid
+        }
+        const newChatKey = db.ref().child('chats').push().key;
+        /*var updates = {};
+        updates["/chats/" + newChatKey] = chatData;
+        updates["/users/" + auth.currentUser.uid + "/" + "chats/" +newChatKey] = updateuserData;
+        updates["/users/" + newUid + "/" + "chats/" +newChatKey] = updateCurrentUserData; */
+        setChats((prevState) => {
+          const newChat = {
+            key: newChatKey,
+            lastMessage: " ",
+            receiverNickname: auxUser.nickname
+          }
+          return [...prevState, newChat];
+        })
       } else {
         handleAddUserChat();
       }
@@ -109,6 +135,12 @@ const ChatList = () => {
     /* console.log("definitiveuid", newUid); */
   };
 
+   const setOnChange = (chat) => {
+    console.log(chat);
+    onChange = chat;
+    console.log(onChange)
+  } 
+
   return (
     <>
       <Tooltip title="Siguiente Usuario">
@@ -122,20 +154,23 @@ const ChatList = () => {
       </Tooltip>
       <List
         itemLayout="horizontal"
-        dataSource={users}
+        dataSource={chats}
         renderItem={(item) => (
           <List.Item>
             <List.Item.Meta
               avatar={
                 <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
               }
-              title={
-                <a href="https://ant.design" id="titleid">
-                  {item.nickname}
-                </a>
-              }
-              description=""
+              title=
+                
+                  {item.receiverNickname}
+                
+              
+              description={item.lastMessage}
+              //actions = {onChange()}
             />
+            <Button shape="circle" icon={<RightOutlined />} onClick={setOnChange(item)}/>
+            <Button shape="circle" icon={<UnorderedListOutlined />} />
           </List.Item>
         )}
       />

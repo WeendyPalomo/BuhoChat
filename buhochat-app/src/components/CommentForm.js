@@ -3,9 +3,9 @@ import { Avatar, Button, Comment, List, Form, Input } from "antd";
 import moment from "moment";
 import { db } from "../firebase";
 import { useAuth } from "../lib/auth";
-import LoginForm from "./LoginForm";
 const { Item } = Form;
 const { TextArea } = Input;
+
 const CommentList = ({ comments }) => (
   <List
     dataSource={comments}
@@ -34,13 +34,20 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
     </Item>
   </>
 );
+
 const CommentForm = ({ postIDs, index, numPage }) => {
-  //useEffect(() => {
-  //console.log("POST ID DE CADA COMMENTFORM", postIDs);
-  //}, [ID]);
-  if (numPage > 1 && numPage % 2 === 0) {
-    index += 3;
+  for (let i = 1; i <= numPage; i++) {
+    if (numPage === i) {
+      index += (numPage - 1) * 4;
+      //setUtilIndex(index)
+    }
   }
+
+  // for (let i = numPage; i >= 1; i--) {
+  //   if (numPage === i) {
+  //     index -= (numPage - 1) * 4;
+  //   }
+  // }
 
   const { user } = useAuth();
   const [commentDatetime, setCommentDatetime] = useState("");
@@ -74,16 +81,32 @@ const CommentForm = ({ postIDs, index, numPage }) => {
     // console.log("SE IMPRIME CONTENIDO", array[2].content.props.children);
     // console.log("SE IMPRIME DATETIME", array[2].datetime);
     // await array.forEach((comment)=>{
-    //await db.ref(`comments/${postID}`).set(
-    //auxArray
-    //     { price: 205, stock: "agotado" },
-    //     { price: 205, stock: "NUEVO" },
-    //);
+    await db.ref(`comments/${identifier}`).set(
+      auxArray
+      //     { price: 205, stock: "agotado" },
+      //     { price: 205, stock: "NUEVO" },
+    );
     // })
   };
+  const [updateComments, setUpdateComments] = useState([]);
+
+  useEffect(() => {
+    db.ref(`comments/${postIDs[index]}`).on("value", (snapshot) => {
+      console.log(
+        `SNAPSHOT DE POST CON INDEX ${postIDs[index]}`,
+        snapshot.val()
+      );
+
+      setUpdateComments(snapshot.val());
+    });
+
+    return () => {
+      db.ref("comments").off();
+    };
+  }, []);
 
   const firstState = {
-    comments: [],
+    comments: updateComments,
     submitting: false,
     value: "",
   };
@@ -102,18 +125,23 @@ const CommentForm = ({ postIDs, index, numPage }) => {
         const changeAll = { ...prevState };
         changeAll.submitting = false;
         changeAll.value = "";
+        console.log("PREVSTATE COMMENTS ANTES", prevState.comments);
+        //prevState.comments;
+        const { value } = state;
         changeAll.comments = [
           ...changeAll.comments,
           {
             author: user.nickname,
-            avatar:
-              "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png",
+            //avatar:
+            //"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
             content: <p>{state.value}</p>,
             datetime: moment().format("LLLL"),
           },
         ];
+        console.log("STATE VALUE", state.value);
+        console.log("PREVSTATE COOMENTS DESPUES ", changeAll.comments);
         //setCommentArray(changeAll.comments);
-        //handleWriteComments(postID, changeAll.comments);
+        handleWriteComments(postIDs[index], changeAll.comments);
         //console.log("EL ID DE ESTE ES ", ID);
         return changeAll;
       });
@@ -128,20 +156,22 @@ const CommentForm = ({ postIDs, index, numPage }) => {
       return changeValue;
     });
     //console.log("haber yqe sale!", postIDs[postIDs.length - 1]);
-    console.log("este es el index", index);
+    console.log("INDEX DE ESTE POST", index);
     //console.log("QUE ES ESTA HUEVADA", postIDs);
-    console.log("es el post con id ", postIDs[index]);
-    console.log("numpage", numPage);
+    console.log("ESTE POST TIENE ID ", postIDs[index]);
+    //console.log("numpage", numPage);
   };
   const { comments, submitting, value } = state;
+  console.log("COMENTS", comments);
   return (
     <>
       {comments.length > 0 && <CommentList comments={comments} />}
       <Comment
+        label="hola"
         avatar={
           <Avatar
             src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-            alt="Han Solo"
+            alt="alexis"
           />
         }
         content={

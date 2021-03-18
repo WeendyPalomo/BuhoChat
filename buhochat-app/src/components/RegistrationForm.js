@@ -58,6 +58,7 @@ const RegistrationForm = () => {
     }
   };
 
+  
   useEffect(() => {
     if (!!user) {
       history.replace(Routes.MENU);

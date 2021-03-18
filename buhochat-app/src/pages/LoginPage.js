@@ -7,6 +7,7 @@ import "../styles/LoginPage.css";
 
 const { Title } = Typography;
 
+
 const LoginPage = () => {
   return (
     <Row className="login-page">

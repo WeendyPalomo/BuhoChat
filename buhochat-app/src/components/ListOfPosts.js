@@ -1,5 +1,15 @@
-import React, {createElement, useState } from "react";
-import { Row, Col, List, Avatar, Space,Tooltip, Input, Button, Divider } from "antd";
+import React, { useState, useEffect } from "react";
+import {
+  Row,
+  Col,
+  List,
+  Avatar,
+  Space,
+  Input,
+  Button,
+  Divider,
+  message,
+} from "antd";
 import {
   MessageOutlined,
   LikeOutlined,
@@ -11,7 +21,7 @@ import {
 import CommentForm from "./CommentForm";
 import { db } from "../firebase";
 import { onLog } from "firebase";
-import { DislikeOutlined, DislikeFilled, LikeFilled } from '@ant-design/icons';
+import { useAuth } from "../lib/auth";
 
 const IconText = ({ icon, text }) => (
   <Space>
@@ -22,11 +32,14 @@ const IconText = ({ icon, text }) => (
 
 let oneByOne = "";
 const ListOfPosts = ({ posts, postIDs }) => {
+  const { user } = useAuth();
   const [postIdsArray, setPostIdsArray] = useState([postIDs]);
   const [numPage, setNumberPage] = useState(1);
-  const [like, setLikes ]= useState(0);
-  const [action, setAction] = useState(null);
+  const [auxIndex, setAuxIndex] = useState(0);
+  const [itemIndex, setItemIndex] = useState(0);
+  const [savedPosts, setSavedPosts] = useState([]);
   const listData = [];
+  //posts.reverse();
   posts.forEach((post) => {
     listData.push({
       title: post.title,
@@ -47,6 +60,27 @@ const ListOfPosts = ({ posts, postIDs }) => {
     return post.postid;
   });
 
+  const handleSavedPost = async (girft) => {
+    //const savedPost = [];
+    for (let i = 1; i <= numPage; i++) {
+      if (numPage === i) {
+        girft += (numPage - 1) * 4;
+        //setUtilIndex(index)
+      }
+    }
+    console.log(`imprime el id ${girft} con POSTID`, posts[girft].postid);
+    console.log("NUMBEROAGE", numPage);
+    //savedPost.push(posts[girft].postid);
+    setSavedPosts((prevState) => {
+      return [...prevState, posts[girft].postid];
+    });
+  };
+
+  useEffect(() => {
+    db.ref(`savedposts/${user.uid}`).set(savedPosts);
+    message.success("Guardado!");
+  }, [savedPosts]);
+
   //const postIdArrays = posts.postid;
   //console.log("array de id poist", postIdArrays);
 
@@ -63,7 +97,7 @@ const ListOfPosts = ({ posts, postIDs }) => {
           console.log(page);
           setNumberPage(page);
         },
-        pageSize: 3,
+        pageSize: 4,
       }}
       dataSource={listData}
       // footer={
@@ -71,7 +105,9 @@ const ListOfPosts = ({ posts, postIDs }) => {
       //     <b>ant design</b> footer part
       //   </div>
       // }
+
       renderItem={(item, index) => (
+        //setItemIndex(index),
         <List.Item
           key={item.title}
           actions={[]}
@@ -88,30 +124,30 @@ const ListOfPosts = ({ posts, postIDs }) => {
           // }
         >
           <Divider>{item.title}</Divider>
+
           <List.Item.Meta
             avatar={<Avatar src={item.avatar} />}
             title={
               <Row>
                 <Col span={10}>{item.nickname}</Col>
                 <Col span={4} offset={8}>
-                 <Row justify="center">
-                    <Col span={8}>
+                  <Row justify="center">
+                    <Col span={3} justify="center">
+                      1
+                    </Col>
+                    <Col span={7}>
                       <Button
                         size="small"
                         type="primary"
                         shape="circle"
                         icon={
-                          
                           <Row justify="center">
-                            
-                            <HeartOutlined
-                             />
-                            
+                            <HeartOutlined />
                           </Row>
                         }
                       ></Button>
                     </Col>
-                    <Col span={8}>
+                    <Col span={7}>
                       <Button
                         size="small"
                         type="primary"
@@ -121,9 +157,10 @@ const ListOfPosts = ({ posts, postIDs }) => {
                             <SaveOutlined />
                           </Row>
                         }
+                        onClick={() => handleSavedPost(index)}
                       ></Button>
                     </Col>
-                    <Col span={8}>
+                    <Col span={7}>
                       <Button
                         size="small"
                         type="primary"
@@ -137,7 +174,6 @@ const ListOfPosts = ({ posts, postIDs }) => {
                     </Col>
                   </Row>
                 </Col>
-                
               </Row>
             }
             description={item.content}
@@ -151,7 +187,7 @@ const ListOfPosts = ({ posts, postIDs }) => {
                 index={index}
                 numPage={numPage}
               />
-              {/*{console.log(*/}
+
               {/*  "DEBERIA SER EL ULTIMO",*/}
               {/*  postIdArrays[postIdArrays.length - 1]*/}
               {/*)}*/}

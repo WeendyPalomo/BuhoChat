@@ -42,6 +42,7 @@ const PostPage = () => {
     );
   };
 
+  
   const handleWriteData = async () => {
     let postIdArray = [];
     const poston = moment();
@@ -62,11 +63,11 @@ const PostPage = () => {
     });
     //setPostIDs(postIdArray);
     //await handleWriteComments(postIDs);
-    //console.log("ARREGLO DE POST IDS", postIDs);
   };
 
   useEffect(() => {
-    handleWriteComments(postIDs);
+    //handleWriteComments(postIDs);
+    //console.log("ARREGLO DE POST IDS", postIDs);
   }, [postIDs]);
 
   const handleWriteComments = async (postIdArray) => {
@@ -152,7 +153,7 @@ const PostPage = () => {
           </div>
         </div>
         {posts ? (
-            <Row justify="center">
+          <Row justify="center">
             <Col span={22}>
               <ListOfPosts posts={posts} postIDs={postIDs} />
             </Col>
