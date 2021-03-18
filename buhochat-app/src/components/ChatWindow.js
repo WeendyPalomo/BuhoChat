@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import "../styles/ChatWindow.css";
-import {Avatar, Button, Input, Tooltip, Upload, message, List} from "antd";
+import {Avatar, Button, Input, Tooltip, Upload, message, List, Image} from "antd";
 import {useAuth} from "../lib/auth";
 import {db} from "../firebase/index";
-import firebase from "firebase";
+
+
 import {SendOutlined, UserOutlined,PictureOutlined, UploadOutlined} from "@ant-design/icons";
 
 const { TextArea } = Input;
@@ -12,30 +13,14 @@ const ChatWindow = ({chat}) => {
   const [myMessages, setMyMessages] = useState([]);
   const [numMessages, setNumMessages] = useState(0);
   const { user } = useAuth();
+  const [url, setUrl]=useState();
 
-  const Uploader = () => {
-    const props = {
-      beforeUpload: file => {
-        if (file.type !== 'image/png') {
-          message.error(`${file.name} is not a png file`);
-        }
-        return file.type === 'image/png' ? true : Upload.LIST_IGNORE;
-      },
-      onChange: info => {
-        console.log(info.fileList);
-      },
-    };
-    return (
-      <Upload {...props}>
-        <Button icon={<PictureOutlined />}/>
-      </Upload>
-    );
-  };
+  
 
   const handleSendMessage = () => {
     /* const messageContent = document.querySelector("#message-content").value;
     setMyMessages((prevState) => [messageContent, ...prevState]); */
-    if (myMessages) {
+    //if (myMessages) {
       const messageContent = document.querySelector("#message-content").value;
       const timestamp = Date.now();
       const timestampAll = new Intl.DateTimeFormat("en-US", {
@@ -45,18 +30,21 @@ const ChatWindow = ({chat}) => {
         hour: "2-digit",
         minute: "2-digit",
       }).format(timestamp);
+      if(chat) {
+      const newMessageKey = db.ref('messages/'+chat.key).push().key
       
-      const newMessageKey = db.ref('messages/chatidexmaple2').push().key
-               db.ref('messages/chatidexmaple2/' + newMessageKey).set({
-        name: user.email,
-        timestamp: timestampAll,
-        message: messageContent,
-      })
+          db.ref('messages/'+chat.key+'/' + newMessageKey).set({
+            name: user.email,
+            timestamp: timestampAll,
+            message: messageContent,
+          })
+        
+        
 
-
-    } else {
+      }
+    /* } else {
       console.log("no cambia");
-    }
+    } */
     const chatHistory = document.getElementById("chat-messages");
     console.log(chatHistory);
     
@@ -66,7 +54,9 @@ const ChatWindow = ({chat}) => {
 
   
   useEffect(() => {
-    db.ref("messages/chatidexmaple2").on("child_added", (snapshot) => {
+    if(chat) {
+      setMyMessages([]);
+    db.ref("messages/" + chat.key).on("child_added", (snapshot) => {
       
       
         console.log(snapshot.val());
@@ -76,9 +66,10 @@ const ChatWindow = ({chat}) => {
       
       
     });
+  }
     //db.ref("messages/chatidexmaple2").off()
     console.log("chat", chat);
-  },[]);
+  },[chat]);
 
 
   
@@ -87,25 +78,23 @@ const ChatWindow = ({chat}) => {
     <>
       <div id="chat-header">
         <Avatar size="large" icon={<UserOutlined />} />
-        wendy9899
+        {chat ? (chat.receiverNickname) : "No existe"}
       </div>
 
       <div className="chat-messages">
         <List
         size="small"
         actions
-        bordered
+        
         dataSource={myMessages}
-        renderItem={item => <List.Item>{item.message}</List.Item>}
+        renderItem={item => <List.Item><div className="mensaje">{item.message}</div></List.Item>}
         />
       </div>
 
       <div className="chat-sender">
         <TextArea rows={2} id="message-content" />
         <Tooltip>
-          <Uploader
-          onClick={handleSendMessage}
-          />
+          
         </Tooltip>
         <Tooltip title="send">
           <Button

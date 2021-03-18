@@ -136,7 +136,7 @@ const ChatList = ({onChange}) => {
   };
 
    const setOnChange = (chat) => {
-    console.log(chat);
+    
     onChange = chat;
     console.log(onChange)
   } 

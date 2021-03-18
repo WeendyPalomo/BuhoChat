@@ -1,16 +1,16 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Routes from "../constants/routes";
-import {Form, Input, Modal, Tooltip} from 'antd';
+import {Button, Form, Input, Modal, Tooltip} from 'antd';
+import {db} from "../firebase/index";
 import "../styles/register.css";
 import "../styles/ModalEditeProfile.css"
 import 'antd/dist/antd.css';
 import {useAuth} from "../lib/auth";
 import {useHistory} from "react-router-dom";
 import {QuestionCircleOutlined} from '@ant-design/icons';
+import TextArea from 'antd/lib/input/TextArea';
 
 const formItemLayout = {
-
-  
 
     labelCol: {
       xs: {
@@ -47,7 +47,7 @@ const formItemLayout = {
 const ModalEditeProfile = () => {
     const [form] = Form.useForm();
     const { register, user } = useAuth();
-    
+    const [updates, setUpdates]=useState([]);
     const history = useHistory();
     const onFinish = (data) => {
       console.log('Received values of form: ', data);
@@ -85,22 +85,26 @@ const ModalEditeProfile = () => {
     setVisible(false);
   };
 
+  function handleUpdateUser(userId,newNickme){
+    const usersRef=db.ref(`users/${userId}`);
+    usersRef.update(
+      {    
+        nickname: newNickme
+      }
+    )
+  }
+
   return (
     <>
       <a type="primary" onClick={showModal}>
-        Editar Perfil
+        Perfil
       </a>
       <Modal className="configureperfil"
         title="Tu Cuenta"
         visible={visible}
         onOk={handleOk}
-
-        
-        
-        
         confirmLoading={confirmLoading}
-        onCancel={handleCancel}
-        
+        onCancel={handleCancel}        
       >
 
 <Form
@@ -120,13 +124,12 @@ const ModalEditeProfile = () => {
         }
         rules={[
           {
-            required: true,
-            message: 'Porfavor ingresa tu nombre y apellido!',
+            required: true,            
             whitespace: true,
           },
         ]}
       >
-        <Input />
+        <span>{user.name} {user.lastname}</span>
       </Form.Item>
 
       <Form.Item
@@ -139,51 +142,11 @@ const ModalEditeProfile = () => {
           },
           {
             required: true,
-            message: 'Porfavor ingresa tu correo electrónico!',
           },
         ]}
       >
-        <Input />
+        <span>{user.email}</span>
       </Form.Item>
-
-      <Form.Item
-        name="password"
-        label="Nueva Contraseña"
-        rules={[
-          {
-            required: true,
-            message: 'Porfavor ingresa una nueva contraseña.',
-          },
-        ]}
-        hasFeedback
-      >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item
-        name="confirm"
-        label="Confirmar Contraseña"
-        dependencies={['password']}
-        hasFeedback
-        rules={[
-          {
-            required: true,
-            message: 'Porfavor confirme su contraseña.',
-          },
-          ({ getFieldValue }) => ({
-            validator(_, value) {
-              if (!value || getFieldValue('password') === value) {
-                return Promise.resolve();
-              }
-
-              return Promise.reject(new Error('La contraseña que ingresó no coincide.'));
-            },
-          }),
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
-
       <Form.Item
         name="nickname"
         label={
@@ -202,17 +165,13 @@ const ModalEditeProfile = () => {
           },
         ]}
       >
-        <Input />
+        <span>{user.nickname}</span>
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
-       
       </Form.Item>
-    </Form>
-          
-        
-
-        
+    </Form>  
+      
       </Modal>
     </>
   );

@@ -50,3 +50,10 @@ margin: 5px;
 .chat-sender svg{
   vertical-align: top;
 }
+
+.mensaje{
+    background-color: white;
+    padding-right: 13px;
+    padding-left: 13px;
+    border-radius: 6px;
+}
