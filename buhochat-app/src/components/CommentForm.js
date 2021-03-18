@@ -168,12 +168,12 @@ const CommentForm = ({ postIDs, index, numPage }) => {
       {comments.length > 0 && <CommentList comments={comments} />}
       <Comment
         label="hola"
-        avatar={
-          <Avatar
-            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-            alt="alexis"
-          />
-        }
+        // avatar={
+        //   <Avatar
+        //     src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+        //     alt="alexis"
+        //   />
+        // }
         content={
           <Editor
             onChange={handleChange}

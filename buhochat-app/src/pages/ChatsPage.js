@@ -163,12 +163,13 @@ const ChatsPage = () => {
           <Link to={Routes.POSTS}>Posts</Link>
         </Button>
         <Button
+          disabled={true}
           id="chat-button-navg"
           type="primary"
           shape="round"
           style={{ background: "#C9CCCB", color: "white" }}
         >
-          <Link to={Routes.CHAT}>Chats</Link>
+          Chats
         </Button>
       </div>
       <div className="main-content">

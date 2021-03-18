@@ -18,8 +18,8 @@ import {
   SaveOutlined,
   HeartOutlined,
 } from "@ant-design/icons";
-import { db } from "../firebase";
 import CommentForm from "./CommentForm";
+import { db } from "../firebase";
 import { onLog } from "firebase";
 import { useAuth } from "../lib/auth";
 
@@ -38,6 +38,7 @@ const ListOfPosts = ({ posts, postIDs }) => {
   const [auxIndex, setAuxIndex] = useState(0);
   const [itemIndex, setItemIndex] = useState(0);
   const [savedPosts, setSavedPosts] = useState([]);
+  const [like, setLike] = useState(0);
   const listData = [];
   //posts.reverse();
   posts.forEach((post) => {
@@ -46,8 +47,9 @@ const ListOfPosts = ({ posts, postIDs }) => {
       nickname: post.nickname,
       content: post.content,
       poston: post.poston,
+      postid:post.postid,
       avatar:
-        "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png",
     });
     //console.log("CADA ID DE pOST", post);
     // setPostIdsArray((prevState) => {
@@ -77,11 +79,38 @@ const ListOfPosts = ({ posts, postIDs }) => {
 
   useEffect(() => {
     db.ref(`savedposts/${user.uid}`).set(savedPosts);
-    message.success("Guardado!");
+    //message.success("Guardado!");
+
+    return () => {
+      db.ref("savedposts").off();
+    };
   }, [savedPosts]);
 
-  //const postIdArrays = posts.postid;
-  //console.log("array de id poist", postIdArrays);
+
+  const handleLikepost = async (likepost) => {
+    
+    for (let i = 1; i <= numPage; i++) {
+      if (numPage === i) {
+        likepost += (numPage - 1) * 4;
+        
+      }
+    }
+    console.log(`imprime el id ${likepost} con POSTID`, posts[likepost].postid);
+    console.log("NUMBEROAGE", numPage);
+    
+    setLike((prevState) => {
+      return [...prevState, posts[likepost].postid];
+    });
+  };
+
+  useEffect(() => {
+    db.ref(`likedposts/${user.uid}`).set(like);
+    
+  }, [like]);
+
+  
+
+  
 
   return (
     <List
@@ -131,6 +160,7 @@ const ListOfPosts = ({ posts, postIDs }) => {
                       1
                     </Col>
                     <Col span={7}>
+                    
                       <Button
                         size="small"
                         type="primary"
@@ -138,8 +168,11 @@ const ListOfPosts = ({ posts, postIDs }) => {
                         icon={
                           <Row justify="center">
                             <HeartOutlined />
+                            
                           </Row>
                         }
+                      
+                        
                       ></Button>
                     </Col>
                     <Col span={7}>
