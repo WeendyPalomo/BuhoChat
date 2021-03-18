@@ -79,11 +79,12 @@ const ListOfPosts = ({ posts, postIDs }) => {
 
   useEffect(() => {
     db.ref(`savedposts/${user.uid}`).set(savedPosts);
-    message.success("Guardado!");
-  }, [savedPosts]);
+    //message.success("Guardado!");
 
-  //const postIdArrays = posts.postid;
-  //console.log("array de id poist", postIdArrays);
+    return () => {
+      db.ref("savedposts").off();
+    };
+  }, [savedPosts]);
 
 
   const handleLikepost = async (likepost) => {

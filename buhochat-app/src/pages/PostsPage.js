@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import "../styles/PostsPage.css";
 import { useState, useEffect } from "react";
-import { Button, Input, Switch, Modal, Row, Col } from "antd";
+import { Button, Input, Switch, Modal, Row, Col, message } from "antd";
 import { db } from "../firebase";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useAuth } from "../lib/auth";
@@ -65,10 +65,10 @@ const PostPage = () => {
     //await handleWriteComments(postIDs);
   };
 
-  useEffect(() => {
-    //handleWriteComments(postIDs);
-    //console.log("ARREGLO DE POST IDS", postIDs);
-  }, [postIDs]);
+  // useEffect(() => {
+  //   //handleWriteComments(postIDs);
+  //   //console.log("ARREGLO DE POST IDS", postIDs);
+  // }, [postIDs]);
 
   const handleWriteComments = async (postIdArray) => {
     await postIdArray.forEach((newPost) => {
@@ -90,14 +90,18 @@ const PostPage = () => {
   }, []);
 
   const handleOkPostModal = async () => {
-    await handleWriteData();
-    setModalText("Publicando actualizaciones");
-    setConfirmLoading(true);
-    setTimeout(() => {
-      setVisible(false);
-      setConfirmLoading(false);
-    }, 500);
-    setInputTitle("");
+    if (inputTextArea !== "" && inputTitle !== "") {
+      await handleWriteData();
+      setModalText("Publicando actualizaciones");
+      setConfirmLoading(true);
+      setTimeout(() => {
+        setVisible(false);
+        setConfirmLoading(false);
+      }, 500);
+      setInputTitle("");
+    } else {
+      message.error("Algún campo está vacío");
+    }
   };
 
   const handleCancelPostModal = () => {
@@ -113,8 +117,9 @@ const PostPage = () => {
             type="primary"
             shape="round"
             style={{ background: "#C9CCCB", color: "white" }}
+            disabled={true}
           >
-            <Link to={Routes.POSTS}>Posts</Link>
+            Posts
           </Button>
           <Button
             type="primary"
@@ -124,9 +129,9 @@ const PostPage = () => {
             <Link to={Routes.CHAT}>Chats</Link>
           </Button>
         </div>
-        <div class="contenedor-barra">
-          <div class="interno">
-            <div class="redondeado">
+        <div className="contenedor-barra">
+          <div className="interno">
+            <div className="redondeado">
               <Input placeholder="Comparte tus ideas " disabled="true" />
               <Button type="primary" onClick={showPostModal}>
                 Nuevo Post
