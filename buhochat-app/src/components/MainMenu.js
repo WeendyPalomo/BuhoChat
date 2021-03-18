@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth } from "../lib/auth";
 import Routes from "../constants/routes";
-import { Avatar, Button, Col, Dropdown, Menu } from "antd";
+import { Avatar, Button, Col, Dropdown, Menu, Row } from "antd";
 import "../styles/MainMenu.css";
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import ModalEditeProfile from "./ModalEditeProfile";
@@ -56,7 +56,7 @@ const MainMenu = () => {
           </Col>
           <Col span={3} align="start">
             <Button className="buttom-register">
-              <Link to={Routes.REGISTER}>Registro</Link>{" "}
+              <Link to={Routes.REGISTER}>Registro</Link>
             </Button>
           </Col>
         </>
