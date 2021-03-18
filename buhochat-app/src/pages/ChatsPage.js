@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import "../styles/ChatsPage.css";
 import { Button, Input } from "antd";
-import ChatList from "../components/ChatList";
+
 import withAuth from "../hocs/withAuth";
 import ChatWindow from "../components/ChatWindow";
 import { Link } from "react-router-dom";
@@ -11,7 +11,7 @@ import {auth, db} from "../firebase/index";
 import {PlusOutlined,UnorderedListOutlined,RightOutlined} from "@ant-design/icons";
 import "../styles/ChatList.css";
 
-const { TextArea } = Input;
+
 
 const ChatsPage = () => {
   const [chatToShow, setChatToShow] = useState();
@@ -27,10 +27,10 @@ const ChatsPage = () => {
     if (num) {
       const currentUser = auth.currentUser;
 
-      const name = currentUser.displayName;
+      
       const uid = currentUser.uid;
 
-      db.ref(`userschats/${num}`).once("value", (snapshot) => {
+        db.ref(`userschats/${num}`).once("value", (snapshot) => {
         if (snapshot.exists()) {
           setNewUid(snapshot.val().userid);
           console.log("newUid", snapshot.val().userid);
@@ -81,23 +81,9 @@ const ChatsPage = () => {
             return [newUser, ...prevState];
           });
         });
-        const chatData = {
-          lastMessage: " ",
-          userid1: auth.currentUser.uid,
-          userid2: newUid
-        };
-        const updateuserData = {
-          uidContact: newUid
-
-        };
-        const updateCurrentUserData = {
-          uidContact: auth.currentUser.uid
-        }
+        
         const newChatKey = db.ref().child('chats').push().key;
-        /*var updates = {};
-        updates["/chats/" + newChatKey] = chatData;
-        updates["/users/" + auth.currentUser.uid + "/" + "chats/" +newChatKey] = updateuserData;
-        updates["/users/" + newUid + "/" + "chats/" +newChatKey] = updateCurrentUserData; */
+        
         setChats((prevState) => {
           const newChat = {
             key: newChatKey,
@@ -113,7 +99,7 @@ const ChatsPage = () => {
   }, [auxUser]);
 
   useEffect(() => {
-    const random = db.ref("/users").once("value", (snapshot) => {
+    db.ref("/users").once("value", (snapshot) => {
       setMaxUsers(snapshot.numChildren());
       console.log();
     });
@@ -139,8 +125,7 @@ const ChatsPage = () => {
     } else {
       message.warning("No existen más usuarios");
     }
-    //var newUid = getAnotherUser();
-    /* console.log("definitiveuid", newUid); */
+    
   };
 
   const setOnChange = (key) => {

@@ -7,7 +7,8 @@ import {Button, Form, Input, message, Select, Tooltip} from "antd";
 import translateMessage from "../utils/translateMessage";
 import {QuestionCircleOutlined} from "@ant-design/icons";
 
-const { Option } = Select;
+
+
 
 const formItemLayout = {
   labelCol: {

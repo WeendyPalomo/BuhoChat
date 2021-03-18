@@ -5,22 +5,20 @@ import {
   List,
   Avatar,
   Space,
-  Input,
+  
   Button,
   Divider,
-  message,
+  
 } from "antd";
 import {
-  MessageOutlined,
-  LikeOutlined,
-  StarOutlined,
+  
   WarningOutlined,
   SaveOutlined,
   HeartOutlined,
 } from "@ant-design/icons";
 import CommentForm from "./CommentForm";
 import { db } from "../firebase";
-import { onLog } from "firebase";
+
 import { useAuth } from "../lib/auth";
 
 const IconText = ({ icon, text }) => (
@@ -76,6 +74,7 @@ const ListOfPosts = ({ posts, postIDs }) => {
       return [...prevState, posts[girft].postid];
     });
   };
+
 
   useEffect(() => {
     db.ref(`savedposts/${user.uid}`).set(savedPosts);

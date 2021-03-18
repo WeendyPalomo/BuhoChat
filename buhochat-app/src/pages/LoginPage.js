@@ -5,7 +5,8 @@ import LoginForm from "../components/LoginForm";
 import "../styles/App.css";
 import "../styles/LoginPage.css";
 
-const { Title } = Typography;
+
+
 
 
 const LoginPage = () => {

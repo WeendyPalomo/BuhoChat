@@ -5,6 +5,7 @@ import RegistrationForm from "./RegistrationForm.js";
 const ScreenRegister =()=> {
  const {Content } = Layout;
 
+ 
     return(
             <>
               <Layout>

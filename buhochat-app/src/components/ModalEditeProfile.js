@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Routes from "../constants/routes";
-import {Button, Form, Input, Modal, Tooltip} from 'antd';
+import { Form,  Modal, Tooltip} from 'antd';
 import {db} from "../firebase/index";
 import "../styles/register.css";
 import "../styles/ModalEditeProfile.css"
@@ -8,7 +8,7 @@ import 'antd/dist/antd.css';
 import {useAuth} from "../lib/auth";
 import {useHistory} from "react-router-dom";
 import {QuestionCircleOutlined} from '@ant-design/icons';
-import TextArea from 'antd/lib/input/TextArea';
+
 
 const formItemLayout = {
 
@@ -47,7 +47,7 @@ const formItemLayout = {
 const ModalEditeProfile = () => {
     const [form] = Form.useForm();
     const { register, user } = useAuth();
-    const [updates, setUpdates]=useState([]);
+    
     const history = useHistory();
     const onFinish = (data) => {
       console.log('Received values of form: ', data);
@@ -80,6 +80,7 @@ const ModalEditeProfile = () => {
     }, 2000);
   };
 
+  
   const handleCancel = () => {
     console.log('Clicked cancel button');
     setVisible(false);

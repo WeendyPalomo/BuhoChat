@@ -9,7 +9,8 @@ import withoutAuth from "../hocs/withoutAuth";
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
 </style>
 
-const { Title } = Typography;
+
+
 
 const HomePage = () => {
   return (

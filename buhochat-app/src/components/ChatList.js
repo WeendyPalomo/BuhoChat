@@ -54,6 +54,7 @@ const ChatList = ({onChange}) => {
 
     return contain;
   }
+  
   useEffect(() => {
     if (auxUser) {
       console.log("USER", users);

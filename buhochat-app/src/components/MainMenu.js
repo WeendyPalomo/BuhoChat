@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 const MainMenu = () => {
   const { user, logout } = useAuth();
 
+  
   return (
     <>
       {user ? (

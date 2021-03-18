@@ -14,6 +14,7 @@ const UploadImagePost = () => {
       console.log(info.fileList);
     },
   };
+  
   return (
     <Upload {...props}>
       <Button icon={<UploadOutlined />}>Upload png only</Button>

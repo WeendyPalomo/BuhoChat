@@ -7,6 +7,7 @@ import Routes from "../constants/routes";
 import withAuth from "../hocs/withAuth";
 
 
+
 const MenuPage = () => {
   const { Content } = Layout;
 

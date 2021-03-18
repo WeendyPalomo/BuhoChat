@@ -7,6 +7,7 @@ import Routes from "../constants/routes";
 
 const { Header, Content, Footer } = Layout;
 
+
 const MainLayout = ({ children }) => {
   return (
     <Layout className="layout">

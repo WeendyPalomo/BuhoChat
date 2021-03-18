@@ -9,6 +9,7 @@ import {SendOutlined, UserOutlined,PictureOutlined, UploadOutlined} from "@ant-d
 
 const { TextArea } = Input;
 
+
 const ChatWindow = ({chat}) => {
   const [myMessages, setMyMessages] = useState([]);
   const [numMessages, setNumMessages] = useState(0);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Collapse, Modal, Input, Descriptions, Table } from "antd";
+import { Collapse, Modal} from "antd";
 import "../styles/ModalEditeProfile.css";
 import "antd/dist/antd.css";
 import { useAuth } from "../lib/auth";

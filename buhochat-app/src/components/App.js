@@ -12,6 +12,7 @@ import RegisterPage from "../pages/RegisterPage";
 import {AuthProvider} from "../lib/auth";
 import PostsPage from "../pages/PostsPage";
 
+
 function App() {
   return (
     <>

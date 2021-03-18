@@ -7,6 +7,7 @@ const RegisterPage = () => {
   const { Content } = Layout;
 
   
+  
   return (
     <>
       <Layout>

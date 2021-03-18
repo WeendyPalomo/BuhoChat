@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, Button, Comment, List, Form, Input } from "antd";
+import { Button, Comment, List, Form, Input } from "antd";
 import moment from "moment";
 import { db } from "../firebase";
 import { useAuth } from "../lib/auth";
 const { Item } = Form;
 const { TextArea } = Input;
+
 
 const CommentList = ({ comments }) => (
   <List
