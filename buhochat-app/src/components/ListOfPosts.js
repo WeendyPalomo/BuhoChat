@@ -1,5 +1,15 @@
-import React, { useState } from "react";
-import { Row, Col, List, Avatar, Space, Input, Button, Divider } from "antd";
+import React, { useState, useEffect } from "react";
+import {
+  Row,
+  Col,
+  List,
+  Avatar,
+  Space,
+  Input,
+  Button,
+  Divider,
+  message,
+} from "antd";
 import {
   MessageOutlined,
   LikeOutlined,
@@ -8,7 +18,10 @@ import {
   SaveOutlined,
   HeartOutlined,
 } from "@ant-design/icons";
+import { db } from "../firebase";
 import CommentForm from "./CommentForm";
+import { onLog } from "firebase";
+import { useAuth } from "../lib/auth";
 
 const IconText = ({ icon, text }) => (
   <Space>
@@ -17,8 +30,16 @@ const IconText = ({ icon, text }) => (
   </Space>
 );
 
-const ListOfPosts = ({ posts }) => {
+let oneByOne = "";
+const ListOfPosts = ({ posts, postIDs }) => {
+  const { user } = useAuth();
+  const [postIdsArray, setPostIdsArray] = useState([postIDs]);
+  const [numPage, setNumberPage] = useState(1);
+  const [auxIndex, setAuxIndex] = useState(0);
+  const [itemIndex, setItemIndex] = useState(0);
+  const [savedPosts, setSavedPosts] = useState([]);
   const listData = [];
+  //posts.reverse();
   posts.forEach((post) => {
     listData.push({
       title: post.title,
@@ -28,7 +49,39 @@ const ListOfPosts = ({ posts }) => {
       avatar:
         "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
     });
+    //console.log("CADA ID DE pOST", post);
+    // setPostIdsArray((prevState) => {
+    //   return [...prevState, post.postid];
+    // });
   });
+
+  const postIdArrays = posts.map((post) => {
+    return post.postid;
+  });
+
+  const handleSavedPost = async (girft) => {
+    //const savedPost = [];
+    for (let i = 1; i <= numPage; i++) {
+      if (numPage === i) {
+        girft += (numPage - 1) * 4;
+        //setUtilIndex(index)
+      }
+    }
+    console.log(`imprime el id ${girft} con POSTID`, posts[girft].postid);
+    console.log("NUMBEROAGE", numPage);
+    //savedPost.push(posts[girft].postid);
+    setSavedPosts((prevState) => {
+      return [...prevState, posts[girft].postid];
+    });
+  };
+
+  useEffect(() => {
+    db.ref(`savedposts/${user.uid}`).set(savedPosts);
+    message.success("Guardado!");
+  }, [savedPosts]);
+
+  //const postIdArrays = posts.postid;
+  //console.log("array de id poist", postIdArrays);
 
   return (
     <List
@@ -37,8 +90,9 @@ const ListOfPosts = ({ posts }) => {
       pagination={{
         onChange: (page) => {
           console.log(page);
+          setNumberPage(page);
         },
-        pageSize: 3,
+        pageSize: 4,
       }}
       dataSource={listData}
       // footer={
@@ -46,23 +100,26 @@ const ListOfPosts = ({ posts }) => {
       //     <b>ant design</b> footer part
       //   </div>
       // }
-      renderItem={(item) => (
+
+      renderItem={(item, index) => (
+        //setItemIndex(index),
         <List.Item
           key={item.title}
           actions={[]}
-          extra={
-            <>
-              <Row justify="center">
-                <img
-                  width={250}
-                  alt="logo"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-                />
-              </Row>
-            </>
-          }
+          // extra={
+          //   <>
+          //     <Row justify="center">
+          //       <img
+          //         width={250}
+          //         alt="logo"
+          //         src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+          //       />
+          //     </Row>
+          //   </>
+          // }
         >
           <Divider>{item.title}</Divider>
+
           <List.Item.Meta
             avatar={<Avatar src={item.avatar} />}
             title={
@@ -70,7 +127,10 @@ const ListOfPosts = ({ posts }) => {
                 <Col span={10}>{item.nickname}</Col>
                 <Col span={4} offset={8}>
                   <Row justify="center">
-                    <Col span={8}>
+                    <Col span={3} justify="center">
+                      1
+                    </Col>
+                    <Col span={7}>
                       <Button
                         size="small"
                         type="primary"
@@ -82,7 +142,7 @@ const ListOfPosts = ({ posts }) => {
                         }
                       ></Button>
                     </Col>
-                    <Col span={8}>
+                    <Col span={7}>
                       <Button
                         size="small"
                         type="primary"
@@ -92,9 +152,10 @@ const ListOfPosts = ({ posts }) => {
                             <SaveOutlined />
                           </Row>
                         }
+                        onClick={() => handleSavedPost(index)}
                       ></Button>
                     </Col>
-                    <Col span={8}>
+                    <Col span={7}>
                       <Button
                         size="small"
                         type="primary"
@@ -115,7 +176,16 @@ const ListOfPosts = ({ posts }) => {
           {item.poston}
           <Row justify="center">
             <Col span={16}>
-              <CommentForm />
+              {/*{setNumber(postIdArrays[])}*/}
+              <CommentForm
+                postIDs={postIdArrays}
+                index={index}
+                numPage={numPage}
+              />
+
+              {/*  "DEBERIA SER EL ULTIMO",*/}
+              {/*  postIdArrays[postIdArrays.length - 1]*/}
+              {/*)}*/}
             </Col>
           </Row>
         </List.Item>

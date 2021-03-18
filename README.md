@@ -39,9 +39,12 @@ Conectate con otros estudiantes y comparte temas de tu interes.
 ![image](https://user-images.githubusercontent.com/58180852/111399172-ceee4100-8692-11eb-97fa-c1736ba66ebc.png)
 ![image](https://user-images.githubusercontent.com/58180852/111399195-dca3c680-8692-11eb-8a2a-c15891328078.png)
 
-
+## Archivos de Analisis
+- [Analisis de requerimientos](https://epnecuador-my.sharepoint.com/:w:/g/personal/wendy_palomo_epn_edu_ec/EeHdyPse64BJrmPUIPyiVRUBkZHm_RIwb3pA1vW1qgsPdQ?e=gKwDqM)
+- [Casos de Uso](https://epnecuador-my.sharepoint.com/:w:/g/personal/wendy_palomo_epn_edu_ec/EeHdyPse64BJrmPUIPyiVRUBkZHm_RIwb3pA1vW1qgsPdQ?e=gKwDqM)
+- [Documentacion: Sprint](https://epnecuador-my.sharepoint.com/:w:/g/personal/wendy_palomo_epn_edu_ec/ET4r4TIgAg1PvSj-FAaUFRMBhjhy5KOycFDPNH9t_K-3ag?e=iHYtKD)
 ## Entregables
-- Video del Manual de Usario
+- [Video del Manual de Usario](https://youtu.be/4uKra8r77-g)
 - [Video del Manual Tecnico](https://youtu.be/DdDbMhTjXYc)
-- Lista de reproducción de los videos con reuniones de seguimiento 
+- [Lista de reproducción de los videos con reuniones de seguimiento](https://www.youtube.com/playlist?list=PLaDBQivSCCIixwb3vJ6Pq9jEY9wzFjw69)
 - [Carpeta Proyecto Final](https://epnecuador-my.sharepoint.com/:f:/g/personal/alexis_yepez01_epn_edu_ec/EiLRrpGZHn1FiETBMqxTud8BkMB1DsfRaAAA_7nCQnSUPg?e=RGLWaA)

@@ -45,11 +45,7 @@ const ChatWindow = ({chat}) => {
         hour: "2-digit",
         minute: "2-digit",
       }).format(timestamp);
-      /* firebase.database().ref(`messages/chatidexample/${numMessages}`).set({
-        name: user.email,
-        timestamp: timestampAll,
-        message: messageContent,
-      }); */
+      
       const newMessageKey = db.ref('messages/chatidexmaple2').push().key
                db.ref('messages/chatidexmaple2/' + newMessageKey).set({
         name: user.email,
@@ -63,25 +59,12 @@ const ChatWindow = ({chat}) => {
     }
     const chatHistory = document.getElementById("chat-messages");
     console.log(chatHistory);
-    scrollToEnd();
-    /* db.ref("messages/chatidexmaple2").on("child_added", (snapshot) => {
-      
-      
-        console.log(snapshot.val());
-        setMyMessages((prevState) => {
-          return [...prevState, snapshot.val()]
-        })
-      
-      
-    });
-    db.ref("messages/chatidexmaple2").off() */
+    
+    
     
   };
 
-  function scrollToEnd(){
-	var chatList = document.getElementById("chat-messages");
-	chatList.scrollTop = chatList.scrollHeight;
-  }
+  
   useEffect(() => {
     db.ref("messages/chatidexmaple2").on("child_added", (snapshot) => {
       
