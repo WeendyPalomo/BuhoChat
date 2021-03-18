@@ -37,8 +37,12 @@ const ListOfPosts = ({ posts, postIDs }) => {
   const [auxIndex, setAuxIndex] = useState(0);
   const [itemIndex, setItemIndex] = useState(0);
   const [savedPosts, setSavedPosts] = useState([]);
+<<<<<<< HEAD
   const [likedPosts, setLikedPosts] = useState([]);
   const [likes, setLikes] = useState([]);
+=======
+  const [like, setLike] = useState(0);
+>>>>>>> d0cbeeceaf9df4517d90072b297a4f2fe967b535
   const listData = [];
   posts.forEach((post) => {
     listData.push({
@@ -79,6 +83,7 @@ const ListOfPosts = ({ posts, postIDs }) => {
     };
   }, [savedPosts]);
 
+<<<<<<< HEAD
   const handleLikedPost = async (indexLike) => {
     for (let i = 1; i <= numPage; i++) {
       if (numPage === i) {
@@ -104,6 +109,31 @@ const ListOfPosts = ({ posts, postIDs }) => {
       db.ref("likedposts").off();
     };
   }, [likedPosts]);
+=======
+
+  const handleLikepost = async (likepost) => {
+    
+    for (let i = 1; i <= numPage; i++) {
+      if (numPage === i) {
+        likepost += (numPage - 1) * 4;
+        
+      }
+    }
+    console.log(`imprime el id ${likepost} con POSTID`, posts[likepost].postid);
+    console.log("NUMBEROAGE", numPage);
+    
+    setLike((prevState) => {
+      return [...prevState, posts[likepost].postid];
+    });
+  };
+
+  useEffect(() => {
+    db.ref(`likedposts/${user.uid}`).set(like);
+    
+  }, [like]);
+
+  
+>>>>>>> d0cbeeceaf9df4517d90072b297a4f2fe967b535
 
   const stylesCount = {
     position: "relative",
@@ -137,6 +167,7 @@ const ListOfPosts = ({ posts, postIDs }) => {
                       <div style={stylesCount}>{likedPosts.length}</div>
                     </Col>
                     <Col span={7}>
+                    
                       <Button
                         size="small"
                         type="primary"
@@ -144,11 +175,17 @@ const ListOfPosts = ({ posts, postIDs }) => {
                         icon={
                           <Row justify="center">
                             <HeartOutlined />
+                            
                           </Row>
                         }
+<<<<<<< HEAD
                         onClick={async () => {
                           await handleLikedPost(index);
                         }}
+=======
+                      
+                        
+>>>>>>> d0cbeeceaf9df4517d90072b297a4f2fe967b535
                       ></Button>
                     </Col>
                     <Col span={7}>
