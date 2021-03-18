@@ -37,13 +37,15 @@ const PostPage = () => {
             setInputTextArea(e.target.value);
           }}
         />
-        {/*<UploadImagePost />*/}
       </>
     );
   };
 
+<<<<<<< HEAD
   
   
+=======
+>>>>>>> 61c563a43798d1e956135304d058128de20ff1e3
   const handleWriteData = async () => {
     let postIdArray = [];
     const poston = moment();
@@ -51,29 +53,13 @@ const PostPage = () => {
     setPostIDs((prevState) => {
       return [...prevState, newPostID];
     });
-    //postIdArray = [...postIdArray, newPostID];
-    console.log("new post", newPostID);
     await db.ref(`posts/${newPostID}`).set({
       title: inputTitle,
       content: inputTextArea,
       userid: user.uid,
       poston: poston.format("LLLL"),
       postid: newPostID,
-      // image: imageToUp,
       nickname: user.nickname,
-    });
-    //setPostIDs(postIdArray);
-    //await handleWriteComments(postIDs);
-  };
-
-  // useEffect(() => {
-  //   //handleWriteComments(postIDs);
-  //   //console.log("ARREGLO DE POST IDS", postIDs);
-  // }, [postIDs]);
-
-  const handleWriteComments = async (postIdArray) => {
-    await postIdArray.forEach((newPost) => {
-      db.ref(`comments/${newPost}`).set("");
     });
   };
 
@@ -153,8 +139,6 @@ const PostPage = () => {
               >
                 <p>{modalText}</p>
               </Modal>
-              {/*<Switch checkedChildren="Anonimo" unCheckedChildren="" />*/}
-              {/*<div id="anonimo"></div>*/}
             </div>
           </div>
         </div>

@@ -1,14 +1,17 @@
 import React from "react";
 import withoutAuth from "../hocs/withoutAuth";
-import {Col, Row, Typography} from "antd";
+import { Col, Row, Typography } from "antd";
 import LoginForm from "../components/LoginForm";
 import "../styles/App.css";
 import "../styles/LoginPage.css";
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> 61c563a43798d1e956135304d058128de20ff1e3
 const LoginPage = () => {
   return (
     <Row className="login-page">

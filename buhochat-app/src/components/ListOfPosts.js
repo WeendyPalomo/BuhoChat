@@ -18,7 +18,10 @@ import {
 } from "@ant-design/icons";
 import CommentForm from "./CommentForm";
 import { db } from "../firebase";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 61c563a43798d1e956135304d058128de20ff1e3
 import { useAuth } from "../lib/auth";
 
 const IconText = ({ icon, text }) => (
@@ -36,23 +39,23 @@ const ListOfPosts = ({ posts, postIDs }) => {
   const [auxIndex, setAuxIndex] = useState(0);
   const [itemIndex, setItemIndex] = useState(0);
   const [savedPosts, setSavedPosts] = useState([]);
+<<<<<<< HEAD
+  const [likedPosts, setLikedPosts] = useState([]);
+  const [likes, setLikes] = useState([]);
+=======
   const [like, setLike] = useState(0);
+>>>>>>> d0cbeeceaf9df4517d90072b297a4f2fe967b535
   const listData = [];
-  //posts.reverse();
   posts.forEach((post) => {
     listData.push({
       title: post.title,
       nickname: post.nickname,
       content: post.content,
       poston: post.poston,
-      postid:post.postid,
+      postid: post.postid,
       avatar:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png",
     });
-    //console.log("CADA ID DE pOST", post);
-    // setPostIdsArray((prevState) => {
-    //   return [...prevState, post.postid];
-    // });
   });
 
   const postIdArrays = posts.map((post) => {
@@ -60,31 +63,56 @@ const ListOfPosts = ({ posts, postIDs }) => {
   });
 
   const handleSavedPost = async (girft) => {
-    //const savedPost = [];
     for (let i = 1; i <= numPage; i++) {
       if (numPage === i) {
         girft += (numPage - 1) * 4;
-        //setUtilIndex(index)
       }
     }
-    console.log(`imprime el id ${girft} con POSTID`, posts[girft].postid);
-    console.log("NUMBEROAGE", numPage);
-    //savedPost.push(posts[girft].postid);
     setSavedPosts((prevState) => {
-      return [...prevState, posts[girft].postid];
+      if (!savedPosts.includes(posts[girft].postid)) {
+        return [...prevState, posts[girft].postid];
+      } else {
+        return [...prevState];
+      }
     });
   };
 
 
   useEffect(() => {
     db.ref(`savedposts/${user.uid}`).set(savedPosts);
-    //message.success("Guardado!");
 
     return () => {
       db.ref("savedposts").off();
     };
   }, [savedPosts]);
 
+<<<<<<< HEAD
+  const handleLikedPost = async (indexLike) => {
+    for (let i = 1; i <= numPage; i++) {
+      if (numPage === i) {
+        indexLike += (numPage - 1) * 4;
+      }
+    }
+    setLikedPosts((prevState) => {
+      if (!likedPosts.includes(posts[indexLike].postid)) {
+        return [...prevState, posts[indexLike].postid];
+      } else {
+        return [...prevState];
+      }
+    });
+
+    await db
+      .ref(`poststatistics/${posts[indexLike].postid}/likes`)
+      .set(likedPosts.length);
+  };
+
+  useEffect(() => {
+    db.ref(`likedposts/${user.uid}`).set(likedPosts);
+    return () => {
+      db.ref("likedposts").off();
+    };
+  }, [likedPosts]);
+=======
 
   const handleLikepost = async (likepost) => {
     
@@ -108,8 +136,12 @@ const ListOfPosts = ({ posts, postIDs }) => {
   }, [like]);
 
   
+>>>>>>> d0cbeeceaf9df4517d90072b297a4f2fe967b535
 
-  
+  const stylesCount = {
+    position: "relative",
+    right: 15,
+  };
 
   return (
     <List
@@ -123,29 +155,8 @@ const ListOfPosts = ({ posts, postIDs }) => {
         pageSize: 4,
       }}
       dataSource={listData}
-      // footer={
-      //   <div>
-      //     <b>ant design</b> footer part
-      //   </div>
-      // }
-
       renderItem={(item, index) => (
-        //setItemIndex(index),
-        <List.Item
-          key={item.title}
-          actions={[]}
-          // extra={
-          //   <>
-          //     <Row justify="center">
-          //       <img
-          //         width={250}
-          //         alt="logo"
-          //         src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-          //       />
-          //     </Row>
-          //   </>
-          // }
-        >
+        <List.Item key={item.title} actions={[]}>
           <Divider>{item.title}</Divider>
 
           <List.Item.Meta
@@ -156,7 +167,7 @@ const ListOfPosts = ({ posts, postIDs }) => {
                 <Col span={4} offset={8}>
                   <Row justify="center">
                     <Col span={3} justify="center">
-                      1
+                      <div style={stylesCount}>{likedPosts.length}</div>
                     </Col>
                     <Col span={7}>
                     
@@ -170,8 +181,14 @@ const ListOfPosts = ({ posts, postIDs }) => {
                             
                           </Row>
                         }
+<<<<<<< HEAD
+                        onClick={async () => {
+                          await handleLikedPost(index);
+                        }}
+=======
                       
                         
+>>>>>>> d0cbeeceaf9df4517d90072b297a4f2fe967b535
                       ></Button>
                     </Col>
                     <Col span={7}>
@@ -208,16 +225,11 @@ const ListOfPosts = ({ posts, postIDs }) => {
           {item.poston}
           <Row justify="center">
             <Col span={16}>
-              {/*{setNumber(postIdArrays[])}*/}
               <CommentForm
                 postIDs={postIdArrays}
                 index={index}
                 numPage={numPage}
               />
-
-              {/*  "DEBERIA SER EL ULTIMO",*/}
-              {/*  postIdArrays[postIdArrays.length - 1]*/}
-              {/*)}*/}
             </Col>
           </Row>
         </List.Item>

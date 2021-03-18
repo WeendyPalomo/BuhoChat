@@ -1,14 +1,12 @@
-import React, {useEffect, useState} from "react";
-import {Button, Checkbox, Form, Input, message} from "antd";
+import React, { useEffect, useState } from "react";
+import { Button, Checkbox, Form, Input, message } from "antd";
 import translateMessage from "../utils/translateMessage";
 import "../styles/LoginForm.css";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Routes from "../constants/routes";
-import {useAuth} from "../lib/auth";
+import { useAuth } from "../lib/auth";
 
 const LoginForm = () => {
-  const [loading, setLoading] = useState(false);
-
   const { login, user } = useAuth();
   const history = useHistory();
 
@@ -20,19 +18,12 @@ const LoginForm = () => {
 
   
   const onFinish = async ({ email, password, remember }) => {
-    setLoading(true);
     try {
       await login(email, password);
-      //setLoading(false);
     } catch (error) {
       const errorCode = error.code;
       message.error(translateMessage(errorCode));
-      setLoading(false);
     }
-
-    console.log(remember);
-    console.log(email);
-    console.log(password);
   };
 
   const layout = {
@@ -64,16 +55,9 @@ const LoginForm = () => {
       >
         <Input.Password />
       </Form.Item>
-
-      <Form.Item {...tailLayout} name="remember" className="checkbox-login-form" valuePropName="checked">
-        <Checkbox >Remember me</Checkbox>
-      </Form.Item>
-
       <Form.Item {...tailLayout}>
-        <Button className="buttom-login-form" type="primary" htmlType="submit" loading={loading}>
-          <strong>
-          Inicia Sesion
-          </strong>         
+        <Button className="buttom-login-form" type="primary" htmlType="submit">
+          <strong>Inicia Sesión</strong>
         </Button>
       </Form.Item>
     </Form>
