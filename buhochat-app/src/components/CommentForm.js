@@ -107,7 +107,7 @@ const CommentForm = ({ postIDs, index, numPage }) => {
           {
             author: user.nickname,
             avatar:
-              "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png",
             content: <p>{state.value}</p>,
             datetime: moment().format("LLLL"),
           },

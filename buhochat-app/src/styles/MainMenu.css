@@ -13,11 +13,22 @@
   }
 
   .drop-main-menu{
-    background-color: white;
+    background-color: #ef8d94;
+    border-color: white;
+    color: white;
     border-radius: 40px;
     height: 60%;
+    font-weight:bold;
     margin-left: auto;
     padding: 5px 25px 5px 25px;
+    margin-top: 10px;
+  }
+
+  .span, font {
+    vertical-align: inherit;
+    font-weight: bold;
+    padding: 10px;
+
   }
 
   .buttom-login{
@@ -32,8 +43,18 @@
     font-size: 20px;
     border-radius: 40px;
     border-color: white;
-    color: #F03A47;
+    color: #e29297;
     opacity: 0.6;
     height: 60%;
   }
+
+  .ant-avatar-sm{
+    width: 31px;
+    height: 31px;
+    line-height: 24px;
+    border-radius: 50%;
+    padding: 2px;
+  }
+
+  
 

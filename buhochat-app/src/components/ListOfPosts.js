@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Row, Col, List, Avatar, Space, Input, Button, Divider } from "antd";
+import React, {createElement, useState } from "react";
+import { Row, Col, List, Avatar, Space,Tooltip, Input, Button, Divider } from "antd";
 import {
   MessageOutlined,
   LikeOutlined,
@@ -9,7 +9,9 @@ import {
   HeartOutlined,
 } from "@ant-design/icons";
 import CommentForm from "./CommentForm";
+import { db } from "../firebase";
 import { onLog } from "firebase";
+import { DislikeOutlined, DislikeFilled, LikeFilled } from '@ant-design/icons';
 
 const IconText = ({ icon, text }) => (
   <Space>
@@ -22,6 +24,8 @@ let oneByOne = "";
 const ListOfPosts = ({ posts, postIDs }) => {
   const [postIdsArray, setPostIdsArray] = useState([postIDs]);
   const [numPage, setNumberPage] = useState(1);
+  const [like, setLikes ]= useState(0);
+  const [action, setAction] = useState(null);
   const listData = [];
   posts.forEach((post) => {
     listData.push({
@@ -29,6 +33,7 @@ const ListOfPosts = ({ posts, postIDs }) => {
       nickname: post.nickname,
       content: post.content,
       poston: post.poston,
+      postid:post.postid,
       avatar:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png",
     });
@@ -44,6 +49,10 @@ const ListOfPosts = ({ posts, postIDs }) => {
 
   //const postIdArrays = posts.postid;
   //console.log("array de id poist", postIdArrays);
+
+  
+
+  
 
   return (
     <List
@@ -84,46 +93,51 @@ const ListOfPosts = ({ posts, postIDs }) => {
             title={
               <Row>
                 <Col span={10}>{item.nickname}</Col>
-                {/*<Col span={4} offset={8}>*/}
-                {/*  <Row justify="center">*/}
-                {/*    <Col span={8}>*/}
-                {/*      <Button*/}
-                {/*        size="small"*/}
-                {/*        type="primary"*/}
-                {/*        shape="circle"*/}
-                {/*        icon={*/}
-                {/*          <Row justify="center">*/}
-                {/*            <HeartOutlined />*/}
-                {/*          </Row>*/}
-                {/*        }*/}
-                {/*      ></Button>*/}
-                {/*    </Col>*/}
-                {/*    <Col span={8}>*/}
-                {/*      <Button*/}
-                {/*        size="small"*/}
-                {/*        type="primary"*/}
-                {/*        shape="circle"*/}
-                {/*        icon={*/}
-                {/*          <Row justify="center">*/}
-                {/*            <SaveOutlined />*/}
-                {/*          </Row>*/}
-                {/*        }*/}
-                {/*      ></Button>*/}
-                {/*    </Col>*/}
-                {/*    <Col span={8}>*/}
-                {/*      <Button*/}
-                {/*        size="small"*/}
-                {/*        type="primary"*/}
-                {/*        shape="circle"*/}
-                {/*        icon={*/}
-                {/*          <Row justify="center">*/}
-                {/*            <WarningOutlined />*/}
-                {/*          </Row>*/}
-                {/*        }*/}
-                {/*      ></Button>*/}
-                {/*    </Col>*/}
-                {/*  </Row>*/}
-                {/*</Col>*/}
+                <Col span={4} offset={8}>
+                 <Row justify="center">
+                    <Col span={8}>
+                      <Button
+                        size="small"
+                        type="primary"
+                        shape="circle"
+                        icon={
+                          
+                          <Row justify="center">
+                            
+                            <HeartOutlined
+                             />
+                            
+                          </Row>
+                        }
+                      ></Button>
+                    </Col>
+                    <Col span={8}>
+                      <Button
+                        size="small"
+                        type="primary"
+                        shape="circle"
+                        icon={
+                          <Row justify="center">
+                            <SaveOutlined />
+                          </Row>
+                        }
+                      ></Button>
+                    </Col>
+                    <Col span={8}>
+                      <Button
+                        size="small"
+                        type="primary"
+                        shape="circle"
+                        icon={
+                          <Row justify="center">
+                            <WarningOutlined />
+                          </Row>
+                        }
+                      ></Button>
+                    </Col>
+                  </Row>
+                </Col>
+                
               </Row>
             }
             description={item.content}
