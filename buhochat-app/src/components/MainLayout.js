@@ -1,7 +1,9 @@
 import React from "react";
-import {Col, Layout, Row} from "antd";
+import { Col, Layout, Row } from "antd";
 import "../styles/MainLayout.css";
 import MainMenu from "./MainMenu";
+import { Link } from "react-router-dom";
+import Routes from "../constants/routes";
 
 const { Header, Content, Footer } = Layout;
 
@@ -12,7 +14,7 @@ const MainLayout = ({ children }) => {
         <Row>
           <Col span={8} className="title-header">
             BúhoChat
-            </Col>
+          </Col>
           <MainMenu />
         </Row>
       </Header>
