@@ -38,6 +38,7 @@ const ListOfPosts = ({ posts, postIDs }) => {
   const [auxIndex, setAuxIndex] = useState(0);
   const [itemIndex, setItemIndex] = useState(0);
   const [savedPosts, setSavedPosts] = useState([]);
+  const [like, setLike] = useState(0);
   const listData = [];
   //posts.reverse();
   posts.forEach((post) => {
@@ -83,6 +84,28 @@ const ListOfPosts = ({ posts, postIDs }) => {
 
   //const postIdArrays = posts.postid;
   //console.log("array de id poist", postIdArrays);
+
+
+  const handleLikepost = async (likepost) => {
+    
+    for (let i = 1; i <= numPage; i++) {
+      if (numPage === i) {
+        likepost += (numPage - 1) * 4;
+        
+      }
+    }
+    console.log(`imprime el id ${likepost} con POSTID`, posts[likepost].postid);
+    console.log("NUMBEROAGE", numPage);
+    
+    setLike((prevState) => {
+      return [...prevState, posts[likepost].postid];
+    });
+  };
+
+  useEffect(() => {
+    db.ref(`likedposts/${user.uid}`).set(like);
+    
+  }, [like]);
 
   
 
@@ -136,6 +159,7 @@ const ListOfPosts = ({ posts, postIDs }) => {
                       1
                     </Col>
                     <Col span={7}>
+                    
                       <Button
                         size="small"
                         type="primary"
@@ -143,8 +167,11 @@ const ListOfPosts = ({ posts, postIDs }) => {
                         icon={
                           <Row justify="center">
                             <HeartOutlined />
+                            
                           </Row>
                         }
+                      
+                        
                       ></Button>
                     </Col>
                     <Col span={7}>
